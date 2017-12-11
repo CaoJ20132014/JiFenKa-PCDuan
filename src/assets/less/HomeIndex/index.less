@@ -1,0 +1,162 @@
+@import "../public/var.less";
+#index{
+	width: 100%;
+	.heard{
+		width: 100%;
+		height: @baseHeight/2.5;
+        background-color: @color-black;
+        .heard-con{
+            width: @baseWidth*12;
+            height: 100%;
+            margin: 0 auto;
+            .folat_lt{
+                float: left;
+                height: @baseHeight/2.5;
+                color: @color-white;
+                font-size: @font-size14;
+                line-height: @baseLineHeight*4;
+            }
+            .folat_rt{
+                float: right;
+                div{
+                    height: @baseHeight/2.5;
+                    span{
+                        vertical-align: top;
+                        color: @color-white;
+                        font-size: @font-size14;
+                        line-height: @baseLineHeight*4;
+                    }
+                    img{
+                        margin: @baseMargin+1px @baseMargin/2 0 0;
+                    }
+                }
+            }
+        }
+    }
+    .content{
+        width: @baseWidth*12;
+        margin: 0 auto;
+        .con-top{
+            width: 100%;
+            height: @baseWidth - 5px;
+            .content-left{
+                float: left;
+                &:hover{
+                    cursor: pointer;
+                }
+                img:nth-child(1){
+                    width: 41px;
+                    height: 48px;
+                    margin-top: @baseMargin*2+4px;
+                }
+                img:nth-child(2){
+                    width: 85px;
+                    height: 36px;
+                    vertical-align: top;
+                    margin-top: @baseMargin*3;
+                    margin-left: @baseMargin;
+                }
+            }
+            .content-con{
+                float: left;
+                height: 100%;
+                width: @baseWidth*7;
+                margin-left: @baseMargin*9;
+                ul{
+                    height: 100%;
+                    width: @baseWidth*7;
+                    li{
+                        list-style: none;
+                        float: left;
+                        font-size: @font-size18;
+                        width: @baseWidth+20px;
+                        height: @baseHeight - 60px;
+                        text-align: center; 
+                        border-bottom: @baseBorderWidth*3 solid @color-white;
+                        padding-top: @basePadding*3 - 5px;
+                        color: @color-gray;
+                        &:first-child{
+                            width: @baseWidth;
+                        }
+                        span{
+                            line-height: @baseLineHeight*4;
+                        }
+                        .active{
+                            color: @color-common;
+                        }
+                        &:hover{
+                            border-color: @color-common;
+                            cursor: pointer;
+                            color: @color-common;
+                        }
+                    }
+                }
+            }
+            .content-right{
+                float: right;
+                &:hover{
+                    cursor: pointer;
+                }
+                img{
+                    width: @baseWidth/4;
+                    height: @baseWidth/4;
+                    margin-top: @baseMargin*3+5px;
+                    margin-right: @baseMargin;
+                }
+                span{
+                    vertical-align: top;
+                    color: @color-common;
+                    font-size: @font-size18;
+                    line-height: @baseLineHeight*9+5px;
+                }
+            }
+        }
+        .con-con{
+            width: 100%; 
+        }
+        .con-bot{
+            width: 100%;
+            height: @baseHeight+65px;
+            font-size: 0;
+            margin-top: @baseMargin;
+            img{
+                width: @baseWidth*3 - 7px;
+                height: @baseHeight+65px;
+                &:nth-child(n+2){
+                    margin-left: @baseMargin - 1px;
+                }
+            }
+        }
+    }
+    .foot{
+        width: 100%;
+        height: @baseHeight+40px;
+        background-color: @color-fa;
+        margin-top: @baseMargin;
+        padding-top: @basePadding*8;
+        .foot_top{
+            width: @baseWidth*6;
+            margin: 0 auto;
+            text-align: center;
+            span{
+                font-size: @font-size14;
+                color: @color-gray;
+                &:nth-child(2n+1){
+                    margin-right: @baseMargin*3;
+                    margin-left: @baseMargin*3;
+                }
+                &:nth-child(2n+1){
+                    margin-right: @baseMargin*3;
+                }
+            }
+        }
+        .foot_bot{
+            width: @baseWidth*6;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: @basePadding*3.6;
+            font-size: @font-size14;
+            color: @color-gray;
+        }
+    }
+}

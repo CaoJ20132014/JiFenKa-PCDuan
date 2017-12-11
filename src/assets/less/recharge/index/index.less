@@ -1,0 +1,51 @@
+@import "../../public/var.less";
+#rechargeIndex{
+    width: 100%;
+    height: @baseHeight*5.4;
+    .recharge-lt{
+        float: left;
+        width: @baseWidth*2;
+        height: 100%;
+        background-color: @color-black;
+        ul{
+            width: 100%;
+            li{
+                list-style: none;
+                color: @color-white;
+                width: 100%;
+                height: @baseHeight*0.89;
+                border-bottom: @baseBorderWidth solid @BorderColorBlack;
+                text-align: center;
+                font-size: @font-size16;
+                span{
+                    vertical-align: top;
+                    line-height: @baseLineHeight*8.9;
+                }
+                .phone{
+                    margin-top: @baseMargin*3.3;
+                    margin-right: @baseMargin/2;
+                }
+                .fill{
+                    margin-top: @baseMargin*2;
+                    margin-right: @baseMargin/2;
+                }
+                .fuel{
+                    margin-top: @baseMargin*3.3;
+                    margin-right: @baseMargin/2;
+                }
+                &:hover{
+                    cursor: pointer;
+                }
+                &:nth-child(2){
+                    span{
+                        line-height: @baseLineHeight*6.2;
+                    }
+                    p{
+                        font-size: @font-size14;
+                        margin-top: -@baseMargin*1.5;
+                    }
+                }
+            }
+        }
+    }
+}
