@@ -2,16 +2,16 @@
     <div id="rechargeIndex">
         <div class="recharge-lt">
             <ul>
-                <li>
+                <li :class="[index == '1' ? 'isActive' : '']" @click="routeChange(1)">
                     <img class="phone" src="../../../../assets/image/recharge/index/phone.png" alt="">
                     <span>手机充值</span>
                 </li>
-                <li>
+                <li :class="[index == '2' ? 'isActive' : '']" @click="routeChange(2)">
                     <img class="fill" src="../../../../assets/image/recharge/index/fill.png" alt="">
                     <span>流量充值</span>
                     <p>移动、联通、电信</p>
                 </li>
-                <li>
+                <li :class="[index == '3' ? 'isActive' : '']" @click="routeChange(3)">
                     <img class="fuel" src="../../../../assets/image/recharge/index/fiel.png" alt="">
                     <span>加油卡充值</span>
                 </li>
@@ -26,7 +26,21 @@
     export default{
         data(){
             return{
-                
+                index: ''
+            }
+        },
+        methods: {
+            routeChange(index){
+                this.index = index;
+                if (index == '1') {
+                    this.$router.push({
+                        name: 'Precharge'
+                    });
+                } else if (index == '2') {
+                    
+                } else if (index == '3') {
+                    
+                }  
             }
         }
     }

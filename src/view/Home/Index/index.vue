@@ -63,7 +63,7 @@
 			return {
 				navList:[{
 					title: "首页",
-					route: "1"
+					route: "/Home"
 				}, {
 					title: "订单查询",
 					route: "2"
@@ -87,6 +87,11 @@
 			routeChange(index,item){
 				console.log(item.route);
 				this.ActiveIndex = index+1;
+				if (index == 0) {
+					this.$router.push({
+						path: 'Home'
+					});
+				}
 			}
 		}
 	}
