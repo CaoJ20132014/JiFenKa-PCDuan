@@ -26,7 +26,7 @@
 				</div>
 				<div class="content-right">
 					<img src="../../../assets/image/HomeIndex/tel.png" alt="">
-					<span>057186538181</span>
+					<span>0571-86538181</span>
 				</div>
 			</div>
 			<div class="con-con">
