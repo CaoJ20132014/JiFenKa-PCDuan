@@ -1,0 +1,65 @@
+@import "../../../public/var.less";
+.confirm{
+    width: @baseWidth*9.08;
+    height: 100%;
+    padding-top: @basePadding*5.2;
+    .confirm-box{
+        width: @baseWidth*6.06;
+        height: @baseHeight*3.14;
+        border: @baseBorderWidth solid @baseBorderColor;
+        border-radius: @border-radius;
+        background-color: @bg-color;
+        .inner{
+            width: @baseWidth*5.74;
+            height: @baseHeight*3.06;
+            border: @baseBorderWidth solid @baseBorderColor;
+            border-radius: @border-radius;
+            margin: 3px auto;
+            background-color: @color-white;
+            padding-left: @basePadding*2.4;
+            .common{
+                width: 100%;
+                height: @baseHeight*0.3;
+                font-size: @font-size16;
+                margin-top: @baseMargin*2;
+                .lable{
+                    float: left;
+                    width: @baseWidth*0.85;
+                    height: @baseHeight*0.3;
+                    line-height: @baseLineHeight*3;
+                }
+                span{
+                    line-height: @baseLineHeight*3;
+                    color: @color-yel;
+                }
+            }
+            .payPwd{
+                height: @baseHeight*0.4;
+                .lable{
+                    height: @baseHeight*0.4;
+                    line-height: @baseLineHeight*4;
+                }
+                .el-input{
+                    width: @baseWidth*2.5;
+                }
+                .el-button.el-button--default.confirm{
+                    width: @baseWidth*0.98;
+                    height: @baseHeight*0.4;
+                    padding: 0;
+                    color: @color-white;
+                    background-color: @color-common;
+                    &:hover{
+                        border-color: @color-common;
+                    }
+                    &:focus{
+                        border-color: @color-common;
+                    }
+                }
+                .el-button.el-button--default.canse{
+                    color: @color-common;
+                    border-color: @color-common;
+                }
+            }
+        }
+    }
+}

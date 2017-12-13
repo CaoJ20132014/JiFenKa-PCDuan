@@ -42,3 +42,11 @@
 .firstAlert .el-message-box__message{
     padding-top: 10px;
 }
+/* 查询话费组件的输入框 */
+.query .el-input__inner{
+    height: 30px;
+    color: #8a6ad4;
+}
+.confirm .el-input__suffix-inner{
+    line-height: 40px;
+}

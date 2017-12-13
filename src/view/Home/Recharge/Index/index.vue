@@ -1,5 +1,5 @@
 <template>
-    <div id="rechargeIndex">
+    <div class="rechargeIndex">
         <div class="recharge-lt">
             <ul>
                 <li :class="[index == '1' ? 'isActive' : '']" @click="routeChange(1)">
@@ -23,18 +23,22 @@
     </div>
 </template>
 <script>
+    import changeNav from "../../../../assets/js/until.js";
     export default{
         data(){
             return{
-                index: ''
+                index: ''                   // 左侧导航的选中状态
             }
+        },
+        mounted(){
+            this.index = changeNav.changeLeftNav(this.$route.path);
         },
         methods: {
             routeChange(index){
                 this.index = index;
                 if (index == '1') {
                     this.$router.push({
-                        name: 'Precharge'
+                        name: 'fastRecharge'
                     });
                 } else if (index == '2') {
                     

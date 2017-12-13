@@ -1,11 +1,11 @@
 @import "../../public/var.less";
-#rechargeIndex{
+.rechargeIndex{
     width: 100%;
-    height: @baseHeight*5.4;
+    height: @baseHeight*8.9;
     .recharge-lt{
         float: left;
         width: @baseWidth*2;
-        height: 100%;
+        height: @baseHeight*5.4;
         background-color: @color-black;
         ul{
             width: 100%;
@@ -50,5 +50,10 @@
                 }
             }
         }
+    }
+    .recharge-rt{
+        height: 100%;
+        width: @baseWidth*9.9;
+        float: right;
     }
 }

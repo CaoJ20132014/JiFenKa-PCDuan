@@ -8,6 +8,7 @@ import Vuex from 'vuex';
 import VueHighcharts from 'highcharts';
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/css/public.css';
+import './assets/icons/iconfont.css';
 
 Vue.use(ElementUI);
 Vue.use(Vuex);

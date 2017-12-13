@@ -1,0 +1,52 @@
+@import "../../../../less/public/var.less";
+.phReachge{
+    width: @baseWidth*9.88;
+    height: @baseHeight*8.88;
+    border: @baseBorderWidth solid @baseBorderColor;
+    .phReachge-top{
+        height: @baseHeight*0.375;
+        padding-left: @basePadding*2; 
+        padding-top: @basePadding*1.25;
+        border-bottom: @baseBorderWidth solid @baseBorderColor;
+        .firstDiv{
+            height: @baseHeight/4;
+            border-left: @baseBorderWidth*3 solid @color-common;
+            padding-left: @basePadding*1.4;
+            line-height: @baseLineHeight*2.5;
+        }
+    }
+    .phReachge-con{
+        width: @baseWidth*9.08;
+        height: @baseHeight*8.38;
+        padding-left: @basePadding*4;
+        padding-right: @basePadding*4;
+        .top-nav{
+            width: 100%;
+            height: @baseHeight*.64;
+            border-bottom: @baseBorderWidth solid @baseBorderColor;
+            ul{
+                height: 64px;
+                font-size: 0;
+                li{
+                    width: @baseWidth;
+                    height: @baseHeight*.61;
+                    line-height: @baseLineHeight*6.1;
+                    list-style: none;
+                    display: inline-block;
+                    font-size: @font-size16;
+                    text-align: center;
+                    color: @color-gray;
+                    &:hover{
+                        cursor: pointer;
+                        color: @color-common;
+                        border-bottom: @baseBorderWidth*3 solid @color-common;
+                    }
+                }
+                .active{
+                    color: @color-common;
+                    border-bottom: @baseBorderWidth*3 solid @color-common;
+                }
+            }
+        }
+    }
+}
