@@ -7,17 +7,20 @@
     height: 404px;
 }
 /* 改变弹窗的样式 */
-.firstAlert{
+.firstAlert,
+.errorNotice{
     width: 480px;
     height: 218px;
 }
-.firstAlert .el-message-box__header{
+.firstAlert .el-message-box__header,
+.errorNotice .el-message-box__header{
     background-color: #fafafa;
     border-bottom: 1px solid #eeeeee;
     padding-top: 18px;
     padding-bottom: 18px;
 }
-.firstAlert .el-message-box__headerbtn{
+.firstAlert .el-message-box__headerbtn,
+.errorNotice .el-message-box__headerbtn{
     top: 20px;
 }
 .firstAlert .confirm{
@@ -25,22 +28,46 @@
     height: 40px;
     background-color: #8a63e7;
 }
-.firstAlert .confirm:hover{
+.errorNotice .Noticebtn{
+    width: 120px;
+    height: 40px;
+    background-color: #8a63e7;
+    font-size: 16px;
+    margin-top: 7px;
+}
+.firstAlert .confirm:hover,
+.errorNotice .Noticebtn:hover{
     border-color: #8a63e7;
 }
-.firstAlert .el-button--primary{
+.firstAlert .el-button--primary,
+.errorNotice .el-button--primary{
     border-color: #8a63e7;
 }
 .firstAlert .el-input,
-.firstAlert .el-input__inner{
+.firstAlert .el-input__inner,
+.errorNotice .el-input,
+.errorNotice .el-input__inner{
     width: 280px;
     height: 40px;
 }
-.firstAlert .el-input{
+.firstAlert .el-input,
+.errorNotice .el-input{
     margin-left: 10px;
 }
-.firstAlert .el-message-box__message{
+.firstAlert .el-message-box__message,
+.errorNotice .el-message-box__message{
     padding-top: 10px;
+}
+.errorNotice .el-message-box__content{
+    height: 90px;
+}
+.errorNotice .el-message-box__content .el-message-box__message,
+.errorNotice .el-message-box__content .el-message-box__message p{
+    height: 90px;
+    line-height: 70px;
+}
+.errorNotice .el-message-box__btns{
+    border-top: 1px solid #eeeeee;
 }
 /* 查询话费组件的输入框 */
 .query .el-input__inner{
@@ -49,4 +76,15 @@
 }
 .confirm .el-input__suffix-inner{
     line-height: 40px;
+}
+/* 用于改变输入框的值为空的背景颜色 */
+.grey .el-input__inner{
+	background-color: #f4f4f4;
+}
+/* 多人充值 */
+.phoneNumber .el-input,
+.phoneNumber .el-input input.el-input__inner,
+.cash .el-input,
+.cash .el-input input.el-input__inner{
+    height: 30px;
 }

@@ -4,7 +4,7 @@
             <div class="left">
                 <div class="common">
                     <div class="lable">充值号码：</div>
-                    <el-input placeholder="支持上网卡充值" v-model="input1" clearable></el-input>
+                    <el-input placeholder="支持上网卡充值" v-model="input1" :class="{'grey':input1 == ''}" clearable></el-input>
                 </div>
                 <div class="common choose">
                     <div class="lable">充值面值：</div>
@@ -58,6 +58,7 @@
 </template>
 <script>
     import Query from "./components/queryBalance.vue";
+    import Public from '../../../../../assets/js/until.js';
     export default {
         props:[],
         components: {
@@ -157,9 +158,31 @@
                 this.display = true;
             },
             commitOrder(){
-                this.$router.push({
-					name: 'confirm'
-				});
+                if (this.input1 == '') {
+                    this.publicNotice("手机号码不能为空",'warning');
+                } else if (this.input1.length != 11) {
+                    this.publicNotice("手机号码长度不正确",'warning');
+                } else if (!Public.isTel(this.input1)) {
+                    this.publicNotice("手机号码不正确",'warning');
+                } else if (this.input2 == '') {
+                    this.publicNotice("请选择您要充值的金额",'warning');
+                } else {
+                    let rechargeInfo = {
+                        tel: this.input1,
+                        cash: this.input2
+                    }
+                    localStorage.setItem('info',JSON.stringify(rechargeInfo));
+                    this.$router.push({
+                        name: 'confirm'
+                    });
+                }
+            },
+            publicNotice(msg,noticeType){
+                this.$message({
+                    message: msg,
+                    type: noticeType,
+                    center: true
+                });
             }
         }
     }

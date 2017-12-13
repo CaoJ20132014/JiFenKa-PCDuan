@@ -1,5 +1,5 @@
 <template>
-    <div class="rechargeIndex">
+    <div class="rechargeIndex" :style="styles">
         <div class="recharge-lt">
             <ul>
                 <li :class="[index == '1' ? 'isActive' : '']" @click="routeChange(1)">
@@ -23,15 +23,25 @@
     </div>
 </template>
 <script>
-    import changeNav from "../../../../assets/js/until.js";
+    import change from "../../../../assets/js/until.js";
     export default{
         data(){
             return{
-                index: ''                   // 左侧导航的选中状态
+                index: '',                   // 左侧导航的选中状态
+                styles:{
+                    height: 540 + 'px'
+                }
+            }
+        },
+        watch:{
+            $route() {
+                this.index = change.changeLeftNav(this.$route.path);                // 改变左侧导航的选中状态
+                this.styles.height = change.changeHeight(this.$route.path) + 'px';  // 改变右侧的高度
             }
         },
         mounted(){
-            this.index = changeNav.changeLeftNav(this.$route.path);
+            this.index = change.changeLeftNav(this.$route.path);                    // 改变左侧导航的选中状态
+            this.styles.height = change.changeHeight(this.$route.path) + 'px';      // 改变右侧的高度
         },
         methods: {
             routeChange(index){

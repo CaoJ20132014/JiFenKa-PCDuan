@@ -9,9 +9,20 @@
         padding-top: @basePadding*1.25;
         border-bottom: @baseBorderWidth solid @baseBorderColor;
         .firstDiv{
+            display: inline-block;
             height: @baseHeight/4;
             border-left: @baseBorderWidth*3 solid @color-common;
             padding-left: @basePadding*1.4;
+            line-height: @baseLineHeight*2.5;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        img{
+            margin: 0 @baseMargin;
+        }
+        .orderConfirm{
+            display: inline-block;
             line-height: @baseLineHeight*2.5;
         }
     }
