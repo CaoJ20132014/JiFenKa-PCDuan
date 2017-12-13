@@ -42,13 +42,13 @@
                 }
             }
             .table-con{
+                height: @baseHeight*3.2;
+                overflow-y: scroll;
+                &::-webkit-scrollbar{
+                    display: none;
+                }
                 ul{
                     width: 100%;
-                    height: @baseHeight*3.2;
-                    overflow-y: scroll;
-                    &::-webkit-scrollbar{
-                        display: none;
-                    }
                     li{
                         height: @baseHeight*0.4;
                         list-style: none;

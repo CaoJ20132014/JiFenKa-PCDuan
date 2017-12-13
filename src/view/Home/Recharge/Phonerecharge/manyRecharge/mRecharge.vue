@@ -10,15 +10,15 @@
                     <div>近两天是否充值（是/否）</div>
                     <div>操作</div>
                 </div>
-                <div class="table-con">
+                <div class="table-con" ref="scroll">
                     <ul>
                         <li v-for="(item,index) of tableList" :key="item.id" :class="[((index + 1) % 2) == 0 ? 'bg' : '']">
                             <div><span v-text="index+1"></span></div>
                             <div class="phoneNumber">
-                                <el-input placeholder="请输入充值号码" v-model="item.input1" clearable :class="{'grey':item.input1 == ''}" @blur="phoneblur(item)"></el-input>
+                                <el-input ref="phoneInput" placeholder="请输入充值号码" v-model="item.data.input1" clearable :class="{'grey':item.data.input1 == ''}" @blur="phoneblur(item)"></el-input>
                             </div>
                             <div class="cash">
-                                <el-input placeholder="充值金额" v-model="item.input2" clearable :class="{'grey':item.input2 == ''}" @blur="blur(item)"></el-input>
+                                <el-input ref="cashInput" placeholder="充值金额" v-model="item.data.input2" clearable :class="{'grey':item.data.input2 == ''}" @blur="blur(item)"></el-input>
                             </div>
                             <div v-text="item.koukuan"></div>
                             <div v-text="item.isRecharged"></div>
@@ -57,14 +57,18 @@
             return {
                 tableList:[{
                     id: '1',
-                    input1: '',
-                    input2: '',
+                    data: {
+                        input1: '',
+                        input2: ''
+                    },
                     koukuan: '',
                     isRecharged: ''
                 }, {
                     id: '2',
-                    input1: '',
-                    input2: '',
+                    data: {
+                        input1: '',
+                        input2: ''
+                    },
                     koukuan: '',
                     isRecharged: ''
                 }],
@@ -83,6 +87,16 @@
                 }]
             }
         },
+        watch: {
+            tableList(curVal,oldVal){
+                this.$nextTick(() => {      // 两种方法都可以实现
+                    let container = this.$el.querySelector(".table-con");
+                    container.scrollTop = container.scrollHeight;
+                    // let list = this.$refs.scroll;
+                    // list.scrollTop = list.scrollHeight;
+                })
+            }
+        },
         computed: {
             surplus: function() {               // 计算剩余可添加的行数
                 let surplu = 0;
@@ -96,8 +110,10 @@
                     let len = this.tableList.length + 1;
                     let obj = {
                         id: len,
-                        input1: '',
-                        input2: '',
+                        data:{
+                            input1: '',
+                            input2: ''
+                        },
                         koukuan: '',
                         isRecharged: ''
                     }
@@ -124,33 +140,49 @@
                 });
             },
             blur(item){
-                let flag = false;
-                this.PriceJson.forEach((element,index) => {
-                    if (element.costPrice == item.input2) {
-                        item.koukuan = element.newPrice;
-                        flag = true;
-                        return;
-                    }
-                });
-                setTimeout(() => {
-                    if (!flag) {
-                        this.$message({
-                            message: '输入的金额不合法',
-                            center: true,
-                            type: 'warning'
-                        });
-                        item.input2 = '';
-                    }
-                }, 500);
+                if(item.data.input2 != ''){
+                    let InpeuArr = this.$refs.cashInput;
+                    let flag = false;
+                    this.PriceJson.forEach((element,index) => {
+                        if (element.costPrice == item.data.input2) {
+                            item.koukuan = element.newPrice;
+                            flag = true;
+                            return;
+                        }
+                    });
+                    setTimeout(() => {
+                        if (!flag) {
+                            InpeuArr.forEach((item1) => {
+                                if (item1.value == item.data.input2) {
+                                    item1.focus();
+                                }
+                            });
+                            this.$message({
+                                message: '输入的金额不合法',
+                                center: true,
+                                type: 'warning',
+                                duration: 1500
+                            });
+                        }
+                    }, 500);
+                }
             },
             phoneblur(item){
-                if (!Public.isTel(item.input1)) {
-                    this.$message({
-                        message: '您输入的手机号不正确',
-                        type: 'warning',
-                        center: true
-                    });
-                    item.input2 = '';
+                if (item.data.input1 != '') {
+                    let InputArr = this.$refs.phoneInput;
+                    if (!Public.isTel(item.data.input1)) {
+                        InputArr.forEach((item1) => {
+                            if (item1.value == item.data.input1) {
+                                item1.focus();
+                            }
+                        });
+                        this.$message({
+                            message: '您输入的手机号不正确',
+                            type: 'warning',
+                            center: true,
+                            duration: 1500
+                        });
+                    }
                 }
             },
             mCommitOrder(){
