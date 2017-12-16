@@ -72,7 +72,6 @@
 /* 查询话费组件的输入框 */
 .query .el-input__inner{
     height: 30px;
-    color: #8a6ad4;
 }
 .confirm .el-input__suffix-inner{
     line-height: 40px;
@@ -87,4 +86,161 @@
 .cash .el-input,
 .cash .el-input input.el-input__inner{
     height: 30px;
+}
+/* 进度条 */
+.el-progress__text{
+    color: #8962e5;
+}
+.el-progress-bar .el-progress-bar__outer{
+    height: 20px !important;
+    border-radius: 3px;
+    background-color: #ededed;
+}
+.el-progress-bar .el-progress-bar__outer .el-progress-bar__inner{
+    border-radius: 3px;
+    background-color: #8962e5;
+}
+/* 多人充值确认订单 */
+.mRechargePayAlert .el-message-box__header .el-message-box__title{
+    text-align: center;
+}
+.mRechargePayAlert .el-message-box__btns{
+    text-align: center !important;
+}
+.mRechargePayAlert .el-message-box__btns .mRechargePay{
+    width: 280px;
+    height: 40px;
+    margin: 0;
+    font-size: 14px;
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.mRechargePayAlert .el-message-box__header{
+    background-color: #fafafa;
+    border-bottom: 1px solid #eeeeee;
+}
+.mRechargePayAlert .el-message-box__content{
+    padding-top: 20px;
+    padding-bottom: 20px; 
+}
+.mRechargePayAlert .el-message-box__btns{
+    padding-bottom: 10px;
+}
+.mRechargePayAlert .el-message-box__btns .mRechargePay:hover,
+.mRechargePayAlert .el-message-box__btns .mRechargePay:focus{
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.mRechargePayAlert .el-message-box__input{
+    text-align: center;
+}
+.mRechargePayAlert .el-input{
+    width: 280px;
+}
+/* 多人充值，添加信息弹框 */
+.lackInfo .el-message-box__header{
+    background-color: #fafafa;
+    border-bottom: 1px solid #eeeeee;
+}
+.lackInfo .el-message-box__content{
+    padding-top: 40px;
+    padding-bottom: 40px; 
+}
+.lackInfoSure{
+    width: 120px;
+    height: 36px;
+    margin: 0;
+    font-size: 14px;
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.lackInfo .el-message-box__btns .lackInfoSure:hover,
+.lackInfo .el-message-box__btns .lackInfoSure:focus{
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.lackInfo .el-message-box__btns{
+    border-top: 1px solid #eeeeee;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+.lackInfoCancel{
+    width: 120px;
+    height: 36px;
+    margin: 0;
+    font-size: 14px;
+}
+.lackInfoCancel:hover,
+.lackInfoCancel:focus{
+    border-color: #8962e5;
+    color: #8962e5;
+}
+/* .lackInfo .el-message-box__content .el-message-box__message p{
+    text-align: center;
+} */
+/* 批量写入 */
+.batch-recharge .el-input__inner{
+    height: 32px;
+}
+/* 步骤条 */
+.el-step__head.is-finish .el-step__icon.is-text{
+    color: white;
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.el-step__title.is-finish{
+    color: #8962e5;
+}
+.el-step__title.is-process{
+    color: #595959;
+}
+.el-step__title.is-wait{
+    color: #595959;
+}
+.el-step__head.is-finish,
+.el-step__head.is-finish .el-step__line-inner{
+    color: #8962e5;
+    border-color: #8962e5;
+}
+.el-step__title.is-process{
+    color: #595959;
+}
+.el-step__icon.is-text{
+    color: white;
+    background-color: #dddddd;
+    border-color: #dddddd;
+}
+/* 上传文件 */
+.Import .el-upload-dragger{
+    width: 200px;
+    height: 100px;
+}
+.Import .el-upload-dragger .el-icon-upload{
+    margin: 10px 0 0;
+}
+.el-upload-dragger .el-icon-upload{
+    font-size: 50px;
+}
+.order-detail .el-input__icon.el-icon-time{
+    height: 32px;
+    line-height: 32px;
+}
+.order-detail .el-input__suffix .el-input__suffix-inner .el-input__icon{
+    height: 32px;
+    line-height: 32px !important;
+}
+/* 订单查询 */
+.el-checkbox__input.is-checked .el-checkbox__inner{
+    background-color: #7b5bc7;
+    border-color: #7b5bc7;
+}
+.el-checkbox__input.is-checked+.el-checkbox__label{
+    color: #7b5bc7;
+}
+/* 产品中心 */
+.operation .orderArea .el-input .el-input__inner{
+    height: 34px;
+}
+.operation .select .el-input.el-input--suffix .el-input__inner{
+    height: 34px;
 }

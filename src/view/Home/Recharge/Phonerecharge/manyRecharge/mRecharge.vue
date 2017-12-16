@@ -63,14 +63,6 @@
                     },
                     koukuan: '',
                     isRecharged: ''
-                }, {
-                    id: '2',
-                    data: {
-                        input1: '',
-                        input2: ''
-                    },
-                    koukuan: '',
-                    isRecharged: ''
                 }],
                 PriceJson:[{
                     id: '1',
@@ -107,17 +99,41 @@
         methods:{
             addLi(){
                 if (this.tableList.length < 500) {
-                    let len = this.tableList.length + 1;
-                    let obj = {
-                        id: len,
-                        data:{
-                            input1: '',
-                            input2: ''
-                        },
-                        koukuan: '',
-                        isRecharged: ''
-                    }
-                    this.tableList.push(obj);
+                    let flag = false;
+                    let InputArr1 = this.$refs.phoneInput;
+                    InputArr1.forEach((item1,index) => {
+                        if (item1.value == '') {
+                            let msg = '请把第'+ (index+1) +'行手机号码填写完整，再添加新的充值信息！';
+                            this.publicAlert(msg,item1);
+                            flag = true;
+                            return;
+                        } else {
+                            let InputArr2 = this.$refs.cashInput;
+                            InputArr2.forEach((item2,index) => {
+                                if (item2.value == '') {
+                                    let msg = '请把第'+ (index+1) +'行充值金额填写完整，再添加新的充值信息！';
+                                    this.publicAlert(msg,item2);
+                                    flag = true;
+                                    return;
+                                }
+                            });
+                        }
+                    });
+                    setTimeout(() => {
+                        if (!flag) {
+                            let len = this.tableList.length + 1;
+                            let obj = {
+                                id: len,
+                                data:{
+                                    input1: '',
+                                    input2: ''
+                                },
+                                koukuan: '',
+                                isRecharged: ''
+                            }
+                            this.tableList.push(obj); 
+                        }
+                    }, 200);    
                 } else {
                     this.$alert('最多只能添加500条', '消息提示', {
                         confirmButtonText: '确定',
@@ -126,7 +142,6 @@
                 }
             },
             Delete(item){
-                console.log(item);
                 let that = this;
                 let Arr = that.tableList;
                 this.$confirm('确定删除该条？', '消息提示', {
@@ -145,7 +160,7 @@
                     let flag = false;
                     this.PriceJson.forEach((element,index) => {
                         if (element.costPrice == item.data.input2) {
-                            item.koukuan = element.newPrice;
+                            item.koukuan = (element.newPrice-0).toFixed(2);
                             flag = true;
                             return;
                         }
@@ -165,6 +180,7 @@
                             });
                         }
                     }, 500);
+                    item.data.input2 = (item.data.input2-0).toFixed(2);
                 }
             },
             phoneblur(item){
@@ -189,6 +205,19 @@
                 this.$router.push({
 					name: 'mConfirm'
 				});
+            },
+            publicAlert(msg,item){
+                this.$confirm(msg, '消息提示', {
+                    confirmButtonText: '确定',
+                    showCancelButton: false,
+                    type: 'warning',
+                    confirmButtonClass: 'lackInfoSure',
+                    customClass: 'lackInfo',
+                }).then(() => {
+                    item.focus();
+                }).catch(() => {
+                    item.focus();
+                });
             }
         }
     }

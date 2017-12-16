@@ -31,21 +31,21 @@
                     title: "话费快充",
                     route: 'fastRecharge'
                 }, {
-                    id: '1',
+                    id: '2',
                     title: "多人充值",
                     route: 'mRecharge'
                 }, {
-                    id: '1',
+                    id: '3',
                     title: "批量写入",
-                    route: ''
+                    route: 'bRecharge'
                 }, {
-                    id: '1',
+                    id: '4',
                     title: "批量导入",
-                    route: ''
+                    route: 'batchImport'
                 }, {
-                    id: '1',
+                    id: '5',
                     title: "订单查询",
-                    route: ''
+                    route: 'orderDetail'
                 }]
             }
         },

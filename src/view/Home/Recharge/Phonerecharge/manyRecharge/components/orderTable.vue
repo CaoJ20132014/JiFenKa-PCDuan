@@ -11,7 +11,7 @@
                     <div>时间</div>
                     <div>运营商</div>
                     <div>状态</div>
-                    <div>充值金额</div>
+                    <div>充值金额（元）</div>
                 </div>
                 <ul>
                     <li v-for="(item,index) of recordList" :key="item.id" :class="[((index + 1) % 2) == 0 ? 'bg' : '']">
@@ -19,7 +19,7 @@
                         <div v-text="item.time"></div>
                         <div v-text="item.shop"></div>
                         <div v-text="item.state"></div>
-                        <div v-text="item.cash"></div>
+                        <div><span v-text="(item.cash-0).toFixed(2)"></span></div>
                     </li>
                 </ul>
             </div>
@@ -36,28 +36,35 @@
                     time: '2017-12-12 15:24',
                     shop: '联通',
                     state: '充值成功',
-                    cash: '1000元'
+                    cash: '1000'
                 }, {
                     id: '2',
                     phone: '15617858292',
                     time: '2017-12-12 15:24',
                     shop: '联通',
                     state: '充值成功',
-                    cash: '1000元'
+                    cash: '1000'
                 }, {
                     id: '2',
                     phone: '15617858292',
                     time: '2017-12-12 15:24',
                     shop: '联通',
                     state: '充值成功',
-                    cash: '1000元'
+                    cash: '1000'
                 }, {
                     id: '2',
                     phone: '15617858292',
                     time: '2017-12-12 15:24',
                     shop: '联通',
                     state: '充值成功',
-                    cash: '1000元'
+                    cash: '1000'
+                }, {
+                    id: '2',
+                    phone: '15617858292',
+                    time: '2017-12-12 15:24',
+                    shop: '联通',
+                    state: '充值成功',
+                    cash: '1000'
                 }]
             }
         }

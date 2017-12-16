@@ -27,10 +27,17 @@
                 </div>
             </div>
         </div>
+        <div class="components">
+            <billTable></billTable>
+        </div>
     </div>
 </template>
 <script>
+    import billTable from '../batchWrite/components/rechargeTable.vue';
     export default {
+        components: {
+            billTable
+        },
         data(){
             return{
                 phoneNumber: '',                // 手机号码

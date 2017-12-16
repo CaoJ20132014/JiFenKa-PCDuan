@@ -2,36 +2,59 @@
  * 公用的方法集合
  */
 let PublicMethod = {
+	changeTopNav: (route) => {
+		if (PublicMethod.isContains(route, 'orderquery')){
+			return '2';
+		} else if (PublicMethod.isContains(route, 'productCenter')){
+			return '4';
+		} else{
+			return '1';
+		}
+	},
 	changeLeftNav: (route) => {				// 用于改变左侧导航的选中状态
 		if (PublicMethod.isContains(route,'Precharge')) {
 			return '1';
-		} else {
-			
+		} else if (PublicMethod.isContains(route, 'fuelRecharge')){
+			return '3';
 		}
 	},
-	judgeRoute: (route) => {				// 用于改变手机充值页面右侧上部导航的选中状态
+	judgeRoute: (route) => {				// 用于改变充值页面右侧上部导航的选中状态
 		if (PublicMethod.isContains(route, 'mRecharge') || route == '/Home/Precharge/mConfirm') {
 			return '2';
-		} else if (route == '/Home/Precharge/') {
+		} else if (route == '/Home/Precharge/') {				// 话费充值
 			return '1'
-		} else {
-			
+		} else if (route == '/Home/Precharge/bRecharge'){
+			return '3'
+		} else if (route == '/Home/Precharge/bImport'){
+			return '4'
+		} else if (route == '/Home/fuelRecharge/sFuel'){		// 加油卡充值
+			return '1'
+		} else if (route == '/Home/fuelRecharge/bfRecharge') {
+			return '2'
 		}
 	},
 	isContains:(str, substr) => {			// 判断str字符串是否包含substr字符串
 		return str.indexOf(substr) >= 0;
 	},
 	changeHeight: (route) => {				// 用于改变右侧的高度
-		if (route == '/Home') {
+		if (route == '/Home/') {
 			return 540;
 		} else if(PublicMethod.isContains(route, 'Precharge')){
+			return 890;
+		} else if (PublicMethod.isContains(route, 'fuelRecharge')) {
 			return 890;
 		}
 	},
 	changeCrumbs: (route) => {				// 改变面包屑的显示状态
-		if (route == '/Home/Precharge/Phconfirm') {
+		if (route == '/Home/Precharge/Phconfirm' || route == '/Home/Precharge/mConfirm' || route == '/Home/Precharge/bConfirm') {
 			return true;
-		} else{
+		} else if (route == '/Home/Precharge/mProgress'){
+			return true;
+		} else if (route == '/Home/fuelRecharge/fConfirm') {
+			return true;
+		} else if (route == '/Home/fuelRecharge/bfConfirm' || route == '/Home/fuelRecharge/bfProgress') {
+			return true;
+		} else {
 			return false;
 		}
 	},

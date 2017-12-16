@@ -57,41 +57,47 @@
 </template>
 
 <script>
+	import Public from '../../../assets/js/until.js';
 	export default {
 		name: 'index',
 		data () {
 			return {
 				navList:[{
 					title: "首页",
-					route: "Home"
+					route: "defaultindex"
 				}, {
 					title: "订单查询",
-					route: "2"
+					route: "orderDetail"
 				}, {
 					title: "加款管理",
 					route: "3"
 				}, {
-					title: "卡密兑换",
-					route: "4"
+					title: "产品中心",
+					route: "productCenter"
 				}, {
-					title: "安全中心",
+					title: "卡密兑换",
 					route: "5"
 				}, {
-					title: "登录/注册",
+					title: "安全中心",
 					route: "6"
 				}],
-				ActiveIndex: 1
+				ActiveIndex: '1'
 			}
+		},
+		watch:{
+			$route(){
+				this.ActiveIndex = Public.changeTopNav(this.$route.path);
+			}
+		},
+		mounted(){
+			this.ActiveIndex = Public.changeTopNav(this.$route.path);
 		},
 		methods: {
 			routeChange(index,item){
-				console.log(item.route);
 				this.ActiveIndex = index+1;
-				if (index == 0) {
-					this.$router.push({
-						path: '/Home'
-					});
-				}
+				this.$router.push({
+					name: item.route
+				});
 			}
 		}
 	}

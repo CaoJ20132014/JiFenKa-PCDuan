@@ -13,8 +13,8 @@
                     <li v-for="(item,index) of tableList" :key="item.id" :class="[((index + 1) % 2) == 0 ? 'bg' : '']">
                         <div><span v-text="index+1"></span></div>
                         <div v-text="item.phone"></div>
-                        <div v-text="item.cash"></div>
-                        <div v-text="item.koukuan"></div>
+                        <div v-text="(item.cash-0).toFixed(2)"></div>
+                        <div v-text="(item.koukuan-0).toFixed(2)"></div>
                         <div v-text="item.order"></div>
                     </li>
                 </ul>
@@ -71,12 +71,33 @@
                 this.tableList.forEach(item => {
                     totalMoney += (item.koukuan - 0);
                 });
-                return totalMoney;
+                return (totalMoney-0).toFixed(2);
             }
         },
         methods: {
             mPay(){
-
+                this.$prompt(' ', '验证支付密码', {
+                    confirmButtonText: '立即支付',
+                    showCancelButton: false,
+                    confirmButtonClass: 'mRechargePay',
+                    customClass: 'mRechargePayAlert',
+                    inputPlaceholder: '请输入支付密码'
+                }).then(({ value }) => {
+                    if (value == null) {
+                        this.Alert('warning','支付密码不能为空');
+                        return;
+                    } else {
+                        this.Alert('success','支付成功');
+                        setTimeout(() => {
+                            this.$router.push({
+                                name: 'mProgress'
+                            });
+                            this.load = false;
+                        }, 1500);
+                    }
+                }).catch(() => {
+                    this.Alert('warning','取消支付');  
+                });
             },
             cancelPay(){
                 this.$confirm('确定取消支付?', '消息提示', {
@@ -88,6 +109,14 @@
                 }).catch(() => {
                          
                 });
+            },
+            Alert(AlertType,msg){
+                this.$message({
+                    type: AlertType,
+                    message: msg,
+                    center: true,
+                    duration: 1500
+                }); 
             }
         }
     }

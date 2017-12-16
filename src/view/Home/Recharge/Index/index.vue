@@ -53,7 +53,9 @@
                 } else if (index == '2') {
                     
                 } else if (index == '3') {
-                    
+                    this.$router.push({
+                        name: 'singlefuel'
+                    });
                 }  
             }
         }

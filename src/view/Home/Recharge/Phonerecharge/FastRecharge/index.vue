@@ -4,7 +4,7 @@
             <div class="left">
                 <div class="common">
                     <div class="lable">充值号码：</div>
-                    <el-input placeholder="支持上网卡充值" v-model="input1" :class="{'grey':input1 == ''}" clearable></el-input>
+                    <el-input placeholder="支持上网卡充值" :maxlength="11" v-model="input1" :class="{'grey':input1 == ''}" clearable></el-input>
                 </div>
                 <div class="common choose">
                     <div class="lable">充值面值：</div>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="table">
                     <div class="table-top">
-                        <div>最近充值记录</div>
+                        <div>充值记录</div>
                         <div>查看更多</div>
                     </div>
                     <div class="table-con">
