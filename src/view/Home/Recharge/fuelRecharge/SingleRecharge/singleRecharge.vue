@@ -105,7 +105,7 @@
                 this.input1 = '';              // 手机号
                 this.inputType = 'text';
                 this.input2 = '';
-                this.chooseValue = '0';
+                this.cheakedValue = '0';
             },
             commitOrder(){
                 if (this.input1 == '') {
