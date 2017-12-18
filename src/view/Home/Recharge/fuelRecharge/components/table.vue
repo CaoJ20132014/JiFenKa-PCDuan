@@ -16,7 +16,7 @@
                 </div>
                 <ul>
                     <li v-for="(item,index) of recordList" :key="item.id" :class="[((index + 1) % 2) == 0 ? 'bg' : '']">
-                        <div v-text="item.phone"></div>
+                        <div v-text="item.fuelCard"></div>
                         <div v-text="item.time"></div>
                         <div v-text="(item.cash-0).toFixed(2)"></div>
                         <div v-text="(item.koukuan-0).toFixed(2)"></div>
@@ -34,7 +34,7 @@
             return {
                 recordList: [{
                     id: '1',
-                    phone: '1000113300016166236',
+                    fuelCard: '1000113300016166236',
                     time: '2017-12-16 15:24',
                     shop: '中石化加油卡',
                     state: '充值成功',
@@ -42,31 +42,31 @@
                     koukuan: '998'
                 }, {
                     id: '2',
-                    phone: '1000113300016166236',
+                    fuelCard: '1000113300016166236',
                     time: '2017-12-16 15:24',
                     shop: '中石化加油卡',
                     state: '充值成功',
                     cash: '1000',
                     koukuan: '998'
                 }, {
-                    id: '2',
-                    phone: '1000113300016166236',
+                    id: '3',
+                    fuelCard: '1000113300016166236',
                     time: '2017-12-16 15:24',
                     shop: '中石化加油卡',
                     state: '充值成功',
                     cash: '1000',
                     koukuan: '998'
                 }, {
-                    id: '2',
-                    phone: '1000113300016166236',
+                    id: '4',
+                    fuelCard: '1000113300016166236',
                     time: '2017-12-16 15:24',
                     shop: '中石化加油卡',
                     state: '充值成功',
                     cash: '1000',
                     koukuan: '998'
                 }, {
-                    id: '2',
-                    phone: '1000113300016166236',
+                    id: '5',
+                    fuelCard: '1000113300016166236',
                     time: '2017-12-16 15:24',
                     shop: '中石化加油卡',
                     state: '充值成功',

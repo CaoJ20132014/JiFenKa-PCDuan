@@ -3,7 +3,7 @@
         <div class="inputDiv">
             <div class="lable">支付密码：</div>
             <div class="inputBox">
-                <el-input :type="InputType" v-model="input" placeholder="请输入支付密码">
+                <el-input :type="InputType" v-model="input" placeholder="请输入支付密码" :class="{'grey':input == ''}">
                     <i slot="suffix" class="iconfont" :class="[showEye ? 'icon-yanjing' : 'icon-eye-close']" @click="showEye=!showEye,showPwd()"></i>
                 </el-input>
             </div>
@@ -71,7 +71,7 @@
                     cash: '30',
                     koukuan: '29'
                 }, {
-                    id: '4',
+                    id: '5',
                     phone: '15617858292',
                     cash: '30',
                     koukuan: '29'

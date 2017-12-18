@@ -4,20 +4,20 @@
         <div class="common info">
             <div class="phone">
                 <div class="lable">订单号/充值号码：</div>
-                <el-input placeholder="充值号码" v-model="input1" clearable></el-input>
+                <el-input placeholder="充值号码" v-model="input1" :class="{'grey':input1 == ''}" clearable></el-input>
             </div>
             <div class="time">
                 <div class="lable">充值时间：</div>
-                <el-date-picker v-model="start" type="datetime" placeholder="选择日期时间"></el-date-picker> - 
-                <el-date-picker v-model="end" type="datetime" placeholder="选择日期时间"></el-date-picker>
+                <el-date-picker v-model="start" :class="{'grey':start == ''}" type="datetime" placeholder="选择日期时间"></el-date-picker> - 
+                <el-date-picker v-model="end" :class="{'grey':end == ''}" type="datetime" placeholder="选择日期时间"></el-date-picker>
             </div>
         </div>
         <div class="common operation">
             <div class="lable">备注：</div>
-            <el-input placeholder="备注" v-model="input2" clearable></el-input>
+            <el-input placeholder="备注" v-model="input2" :class="{'grey':input2 == ''}" clearable></el-input>
             <div class="select">
                 <div class="lable">类型：</div>
-                <el-select v-model="selectValue" placeholder="请选择">
+                <el-select v-model="selectValue" :class="{'grey':selectValue == ''}" placeholder="请选择">
                     <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value"></el-option>
                 </el-select>
             </div>

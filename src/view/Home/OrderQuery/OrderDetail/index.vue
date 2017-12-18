@@ -14,20 +14,20 @@
         <div class="common info">
             <div class="order">
                 <div class="lable">订单编号：</div>
-                <el-input placeholder="订单编号" v-model="input1" clearable></el-input>
+                <el-input placeholder="订单编号" v-model="input1" :class="{'grey':input1 == ''}" clearable></el-input>
             </div>
             <div class="phone" v-show="choosed1 != '3'">
                 <div class="lable">充值号码：</div>
-                <el-input placeholder="充值号码" :maxlength="11" v-model="input2" clearable></el-input>
+                <el-input placeholder="充值号码" :maxlength="11" v-model="input2" :class="{'grey':input2 == ''}" clearable></el-input>
             </div>
             <div class="phone fuel" v-show="choosed1 == '3'">
                 <div class="lable">加油卡卡号：</div>
-                <el-input placeholder="加油卡卡号" :maxlength="19" v-model="input3" clearable></el-input>
+                <el-input placeholder="加油卡卡号" :maxlength="19" v-model="input3" :class="{'grey':input3 == ''}" clearable></el-input>
             </div>
             <div class="time">
                 <div class="lable">充值时间：</div>
-                <el-date-picker v-model="start" type="datetime" placeholder="选择日期时间"></el-date-picker> - 
-                <el-date-picker v-model="end" type="datetime" placeholder="选择日期时间"></el-date-picker>
+                <el-date-picker v-model="start" type="datetime" :class="{'grey':start == ''}" placeholder="选择日期时间"></el-date-picker> - 
+                <el-date-picker v-model="end" type="datetime" :class="{'grey':end == ''}" placeholder="选择日期时间"></el-date-picker>
             </div>
         </div>
         <div class="common operation">
@@ -41,13 +41,13 @@
             </div>
             <div class="select" v-show="choosed1 != '3'">
                 <div class="lable">运营商：</div>
-                <el-select v-model="value" placeholder="请选择">
+                <el-select v-model="value1" :class="{'grey':value1 == ''}" placeholder="请选择">
                     <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value"></el-option>
                 </el-select>
             </div>
             <div class="select" v-show="choosed1 == '3'">
                 <div class="lable">运营商：</div>
-                <el-select v-model="value" placeholder="请选择">
+                <el-select v-model="value2" :class="{'grey':value2 == ''}" placeholder="请选择">
                     <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value"></el-option>
                 </el-select>
             </div>
@@ -99,7 +99,8 @@
                 input3: '',             // 加油卡卡号
                 start: '',              // 起始时间
                 end: '',                // 结束时间
-                value: '',              // 运营商
+                value1: '',             // 运营商  移动、联通、电信
+                value2: '',             // 运营商  中石化、中石油
                 checked1: true,
                 checked2: true,
                 typeList: [{

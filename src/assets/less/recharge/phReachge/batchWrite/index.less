@@ -92,7 +92,7 @@
     .commit{
         padding-left: @basePadding*8.2;
         padding-top: @basePadding;
-        .el-button.el-button--default{
+        .commitOrder.el-button.el-button--default{
             width: @baseWidth*1.2;
             height: @baseHeight*0.36;
             padding: 0;
@@ -100,6 +100,18 @@
             color: @color-white;
             &:hover,
             &:focus{
+                border-color: @color-common;
+            }
+        }
+        .AddLi{
+            width: @baseWidth*1.2;
+            height: @baseHeight*0.36;
+            padding: 0;
+            border-color: @color-common;
+            color: @color-common;
+            &:hover,
+            &:focus{
+                color: @color-common;
                 border-color: @color-common;
             }
         }

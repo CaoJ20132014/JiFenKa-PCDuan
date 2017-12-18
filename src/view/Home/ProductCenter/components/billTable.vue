@@ -4,22 +4,22 @@
             <div class="table-con">
                 <div class="heard">
                     <ul class="ul-heard">
-                        <li v-for="item in list" :key="item.id" v-text="item.type"></li>
+                        <li v-for="item in titleList" :key="item.id" v-text="item.type"></li>
                     </ul>
                 </div>
                 <ul v-show="noData" class="ul-con">
                     <li v-for="(item,index) of recordList" :key="item.id" :class="[((index + 1) % 2) == 0 ? 'bg' : '']">
                         <div v-text="index+1"></div>
-                        <div v-text="item.order"></div>
-                        <div v-text="item.phone"></div>
-                        <div v-text="item.time"></div>
-                        <div v-text="item.shop"></div>
-                        <div v-text="item.state"></div>
-                        <div v-text="item.diqu"></div>
-                        <div><span v-text="(item.cash-0).toFixed(2)"></span></div>
-                        <div><span v-text="(item.koukuan-0).toFixed(2)"></span></div>
-                        <div v-text="item.flow"></div>
-                        <div v-text="item.xiaoqiao"></div>
+                        <div v-text="item.operator"></div>
+                        <div v-text="item.area"></div>
+                        <div v-text="item.ten"></div>
+                        <div v-text="item.twenty"></div>
+                        <div v-text="item.thirty"></div>
+                        <div v-text="item.fifty"></div>
+                        <div><span v-text="item.oneHundred"></span></div>
+                        <div><span v-text="item.twoHundred"></span></div>
+                        <div v-text="item.threeHundred"></div>
+                        <div v-text="item.fiveHundred"></div>
                     </li>
                 </ul>
                 <div class="noData" v-show="!noData">
@@ -36,7 +36,7 @@
             return {
                 totalOrder: 20000,             // 数据总条数
                 noData: true,
-                list:[{
+                titleList:[{
                     id: '1',
                     type: '序号'
                 }, {
@@ -72,124 +72,124 @@
                 }],
                 recordList: [{
                     id: '1',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }, {
                     id: '2',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }, {
                     id: '3',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }, {
                     id: '4',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }, {
                     id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    id: '6',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    id: '7',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    id: '8',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    id: '9',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
-                    flow: '2048',
-                    xiaoqiao: '否'
+                    id: '10',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    ten: '99.800%',
+                    twenty: '99.800%',
+                    thirty: '99.800',
+                    fifty: '99.800%',
+                    oneHundred: '99.800%',
+                    twoHundred: '99.800%',
+                    threeHundred: '99.800%',
+                    fiveHundred: '99.800%'
                 }]
             }
         },
@@ -253,16 +253,16 @@
                                 width: 4%;
                             }
                             &:nth-child(2){
-                                width: 14%;
-                            }
-                            &:nth-child(3){
-                                width: 11%;
-                            }
-                            &:nth-child(4){
                                 width: 12%;
                             }
+                            &:nth-child(3){
+                                width: 12%;
+                            }
+                            &:nth-child(4){
+                                width: 8%;
+                            }
                             &:nth-child(5){
-                                width: 7%;
+                                width: 8%;
                             }
                             &:nth-child(6){
                                 width: 8%;
@@ -277,10 +277,10 @@
                                 width: 10%;
                             }
                             &:nth-child(10){
-                                width: 9.95%;
+                                width: 10%;
                             }
                             &:nth-child(11){
-                                width: 5.16%;
+                                width: 9.11%;
                                 border-right: 0;
                             }
                         }
@@ -307,16 +307,16 @@
                                 width: 4%;
                             }
                             &:nth-child(2){
-                                width: 14%;
-                            }
-                            &:nth-child(3){
-                                width: 11%;
-                            }
-                            &:nth-child(4){
                                 width: 12%;
                             }
+                            &:nth-child(3){
+                                width: 12%;
+                            }
+                            &:nth-child(4){
+                                width: 8%;
+                            }
                             &:nth-child(5){
-                                width: 7%;
+                                width: 8%;
                             }
                             &:nth-child(6){
                                 width: 8%;
@@ -331,10 +331,10 @@
                                 width: 10%;
                             }
                             &:nth-child(10){
-                                width: 9.95%;
+                                width: 10%;
                             }
                             &:nth-child(11){
-                                width: 5.16%;
+                                width: 9.11%;
                                 border-right: 0;
                             }
                         }

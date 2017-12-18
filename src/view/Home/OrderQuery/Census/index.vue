@@ -4,8 +4,8 @@
         <div class="common info">
             <div class="time">
                 <div class="lable">充值时间：</div>
-                <el-date-picker v-model="start" type="datetime" placeholder="选择日期时间"></el-date-picker> - 
-                <el-date-picker v-model="end" type="datetime" placeholder="选择日期时间"></el-date-picker>
+                <el-date-picker v-model="start" :class="{'grey':start == ''}" type="datetime" placeholder="选择日期时间"></el-date-picker> - 
+                <el-date-picker v-model="end" :class="{'grey':start == ''}" type="datetime" placeholder="选择日期时间"></el-date-picker>
             </div>
         </div>
         <div class="common operation">

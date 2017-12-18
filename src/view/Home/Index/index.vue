@@ -70,16 +70,16 @@
 					route: "orderDetail"
 				}, {
 					title: "加款管理",
-					route: "3"
+					route: "jiakuan"
 				}, {
 					title: "产品中心",
 					route: "productCenter"
 				}, {
 					title: "卡密兑换",
-					route: "5"
+					route: "kami"
 				}, {
 					title: "安全中心",
-					route: "6"
+					route: "anquan"
 				}],
 				ActiveIndex: '1'
 			}

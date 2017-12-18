@@ -133,7 +133,7 @@
                             }
                             this.tableList.push(obj); 
                         }
-                    }, 200);    
+                    }, 300);    
                 } else {
                     this.$alert('最多只能添加500条', '消息提示', {
                         confirmButtonText: '确定',
@@ -191,6 +191,7 @@
                             if (item1.value == item.data.input1) {
                                 item1.focus();
                             }
+                            return;
                         });
                         this.$message({
                             message: '您输入的手机号不正确',

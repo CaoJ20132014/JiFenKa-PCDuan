@@ -1,36 +1,29 @@
 <template>
     <div class="common-table">
         <div class="table">
-            <div class="table-top">
-                <div>充值记录</div>
-            </div>
             <div class="table-con">
                 <div class="heard">
                     <div>序号</div>
-                    <div>订单号</div>
-                    <div>手机号码</div>
-                    <div>充值时间</div>
                     <div>运营商</div>
-                    <div>充值状态</div>
                     <div>地区</div>
-                    <div>支付金额（元）</div>
-                    <div>实扣金额（元）</div>
-                    <div>充值流量（M）</div>
-                    <div>小票</div>
+                    <div>产品名称</div>
+                    <div>流量值（M）</div>
+                    <div>有效期</div>
+                    <div>市场价（元）</div>
+                    <div>生效日期</div>
+                    <div>秘价（元）</div>
                 </div>
                 <ul v-show="noData">
                     <li v-for="(item,index) of recordList" :key="item.id" :class="[((index + 1) % 2) == 0 ? 'bg' : '']">
                         <div v-text="index+1"></div>
-                        <div v-text="item.order"></div>
-                        <div v-text="item.phone"></div>
-                        <div v-text="item.time"></div>
-                        <div v-text="item.shop"></div>
-                        <div v-text="item.state"></div>
-                        <div v-text="item.diqu"></div>
-                        <div><span v-text="(item.cash-0).toFixed(2)"></span></div>
-                        <div><span v-text="(item.koukuan-0).toFixed(2)"></span></div>
+                        <div v-text="item.operator"></div>
+                        <div v-text="item.area"></div>
+                        <div v-text="item.productName"></div>
                         <div v-text="item.flow"></div>
-                        <div v-text="item.xiaoqiao"></div>
+                        <div v-text="item.effective"></div>
+                        <div v-text="item.marketPrice"></div>
+                        <div><span v-text="item.takeEffect"></span></div>
+                        <div><span v-text="item.secretPrice"></span></div>
                     </li>
                 </ul>
                 <div class="noData" v-show="!noData">
@@ -49,124 +42,104 @@
                 noData: true,
                 recordList: [{
                     id: '1',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }, {
                     id: '2',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }, {
                     id: '3',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }, {
                     id: '4',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }, {
                     id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    id: '6',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    id: '7',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    id: '8',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    id: '9',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }, {
-                    id: '5',
-                    order: '123456789',
-                    phone: '15617858292',
-                    time: '2017-12-12 15:24',
-                    shop: '联通',
-                    state: '充值成功',
-                    diqu: '浙江',
-                    cash: '1000',
-                    koukuan: '998',
+                    id: '10',
+                    operator: '电信',
+                    area: '浙江-杭州',
+                    productName: '杭州电信2048M',
                     flow: '2048',
-                    xiaoqiao: '否'
+                    effective: '当月',
+                    marketPrice: '200',
+                    takeEffect: '即时',
+                    secretPrice: '198'
                 }]
             }
         },
@@ -181,34 +154,10 @@
     @import '../../../../assets/less/public/var.less';
     .common-table{
         width: 100%;
-        height: @baseHeight*4.87;
+        height: @baseHeight*4.52;
         .table{
             width: @baseWidth*11.18;
-            margin-top: @baseMargin;
-            .table-top{
-                width: 100%;
-                height: @baseHeight/4;
-                div{
-                    line-height: @baseLineHeight*2.5;
-                    &:nth-child(1){
-                        float: left;
-                        width: @baseWidth*1.04;
-                        padding-left: @basePadding*1.5;
-                        border-left: @baseBorderWidth*3 solid @color-common;
-                    }
-                    &:nth-child(2){
-                        float: right;
-                        width: @baseWidth*.7;
-                        text-align: right;
-                        color: @color-common;
-                        &:hover{
-                            cursor: pointer;
-                        }
-                    }
-                }
-            }
             .table-con{
-                padding-top: @basePadding;
                 .heard{
                     height: @baseHeight*0.4;
                     font-size: 0;
@@ -225,34 +174,28 @@
                             width: 4%;
                         }
                         &:nth-child(2){
-                            width: 14%;
+                            width: 11%;
                         }
                         &:nth-child(3){
                             width: 11%;
                         }
                         &:nth-child(4){
-                            width: 12%;
+                            width: 13%;
                         }
                         &:nth-child(5){
-                            width: 7%;
+                            width: 12%;
                         }
                         &:nth-child(6){
-                            width: 8%;
+                            width: 12%;
                         }
                         &:nth-child(7){
-                            width: 8%;
+                            width: 12%;
                         }
                         &:nth-child(8){
-                            width: 10%;
+                            width: 12%;
                         }
                         &:nth-child(9){
-                            width: 10%;
-                        }
-                        &:nth-child(10){
-                            width: 9.95%;
-                        }
-                        &:nth-child(11){
-                            width: 5.16%;
+                            width: 12.25%;
                             border-right: 0;
                         }
                     }
@@ -278,34 +221,28 @@
                                 width: 4%;
                             }
                             &:nth-child(2){
-                                width: 14%;
+                                width: 11%;
                             }
                             &:nth-child(3){
                                 width: 11%;
                             }
                             &:nth-child(4){
-                                width: 12%;
+                                width: 13%;
                             }
                             &:nth-child(5){
-                                width: 7%;
+                                width: 12%;
                             }
                             &:nth-child(6){
-                                width: 8%;
+                                width: 12%;
                             }
                             &:nth-child(7){
-                                width: 8%;
+                                width: 12%;
                             }
                             &:nth-child(8){
-                                width: 10%;
+                                width: 12%;
                             }
                             &:nth-child(9){
-                                width: 10%;
-                            }
-                            &:nth-child(10){
-                                width: 9.95%;
-                            }
-                            &:nth-child(11){
-                                width: 5.16%;
+                                width: 12.25%;
                                 border-right: 0;
                             }
                         }
