@@ -2,11 +2,11 @@
 	<div>
 		<div class="top border">
 			<p class="p1">
-				<img src="../../../assets/ren_grey.png" alt="" />
+				<img src="../../../../assets/image/Provide/ren_grey.png" alt="" />
 				<span>系统账号：<span>{{account}}</span></span>
 			</p>
 			<p class="p2">
-				<img src="../../../assets/card1.png" alt="" />
+				<img src="../../../../assets/image/Provide/card1.png" alt="" />
 				<span>供卡余额：<span>{{money}}</span></span>
 				<span class="pur_font" @click="tixian()">我要提现</span>
 				<span class="pur_font">提现记录</span>
@@ -32,11 +32,11 @@
 			</div>
 			<div class="bot_right border">
 				<p class="p1">
-					<img src="../../../assets/qq.png" alt="" />
+					<img src="../../../../assets/image/Provide/qq.png" alt="" />
 					<span class="pur_font" @click="addfriends">售卡顾问</span></span>
 				</p>
 				<p class="p1 p2">
-					<img src="../../../assets/qq.png" alt="" />
+					<img src="../../../../assets/image/Provide/qq.png" alt="" />
 					<span class="pur_font" @click="addfriends">商务合作</span></span>
 				</p>
 			</div>
@@ -45,38 +45,37 @@
 </template>
 
 <script>
-	import a from "../../../assets/1.jpg";
-	import b from "../../../assets/2.jpg";
-	import c from "../../../assets/3.jpg";
-	import d from "../../../assets/4.jpg";
-	import e from "../../../assets/5.jpg";
+	import a from "../../../../assets/image/Provide/1.jpg";
+	import b from "../../../../assets/image/Provide/2.jpg";
+	import c from "../../../../assets/image/Provide/3.jpg";
+	import d from "../../../../assets/image/Provide/4.jpg";
+	import e from "../../../../assets/image/Provide/5.jpg";
 	export default {
 		data() {
 			return {
 				money: "请登录",
 				account: "请登录",
 				newsList: [{
-						id: "1",
-						title: "全国中石化100-1000元面值回收折扣调整通知！",
-						time:"2017-11-08"
-					}, {
-						id: "2",
-						title: "温馨提示：浙江移动10-500元面值卡密兑换折扣调整！",
-						time:"2017-11-02"
-					}, {
-						id: "3",
-						title: "温馨提示：浙江移动10-50元面值卡密兑换折扣调整！",
-						time:"2017-11-03"
-					}, {
-						id: "4",
-						title: "温馨提示：浙江移动10-1000元面值卡密兑换折扣调整！",
-						time:"2017-11-05"
-					}, {
-						id: "5",
-						title: "温馨提示：浙江移动500元面值卡密兑换折扣调整！",
-						time:"2017-11-07"
-					}
-				],
+					id: "1",
+					title: "全国中石化100-1000元面值回收折扣调整通知！",
+					time:"2017-11-08"
+				}, {
+					id: "2",
+					title: "温馨提示：浙江移动10-500元面值卡密兑换折扣调整！",
+					time:"2017-11-02"
+				}, {
+					id: "3",
+					title: "温馨提示：浙江移动10-50元面值卡密兑换折扣调整！",
+					time:"2017-11-03"
+				}, {
+					id: "4",
+					title: "温馨提示：浙江移动10-1000元面值卡密兑换折扣调整！",
+					time:"2017-11-05"
+				}, {
+					id: "5",
+					title: "温馨提示：浙江移动500元面值卡密兑换折扣调整！",
+					time:"2017-11-07"
+				}],
 				activeIndex: 0,				// 滚动的位置
 				bannerList:[{
 					id:1,

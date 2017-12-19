@@ -1,101 +1,39 @@
 <template>
-	<div class="hello">
-		<el-container>
-			<el-header>
-				<div class="heard_top">
-					<div class="top">
-						<div class="top_left">杭州天缘网络欢迎您！</div>
-						<div class="top_right" v-show="!show">
-							<img src="../../../assets/viplogin.png" alt="" class="vip"/>
-							<span @click="tologin">会员登录</span>
-						</div>
-						<div class="top_right" v-show="show">
-							<div class="top_common">
-								<img src="../../../assets/kabao.png" alt="" class="card"/>
-								<span>供卡余额:<span>{{balance}}</span></span>
-							</div>
-							<div class="top_common">
-								<img src="../../../assets/info.png" alt="" class="information"/>
-								<span @click="tonotice">系统公告</span>
-							</div>
-							<div>
-								<img src="../../../assets/guanbi.png" alt="" class="loginout"/>
-								<span>退出登录</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="heard_bot">
-					<div class="bot">
-						<div class="top_left">
-							<img src="../../../assets/ka_pur.png" class="img1" />
-							<img src="../../../assets/jifenka.png" class="img2" />
-							<div class="div">
-								<span>供货平台</span>
-							</div>
-						</div>
-						<div class="top_right">
-							<img src="../../../assets/tel.png" alt="" class="img3" />
-							<span><b>0571-86538181</b></span>
-						</div>
-					</div>
-				</div>
-			</el-header>
-			<el-main v-bind:class="{'short': is1,'height': is2}">
-				<div class="content_box" v-bind:class="{'short': is1,'height2': is2}">
-					<div class="nav_left">
-						<ul class="nav_ul">
-							<li class="li_common" @click="active(1),load1()" v-bind:class="{active: flag == '1'}">
-								<img src="../../../assets/home.png"/>
-								<span>首页</span>
-							</li>
-							<li class="second_li" @click="active(2),load2()" v-bind:class="{active: flag == '2'}">
-								<p>
-									<img src="../../../assets/gonghuo.png" alt="" />
-									<span>我要供货</span>
-								</p>
-								<p>三网、加油卡</p>
-							</li>
-							<li class="li_common" @click="active(3),load3()" v-bind:class="{active: flag == '3'}">
-								<img src="../../../assets/detail.png"/>
-								<span>供货明细</span>
-							</li>
-							<li class="li_common" @click="active(4),load4()" v-bind:class="{active: flag == '4'}">
-								<img src="../../../assets/tongji.png"/>
-								<span>统计报表</span>
-							</li>
-							<li class="li_common" @click="active(5),load5()" v-bind:class="{active: flag == '5'}">
-								<img src="../../../assets/tixian.png"/>
-								<span>我要提现</span>
-							</li>
-							<li class="li_common" @click="active(6),load6()" v-bind:class="{active: flag == '6'}">
-								<img src="../../../assets/anquan.png"/>
-								<span>安全中心</span>
-							</li>
-						</ul>
-					</div>
-					<div class="content_right">
-						<router-view/>
-					</div>
-				</div>
-				<div class="fore_pic">
-					<img src="../../../assets/kuaisufenxiao2x.png" alt="" />
-					<img src="../../../assets/anquanjiaoyi2x.png" alt="" />
-					<img src="../../../assets/jingzhunjisuan2x.png" alt="" />
-					<img src="../../../assets/zhuanshukefu2x.png" alt="" />
-				</div>
-			</el-main>
-			<el-footer>
-				<div class="foot_top">
-					<span>关于我们</span>
-					<span>|</span>
-					<span>公司荣誉</span>
-					<span>|</span>
-					<span @click="contact">联系我们</span>
-				</div>
-				<div class="foot_bot">Copyright © 2015.版权所有</div>
-			</el-footer>
-		</el-container>
+	<div class="content_box">
+		<div class="nav_left">
+			<ul class="nav_ul">
+				<li class="li_common" @click="active(1),load1()" v-bind:class="{active: flag == '1'}">
+					<img src="../../../../assets/image/Provide/home.png"/>
+					<span>首页</span>
+				</li>
+				<li class="second_li" @click="active(2),load2()" v-bind:class="{active: flag == '2'}">
+					<p>
+						<img src="../../../../assets/image/Provide/gonghuo.png" alt="" />
+						<span>我要供货</span>
+					</p>
+					<p>三网、加油卡</p>
+				</li>
+				<li class="li_common" @click="active(3),load3()" v-bind:class="{active: flag == '3'}">
+					<img src="../../../../assets/image/Provide/detail.png"/>
+					<span>供货明细</span>
+				</li>
+				<li class="li_common" @click="active(4),load4()" v-bind:class="{active: flag == '4'}">
+					<img src="../../../../assets/image/Provide/tongji.png"/>
+					<span>统计报表</span>
+				</li>
+				<li class="li_common" @click="active(5),load5()" v-bind:class="{active: flag == '5'}">
+					<img src="../../../../assets/image/Provide/tixian.png"/>
+					<span>我要提现</span>
+				</li>
+				<li class="li_common" @click="active(6),load6()" v-bind:class="{active: flag == '6'}">
+					<img src="../../../../assets/image/Provide/anquan.png"/>
+					<span>安全中心</span>
+				</li>
+			</ul>
+		</div>
+		<div class="content_right">
+			<router-view/>
+		</div>
 	</div>
 </template>
 
@@ -106,8 +44,6 @@
 				balance: "0.000",		// 账户余额
 				show: false,			// 改变顶部右边的显示状态
 				flag: "1",				// 给变左侧导航的选中状态
-				is1:"",					// 用于改变登陆输入框高度
-				is2:"" 					// 用于改变登陆输入框高度
 			}
 		},
 		watch:{
@@ -187,13 +123,6 @@
 			},
 			changeHeight:function (){
 				let router =  this.$route.path;
-				if (this.isContains(router,"provide")) {
-					this.is1 = true;
-					this.is2 = true;
-				} else {
-					this.is2 = false;
-					this.is1 = false;
-				}
 			},
 			isContains:function(str, substr){			// 判断str字符串是否包含substr字符串
      			return str.indexOf(substr) >= 0;

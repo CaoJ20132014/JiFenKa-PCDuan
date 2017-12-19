@@ -7,7 +7,9 @@ let PublicMethod = {
 			return '2';
 		} else if (PublicMethod.isContains(route, 'productCenter')){
 			return '4';
-		} else{
+		} else if (PublicMethod.isContains(route, 'CardProvide')){
+			return '5';
+		} else {
 			return '1';
 		}
 	},

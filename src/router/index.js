@@ -16,6 +16,9 @@ import forgetConfirm from '@/view/Forget/confirm.vue';			// 忘记密码->确认
 import contact from '@/view/contact/contact.vue';				// 联系我们
 // 帮助中心
 import help from '@/view/help/help.vue';						// 帮助中心
+// 卡密兑换
+import CardProvide from '@/view/Home/Provide/Index/home.vue';			// 卡密兑换
+import no_login from '@/view/Home/Provide/Index/home_nologin.vue'		// 未登录
 // 首页
 import HomeIndex from '@/view/Home/Index/index.vue';											// home页面
 import recharge from '@/view/Home/Recharge/Index/index.vue';									// 充值页面>只有导航
@@ -118,6 +121,14 @@ export default new Router({
 					name: 'bfProgress',
 					component: bfProgress
 				}]
+			}]
+		}, {
+			path: 'CardProvide',				// 卡密兑换
+			component: CardProvide,
+			children: [{
+				path: '',
+				name: 'no_login',
+				component: no_login
 			}]
 		}, {
 			path: 'orderquery',					// 订单查询

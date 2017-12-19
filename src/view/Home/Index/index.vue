@@ -116,7 +116,7 @@
 					route: "productCenter"
 				}, {
 					title: "卡密兑换",
-					route: "kami"
+					route: "no_login"
 				}, {
 					title: "安全中心",
 					route: "anquan"

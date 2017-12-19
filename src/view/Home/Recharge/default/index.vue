@@ -19,7 +19,7 @@
                     </p>
                     <p class="p-commin">
                         <img src="../../../../assets/image/recharge/default/qiandai.png" alt="">
-                        <span>供卡余额：</span>
+                        <span>可用余额：</span>
                         <span>{{balance.toFixed(2)}}元</span>
                         <span>报警金额：</span>
                         <span>{{alarmBalance.toFixed(2)}}元</span>
