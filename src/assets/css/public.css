@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
 }
+/* 去掉input输入框类型为number时右边的上下箭头 */
+.el-input__inner::-webkit-outer-spin-button,            
+.el-input__inner::-webkit-inner-spin-button{                
+	-webkit-appearance: none !important;
+}
 /* 轮播图的高度 */
 .el-carousel__container {
     height: 404px;
@@ -182,6 +187,9 @@
 .batch-recharge .el-input__inner {
     height: 32px;
 }
+.batch-recharge .choose .el-input__inner{
+    height: 38px;
+}
 /* 步骤条 */
 .el-step__head.is-finish .el-step__icon.is-text {
     color: white;
@@ -253,4 +261,206 @@
 }
 .el-pagination.is-background .el-pager li:hover{
     color: #7b5bc7;
+}
+
+
+/* 供货平台 */
+li{
+	list-style: none;
+}
+.pur_font{
+	color: #7b5bc7;
+}
+.border{
+	border: 1px solid #e9e9e9;
+}
+/*公告列表页样式*/
+.el-input__icon{
+	line-height: 32px;
+}
+/*公告列表页表格*/
+.el-table thead{
+	background-color: #fafafa;
+}
+.el-table td, .el-table th{
+	padding: 0;
+	height: 40px;
+}
+/* 系统公告 */
+#notice .el-input, 
+#notice .el-input__inner{
+	width: 190px !important;
+	height: 32px;
+}
+
+/* 上网卡下拉菜单 */
+.outside .el-input.el-input--suffix,
+.outside .el-select,
+.outside .el-input__inner {
+  	width: 170px;
+  	height: 30px;
+}
+.outside .el-input,
+.outside .el-input__inner {
+  	width: 170px;
+  	height: 30px;
+}
+
+/* 上网卡单张供卡 */
+#onecard .el-input__inner,
+#onecard .el-input {
+	width: 250px !important;
+	height: 38px !important;
+}
+/* 上网卡多张供卡 */
+#manycard .el-input.el-input--suffix,
+#manycard .el-select,
+#manycard el-input__inner {
+	width: 180px !important;
+}
+#manycard .el-input,
+#manycard .el-input__inner {
+	width: 180px !important;
+}
+.el-checkbox__input.is-checked .el-checkbox__inner, 
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+	background-color: #7b5bc7;
+	border-color: #7b5bc7;
+}
+.el-checkbox__input.is-checked+.el-checkbox__label {
+	color: #696969;
+}
+#cash .el-input.el-input--suffix,
+#cash .el-select,
+#cash .el-input__inner {
+	width: 220px !important;
+}
+#cash .el-input,
+#cash .el-input__inner {
+	width: 220px !important;
+}
+/* 加油卡多张供卡 */
+#kahao_pwd .el-input,
+#kahao_pwd .el-input .el-input__inner{
+	width: 280px !important;
+	height: 38px !important;
+	margin-bottom: 2px;
+}
+/* 表格居中 */
+.el-table_1_column_1 div.cell,.el-table_1_column_2 div.cell{
+	text-align: center;
+}
+.el-button.el-button--default.el-button--small.el-button--primary{
+	background-color: #8a63e7;
+	border-color: #8a63e7;
+}
+/* 消息提示框 */
+.el-message-box{
+	width: 480px;
+}
+.el-message-box__content{
+	height: 60px;
+}
+.el-message-box__message p{
+	line-height: 60px;
+}
+.el-message-box__header{
+	background-color: #fafafa;
+	border-bottom: 1px solid #eeeeee;
+}
+/* .el-message-box .el-message-box__header {
+  	height: 55px;
+  	background-color: #fafafa;
+  	border-bottom: 1px solid #eeeeee;
+}
+.el-message-box .el-message-box__content {
+  	height: 126px;
+  	border-bottom: 1px solid #eeeeee;
+}
+.el-message-box .el-message-box__btns {
+  	height: 65px;
+} */
+
+/* .el-button:focus:hover,
+.el-button:hover:hover {
+	color: #8a63e7;
+	border-color: #8a63e7;
+	background-color: #ecf5ff;
+} */
+/* 供货明细=>充值卡供货 */
+#reachge .el-input .el-input--suffix {
+	width: 94px;
+	height: 32px;
+}
+#reachge .el-input__inner{
+	width: 94px;
+	height: 32px;
+	padding-left: 8px;
+}
+#reachge .el-input.cardNum,
+#reachge .el-input.cardNum .el-input__inner {
+	width: 100px;
+}
+#reachge .el-date-editor.el-input.el-input--prefix.el-input--suffix.el-date-editor--datetime{
+	width: 182px;
+	height: 32px;
+}
+#reachge .el-date-editor.el-input.el-input--prefix.el-input--suffix.el-date-editor--datetime .el-input__inner{
+	width: 182px;
+	padding-left: 25px;
+	padding-right: 20px;
+}
+#reachge .el-input__prefix,
+#reachge .el-input__icon.el-icon-time{
+	line-height: 32px;
+}
+#reachge .el-input.piciNum,
+#reachge .el-input.piciNum .el-input__inner {
+  width: 174px;
+}
+#reachge .pagination .el-input.el-pagination__editor.is-in-pagination .el-input__inner {
+	width: 50px;
+	height: 28px;
+	padding: 0;
+}
+/* 添加银行卡 */
+#bankcard .el-input,
+#bankcard .el-input--suffix {
+	width: 280px;
+	height: 40px;
+}
+#bankcard .el-input__inner{
+	width: 280px;
+	height: 40px;
+}
+.grey .el-input__inner{
+	background-color: #f4f4f4;
+}
+/* 去掉input输入框类型为number时右边的上下箭头 */
+.el-input__inner::-webkit-outer-spin-button,            
+.el-input__inner::-webkit-inner-spin-button{                
+	-webkit-appearance: none !important;
+}
+/* 联系我们 */
+.el-textarea,
+.el-textarea__inner{
+	height: 130px;
+	resize:none;
+}
+#contact .el-input,
+#contact .el-input--suffix,
+#contact .el-input__inner{
+	width: 268px;
+	height: 34px;
+}
+
+/* 网站帮助 */
+.el-collapse-item__header{
+    height: 72px !important;
+}
+.el-collapse-item .el-collapse-item__arrow.el-icon-arrow-right{
+    line-height: 72px !important;
+}
+.el-collapse-item__content .transition_box{
+    padding: 0 35px;
 }

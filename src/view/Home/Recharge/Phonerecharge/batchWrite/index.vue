@@ -6,7 +6,7 @@
                 <div class="input-box" ref="scroll">
                     <ul>
                         <li v-for="(item,index) of phoneList" :key="item.data.id" :class="[((index + 1) % 2) == 0 ? 'bg' : '']">
-                            <el-input ref="phoneInput" placeholder="请输入内容" v-model="item.data.input" clearable :class="{'grey':item.data.input == ''}" @blur="judge(item)"></el-input>
+                            <el-input ref="phoneInput" type="number" placeholder="请输入手机号码" :maxlength="11" v-model="item.data.input" clearable :class="{'grey':item.data.input == ''}" @blur="judge(item)"></el-input>
                         </li>
                     </ul>
                 </div>
@@ -129,7 +129,7 @@
                     InputArr.forEach((item,index)=>{
                         if (item.value != '') {
                             if (!Public.isTel(item.value)) {
-                                let msg = '请把第'+ (index+1) +'行手机号码不正确，请重新填写！';
+                                let msg = '请第'+ (index+1) +'行手机号码不正确，请重新填写！';
                                 _that.publicAlert(msg,item);
                                 flag = true;
                                 return;

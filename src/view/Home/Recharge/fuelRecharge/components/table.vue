@@ -3,7 +3,7 @@
         <div class="table">
             <div class="table-top">
                 <div>充值记录</div>
-                <div>查看更多</div>
+                <div @click="goRechargeRecord">查看更多</div>
             </div>
             <div class="table-con">
                 <div class="heard">
@@ -73,6 +73,13 @@
                     cash: '1000',
                     koukuan: '998'
                 }]
+            }
+        },
+        methods:{
+            goRechargeRecord(){
+                this.$router.push({
+					name: 'orderDetail'
+				});
             }
         }
     }

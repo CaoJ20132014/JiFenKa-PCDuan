@@ -4,7 +4,7 @@
             <div class="left">
                 <div class="common">
                     <div class="lable">主卡卡号：</div>
-                    <el-input placeholder="请输入加油卡卡号" :maxlength="19" v-model="input1" :class="{'grey':input1 == ''}" clearable></el-input>
+                    <el-input placeholder="请输入19位加油卡卡号" type="number" :maxlength="19" v-model="input1" :class="{'grey':input1 == ''}" clearable></el-input>
                 </div>
                 <div class="common choose scope">
                     <div class="lable">充值范围：</div>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="common withhold">
                     <div class="lable">扣款金额：</div>
-                    <input v-model="input2" :type="inputType">
+                    <input v-model="input2" readonly :type="inputType">
                     <span v-show="isShow">元</span>
                     <span class="none" @click="changeType" v-text="text"></span>
                 </div>

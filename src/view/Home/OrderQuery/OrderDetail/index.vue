@@ -54,11 +54,11 @@
             <el-checkbox v-model="checked1" @change='whetherShow'>显示扣款金额</el-checkbox>
             <el-checkbox v-model="checked2" @change='isRefresh'>定时刷新/分钟</el-checkbox>
             <div class="buttons">
-                <el-button class="query">查询</el-button>
+                <el-button class="query" @click="startQuery">查询</el-button>
                 <el-button class="export">导出</el-button>
             </div>
         </div>
-        <div class="table-list">
+        <div class="table-list" v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
             <BillTable1 v-show="choosed1 == '1' && checked1"></BillTable1>
             <BillTable2 v-show="choosed1 == '1' && !checked1"></BillTable2>
             <FlowTable1 v-show="choosed1 == '2' && checked1"></FlowTable1>
@@ -89,6 +89,7 @@
         },
         data () {
             return {
+                loading: false,
                 noData: true,           // 是否显示分页
                 totalOrder: 20000,      // 数据总条数
                 nowPage: 1,             // 初始页
@@ -167,6 +168,12 @@
             },
             changePage(value){          // 页码改变
                 console.log(value);
+            },
+            startQuery(){
+                this.loading = true;
+                setTimeout(() => {
+                    this.loading = false;
+                }, 2000);
             }
         }
     }

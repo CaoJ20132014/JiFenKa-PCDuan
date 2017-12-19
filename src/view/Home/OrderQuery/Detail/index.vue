@@ -22,10 +22,10 @@
                 </el-select>
             </div>
             <div class="buttons">
-                <el-button class="query">查询</el-button>
+                <el-button class="query" @click="startQuery">查询</el-button>
             </div>
         </div>
-        <div class="table-list">
+        <div class="table-list" v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
             <TableList></TableList>
         </div>
         <div class="pagination">
@@ -41,6 +41,7 @@
         },
         data () {
             return {
+                loading: false,
                 totalOrder: 20000,      // 数据总条数
                 nowPage: 1,
                 choosed1: '0',          // 类型
@@ -80,6 +81,12 @@
             },
             changePage(value){          // 页码改变
                 console.log(value);
+            },
+            startQuery(){
+                this.loading = true;
+                setTimeout(() => {
+                    this.loading = false;
+                }, 2000);
             }
         }
     }

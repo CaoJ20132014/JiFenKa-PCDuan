@@ -27,16 +27,12 @@
                 </div>
             </div>
         </div>
-        <div class="pagination" v-show="noData">
-            <el-pagination background layout="prev, pager, next, jumper" @current-change='changePage' :total="totalOrder"></el-pagination>
-        </div>
     </div>
 </template>
 <script>
     export default {
         data () {
             return {
-                totalOrder: 20000,             // 数据总条数
                 noData: true,
                 recordList: [{
                     id: '1',
@@ -152,9 +148,7 @@
             }
         },
         methods: {
-            changePage(value){
-                console.log(value);
-            }
+            
         }
     }
 </script>
@@ -269,10 +263,6 @@
                     }
                 }
             }
-        }
-        .pagination{
-            padding: @basePadding*2 0 0 0;
-            text-align: right;
         }
     }
 </style>

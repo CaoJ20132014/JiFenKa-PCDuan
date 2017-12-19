@@ -3,7 +3,7 @@
         <div class="table">
             <div class="table-top">
                 <div>最近充值记录</div>
-                <div>查看更多</div>
+                <div @click="goRechargeRecord">查看更多</div>
             </div>
             <div class="table-con">
                 <div class="heard">
@@ -66,6 +66,13 @@
                     state: '充值成功',
                     cash: '1000'
                 }]
+            }
+        },
+        methods:{
+            goRechargeRecord(){
+                this.$router.push({
+					name: 'orderDetail'
+				});
             }
         }
     }

@@ -4,9 +4,43 @@
     		<div class="heard-con">
 				<div class="folat_lt">杭州天缘网络欢迎您！</div>
 				<div class="folat_rt">
-					<div class="img_box">
+					<div v-show="!isLogin" class="noLogin" @click="toLogin">
 						<img src="../../../assets/image/HomeIndex/viplogin.png" alt="">
 						<span>会员登录</span>
+					</div>
+					<div class="alreadyLogin" v-show="isLogin">
+						<div class="top_right" v-show="!show">
+							<div class="top_common">
+								<img src="../../../assets/image/HomeIndex/qiandai.png" alt="" class="usablecard"/>
+								<span>可用余额：<span>{{usableBalance.toFixed(2)}}</span></span>
+							</div>
+							<div class="top_common">
+								<img src="../../../assets/image/HomeIndex/suo.png" alt="" class="card"/>
+								<span>卡密预定：<span>{{reserve.toFixed(2)}}</span></span>
+							</div>
+							<div class="top_common">
+								<img src="../../../assets/image/HomeIndex/info.png" alt="" class="information"/>
+								<span @click="tonotice">系统公告：<span>{{notice}}</span></span>
+							</div>
+							<div>
+								<img src="../../../assets/image/HomeIndex/guanbi.png" alt="" class="loginout"/>
+								<span>退出登录</span>
+							</div>
+						</div>
+						<div class="top_right" v-show="show">
+							<div class="top_common">
+								<img src="../../../assets/image/HomeIndex/kabao.png" alt="" class="card"/>
+								<span>供卡余额：<span>{{balance.toFixed(2)}}</span></span>
+							</div>
+							<div class="top_common">
+								<img src="../../../assets/image/HomeIndex/info.png" alt="" class="information"/>
+								<span @click="tonotice">系统公告</span>
+							</div>
+							<div>
+								<img src="../../../assets/image/HomeIndex/guanbi.png" alt="" class="loginout"/>
+								<span>退出登录</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -47,7 +81,7 @@
 				<span>|</span>
 				<span>公司荣誉</span>
 				<span>|</span>
-				<span>联系我们</span>
+				<span @click="contact">联系我们</span>
 				<span>|</span>
 				<span>帮助中心</span>
 			</div>
@@ -62,6 +96,12 @@
 		name: 'index',
 		data () {
 			return {
+				isLogin: false,
+				show: false,
+				balance: 888,			// 余额
+				usableBalance: 1200,	// 可用余额
+				reserve: 120,			// 卡密预定
+				notice: 8,				// 公告数量
 				navList:[{
 					title: "首页",
 					route: "defaultindex"
@@ -97,6 +137,19 @@
 				this.ActiveIndex = index+1;
 				this.$router.push({
 					name: item.route
+				});
+			},
+			tonotice(){
+
+			},
+			toLogin(){
+				this.$router.push({
+					name: 'accountLogin'
+				});
+			},
+			contact(){
+				this.$router.push({
+					name: 'contact'
 				});
 			}
 		}

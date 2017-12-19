@@ -31,6 +31,28 @@
                         margin: @baseMargin+1px @baseMargin/2 0 0;
                     }
                 }
+                .alreadyLogin{
+                    font-size: 0;
+                    div{
+                        font-size: @font-size14;
+                        display: inline-block;
+                        vertical-align: top;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                        .top_common{
+                            margin-right: 5px;
+                            &:nth-child(1){
+                                img{
+                                    margin-top: @baseMargin*1.3;
+                                }
+                                .usablecard{
+                                    margin-top: @baseMargin;
+                                }
+                            }                        
+                        }
+                    }
+                }
             }
         }
     }
@@ -148,6 +170,9 @@
                 }
                 &:nth-child(2n+1){
                     margin-right: @baseMargin*3;
+                }
+                &:hover{
+                    cursor: pointer;
                 }
             }
         }

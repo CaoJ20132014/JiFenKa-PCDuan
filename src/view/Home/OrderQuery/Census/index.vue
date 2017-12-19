@@ -18,11 +18,14 @@
                 </ul>
             </div>
             <div class="buttons">
-                <el-button class="query">查询</el-button>
+                <el-button class="query" @click="startQuery">查询</el-button>
             </div>
         </div>
-        <div class="table-list">
+        <div class="table-list" v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
             <TableList></TableList>
+        </div>
+        <div class="pagination" v-show="noData">
+            <el-pagination background layout="prev, pager, next, jumper" @current-change='changePage' :total="totalOrder"></el-pagination>
         </div>
     </div>
 </template>
@@ -34,6 +37,9 @@
         },
         data () {
             return {
+                noData: true,
+                totalOrder: 20000,             // 数据总条数
+                loading: false,
                 choosed2: '1',          // 状态
                 start: '',              // 起始时间
                 end: '',                // 结束时间
@@ -88,6 +94,15 @@
             },
             isRefresh(value){
                 console.log(value);
+            },
+            changePage(value){
+                console.log(value);
+            },
+            startQuery(){
+                this.loading = true;
+                setTimeout(() => {
+                    this.loading = false;
+                }, 2000);
             }
         }
     }

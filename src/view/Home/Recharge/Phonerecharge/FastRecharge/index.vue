@@ -4,7 +4,7 @@
             <div class="left">
                 <div class="common">
                     <div class="lable">充值号码：</div>
-                    <el-input placeholder="支持上网卡充值" :maxlength="11" v-model="input1" :class="{'grey':input1 == ''}" clearable></el-input>
+                    <el-input placeholder="支持上网卡充值" type="number" :maxlength="11" v-model="input1" :class="{'grey':input1 == ''}" clearable></el-input>
                 </div>
                 <div class="common choose">
                     <div class="lable">充值面值：</div>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="common withhold">
                     <div class="lable">扣款金额：</div>
-                    <input v-model="input2" :type="inputType">
+                    <input v-model="input2" readonly :type="inputType">
                     <span v-show="isShow">元</span>
                     <span class="none" @click="changeType" v-text="text"></span>
                 </div>
@@ -28,7 +28,7 @@
                 <div class="table">
                     <div class="table-top">
                         <div>充值记录</div>
-                        <div>查看更多</div>
+                        <div @click="goRechargeRecord">查看更多</div>
                     </div>
                     <div class="table-con">
                         <div class="heard">
@@ -183,6 +183,11 @@
                     type: noticeType,
                     center: true
                 });
+            },
+            goRechargeRecord(){
+                this.$router.push({
+					name: 'orderDetail'
+				});
             }
         }
     }

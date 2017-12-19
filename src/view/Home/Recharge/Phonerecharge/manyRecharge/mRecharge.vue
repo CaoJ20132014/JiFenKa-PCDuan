@@ -15,10 +15,10 @@
                         <li v-for="(item,index) of tableList" :key="item.id" :class="[((index + 1) % 2) == 0 ? 'bg' : '']">
                             <div><span v-text="index+1"></span></div>
                             <div class="phoneNumber">
-                                <el-input ref="phoneInput" placeholder="请输入充值号码" v-model="item.data.input1" clearable :class="{'grey':item.data.input1 == ''}" @blur="phoneblur(item)"></el-input>
+                                <el-input ref="phoneInput" type="number" :maxlength="11" placeholder="请输入充值号码" v-model="item.data.input1" clearable :class="{'grey':item.data.input1 == ''}" @blur="phoneblur(item)"></el-input>
                             </div>
                             <div class="cash">
-                                <el-input ref="cashInput" placeholder="充值金额" v-model="item.data.input2" clearable :class="{'grey':item.data.input2 == ''}" @blur="blur(item)"></el-input>
+                                <el-input ref="cashInput" type="number" placeholder="充值金额" v-model="item.data.input2" clearable :class="{'grey':item.data.input2 == ''}" @blur="blur(item)"></el-input>
                             </div>
                             <div v-text="item.koukuan"></div>
                             <div v-text="item.isRecharged"></div>
@@ -115,6 +115,13 @@
                                     this.publicAlert(msg,item2);
                                     flag = true;
                                     return;
+                                } else {
+                                    this.PriceJson.forEach((element,index) => {
+                                        if (element.costPrice != item1.value) {
+                                            flag = true;
+                                            return;
+                                        }
+                                    });
                                 }
                             });
                         }
