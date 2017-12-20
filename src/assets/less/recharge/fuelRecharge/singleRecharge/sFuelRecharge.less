@@ -1,0 +1,111 @@
+@import "../../../public/var.less";
+.bill-recharge{
+    width: 100%;
+    height: @baseHeight*7.72;
+    .bill-top{
+        width: 100%;
+        height: @baseHeight*4.4;
+        .left{
+            float: left;
+            width: @baseWidth*6.12;
+            height: 100%;
+            .common{
+                height: @baseHeight*0.4;
+                margin-top: @baseMargin*2.2;
+                .lable{
+                    float: left;
+                    width: @baseWidth*0.85;
+                    height: @baseHeight*0.4;
+                    line-height: @baseLineHeight*4;
+                }
+                .el-input{
+                    width: @baseWidth*2.5;
+                }
+            }
+            .choose{
+                height: @baseHeight+2px;
+                ul{
+                    float: right;
+                    width: @baseWidth*4.5;
+                    margin-right: @baseMargin*7.7;
+                    font-size: 0;
+                    li{
+                        list-style: none;
+                        display: inline-block;
+                        width: @baseWidth*0.72;
+                        height: @baseHeight*0.38;
+                        margin-right: @baseMargin;
+                        margin-bottom: @baseMargin;
+                        line-height: @baseLineHeight*3.8;
+                        text-align: center;
+                        font-size: @font-size14;
+                        border: @baseBorderWidth solid @baseBorderColor;
+                        background-color: @bg-color;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                    .active{
+                        background-image: url('../../../../image/recharge/pRecharge/active-pur.png');
+                        background-repeat: no-repeat;
+                        background-size: 100% 100%;
+                        border-color: @color-common;
+                    }
+                    .el-input{
+                        width: @baseWidth*0.74;
+                    }
+                }
+            }
+            .scope{
+                height: @baseHeight*0.4;
+            }
+            .withhold{
+                margin-top: @baseMargin*3;
+                input{
+                    width: 40px;
+                    height: 40px;
+                    outline: none;
+                    border: 0;
+                    text-align: center;
+                }
+                span{
+                    line-height: @baseLineHeight*4;
+                }
+                .none{
+                    padding-left: @basePadding;
+                    color: @color-common;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+            }
+            .commit{
+                .el-button.el-button--default{
+                    width: @baseWidth*1.2;
+                    height: @baseHeight*0.36;
+                    background-color: @color-common;
+                    color: @color-white;
+                    padding: 0;
+                    &:hover{
+                        border-color: @color-common;
+                    }
+                    &:focus{
+                        border-color: @color-common;
+                    }
+                }
+                span{
+                    padding-left: @basePadding;
+                    color: @color-common;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .right{
+            float: right;
+            width: @baseWidth*2.95;
+            height: 100%;
+        }
+    }
+}

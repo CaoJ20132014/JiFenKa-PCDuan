@@ -1,0 +1,466 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* 去掉input输入框类型为number时右边的上下箭头 */
+.el-input__inner::-webkit-outer-spin-button,            
+.el-input__inner::-webkit-inner-spin-button{                
+	-webkit-appearance: none !important;
+}
+/* 轮播图的高度 */
+.el-carousel__container {
+    height: 404px;
+}
+/* 改变弹窗的样式 */
+.firstAlert,
+.errorNotice {
+    width: 480px;
+    height: 218px;
+}
+.firstAlert .el-message-box__header,
+.errorNotice .el-message-box__header {
+    background-color: #fafafa;
+    border-bottom: 1px solid #eeeeee;
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+.firstAlert .el-message-box__headerbtn,
+.errorNotice .el-message-box__headerbtn {
+    top: 20px;
+}
+.firstAlert .confirm {
+    width: 280px;
+    height: 40px;
+    background-color: #8a63e7;
+}
+.errorNotice .Noticebtn {
+    width: 120px;
+    height: 40px;
+    background-color: #8a63e7;
+    font-size: 16px;
+    margin-top: 7px;
+}
+.firstAlert .confirm:hover,
+.errorNotice .Noticebtn:hover {
+    border-color: #8a63e7;
+}
+.firstAlert .el-button--primary,
+.errorNotice .el-button--primary {
+    border-color: #8a63e7;
+}
+.firstAlert .el-input,
+.firstAlert .el-input__inner,
+.errorNotice .el-input,
+.errorNotice .el-input__inner {
+    width: 280px;
+    height: 40px;
+}
+.firstAlert .el-input,
+.errorNotice .el-input {
+    margin-left: 10px;
+}
+.firstAlert .el-message-box__message,
+.errorNotice .el-message-box__message {
+    padding-top: 10px;
+}
+.errorNotice .el-message-box__content {
+    height: 90px;
+}
+.errorNotice .el-message-box__content .el-message-box__message,
+.errorNotice .el-message-box__content .el-message-box__message p {
+    height: 90px;
+    line-height: 70px;
+}
+.errorNotice .el-message-box__btns {
+    border-top: 1px solid #eeeeee;
+}
+/* 查询话费组件的输入框 */
+.query .el-input__inner {
+    height: 30px;
+}
+.confirm .el-input__suffix-inner {
+    line-height: 40px;
+}
+/* 用于改变输入框的值为空的背景颜色 */
+.grey .el-input__inner {
+    background-color: #f4f4f4;
+}
+/* 多人充值 */
+.phoneNumber .el-input,
+.phoneNumber .el-input input.el-input__inner,
+.cash .el-input,
+.cash .el-input input.el-input__inner {
+    height: 30px;
+}
+/* 进度条 */
+.el-progress__text {
+    color: #8962e5;
+}
+.el-progress-bar .el-progress-bar__outer {
+    height: 20px !important;
+    border-radius: 3px;
+    background-color: #ededed;
+}
+.el-progress-bar .el-progress-bar__outer .el-progress-bar__inner {
+    border-radius: 3px;
+    background-color: #8962e5;
+}
+/* 多人充值确认订单 */
+.mRechargePayAlert .el-message-box__header .el-message-box__title {
+    text-align: center;
+}
+.mRechargePayAlert .el-message-box__btns {
+    text-align: center !important;
+}
+.mRechargePayAlert .el-message-box__btns .mRechargePay {
+    width: 280px;
+    height: 40px;
+    margin: 0;
+    font-size: 14px;
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.mRechargePayAlert .el-message-box__header {
+    background-color: #fafafa;
+    border-bottom: 1px solid #eeeeee;
+}
+.mRechargePayAlert .el-message-box__content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.mRechargePayAlert .el-message-box__btns {
+    padding-bottom: 10px;
+}
+.mRechargePayAlert .el-message-box__btns .mRechargePay:hover,
+.mRechargePayAlert .el-message-box__btns .mRechargePay:focus {
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.mRechargePayAlert .el-message-box__input {
+    text-align: center;
+}
+.mRechargePayAlert .el-input {
+    width: 280px;
+}
+/* 多人充值，添加信息弹框 */
+.lackInfo .el-message-box__header {
+    background-color: #fafafa;
+    border-bottom: 1px solid #eeeeee;
+}
+.lackInfo .el-message-box__content {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.lackInfoSure {
+    width: 120px;
+    height: 36px;
+    margin: 0;
+    font-size: 14px;
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.lackInfo .el-message-box__btns .lackInfoSure:hover,
+.lackInfo .el-message-box__btns .lackInfoSure:focus {
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.lackInfo .el-message-box__btns {
+    border-top: 1px solid #eeeeee;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+.lackInfoCancel {
+    width: 120px;
+    height: 36px;
+    margin: 0;
+    font-size: 14px;
+}
+.lackInfoCancel:hover,
+.lackInfoCancel:focus {
+    border-color: #8962e5;
+    color: #8962e5;
+}
+/* .lackInfo .el-message-box__content .el-message-box__message p{
+    text-align: center;
+} */
+/* 批量写入 */
+.batch-recharge .el-input__inner {
+    height: 32px;
+}
+.batch-recharge .choose .el-input__inner{
+    height: 38px;
+}
+/* 步骤条 */
+.el-step__head.is-finish .el-step__icon.is-text {
+    color: white;
+    background-color: #8962e5;
+    border-color: #8962e5;
+}
+.el-step__title.is-finish {
+    color: #8962e5;
+}
+.el-step__title.is-process {
+    color: #595959;
+}
+.el-step__title.is-wait {
+    color: #595959;
+}
+.el-step__head.is-finish,
+.el-step__head.is-finish .el-step__line-inner {
+    color: #8962e5;
+    border-color: #8962e5;
+}
+.el-step__title.is-process {
+    color: #595959;
+}
+.el-step__icon.is-text {
+    color: white;
+    background-color: #dddddd;
+    border-color: #dddddd;
+}
+/* 上传文件 */
+.Import .el-upload-dragger {
+    width: 200px;
+    height: 100px;
+}
+.Import .el-upload-dragger .el-icon-upload {
+    margin: 10px 0 0;
+}
+.el-upload-dragger .el-icon-upload {
+    font-size: 50px;
+}
+.order-detail .el-input__icon.el-icon-time {
+    height: 32px;
+    line-height: 32px;
+}
+.order-detail .el-input__suffix .el-input__suffix-inner .el-input__icon {
+    height: 32px;
+    line-height: 32px !important;
+}
+/* 订单查询 */
+.el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: #7b5bc7;
+    border-color: #7b5bc7;
+}
+.el-checkbox__input.is-checked+.el-checkbox__label {
+    color: #7b5bc7;
+}
+/* 产品中心 */
+.operation .orderArea .el-input .el-input__inner {
+    height: 34px;
+}
+.operation .select .el-input.el-input--suffix .el-input__inner {
+    height: 34px;
+}
+/* 分页 */
+.el-pagination.is-background .el-pager li.active {
+    background-color: #7b5bc7;
+}
+.el-pagination.is-background .el-pager li.active:hover{
+    color: white;
+}
+.el-pagination.is-background .el-pager li:hover{
+    color: #7b5bc7;
+}
+
+
+/* 供货平台 */
+li{
+	list-style: none;
+}
+.pur_font{
+	color: #7b5bc7;
+}
+.border{
+	border: 1px solid #e9e9e9;
+}
+/*公告列表页样式*/
+.el-input__icon{
+	line-height: 32px;
+}
+/*公告列表页表格*/
+.el-table thead{
+	background-color: #fafafa;
+}
+.el-table td, .el-table th{
+	padding: 0;
+	height: 40px;
+}
+/* 系统公告 */
+#notice .el-input, 
+#notice .el-input__inner{
+	width: 190px !important;
+	height: 32px;
+}
+
+/* 上网卡下拉菜单 */
+.outside .el-input.el-input--suffix,
+.outside .el-select,
+.outside .el-input__inner {
+  	width: 170px;
+  	height: 30px;
+}
+.outside .el-input,
+.outside .el-input__inner {
+  	width: 170px;
+  	height: 30px;
+}
+
+/* 上网卡单张供卡 */
+#onecard .el-input__inner,
+#onecard .el-input {
+	width: 250px !important;
+	height: 38px !important;
+}
+/* 上网卡多张供卡 */
+#manycard .el-input.el-input--suffix,
+#manycard .el-select,
+#manycard el-input__inner {
+	width: 180px !important;
+}
+#manycard .el-input,
+#manycard .el-input__inner {
+	width: 180px !important;
+}
+.el-checkbox__input.is-checked .el-checkbox__inner, 
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+	background-color: #7b5bc7;
+	border-color: #7b5bc7;
+}
+.el-checkbox__input.is-checked+.el-checkbox__label {
+	color: #696969;
+}
+#cash .el-input.el-input--suffix,
+#cash .el-select,
+#cash .el-input__inner {
+	width: 220px !important;
+}
+#cash .el-input,
+#cash .el-input__inner {
+	width: 220px !important;
+}
+/* 加油卡多张供卡 */
+#kahao_pwd .el-input,
+#kahao_pwd .el-input .el-input__inner{
+	width: 280px !important;
+	height: 38px !important;
+	margin-bottom: 2px;
+}
+/* 表格居中 */
+.el-table_1_column_1 div.cell,.el-table_1_column_2 div.cell{
+	text-align: center;
+}
+.el-button.el-button--default.el-button--small.el-button--primary{
+	background-color: #8a63e7;
+	border-color: #8a63e7;
+}
+/* 消息提示框 */
+.el-message-box{
+	width: 480px;
+}
+.el-message-box__content{
+	height: 60px;
+}
+.el-message-box__message p{
+	line-height: 60px;
+}
+.el-message-box__header{
+	background-color: #fafafa;
+	border-bottom: 1px solid #eeeeee;
+}
+/* .el-message-box .el-message-box__header {
+  	height: 55px;
+  	background-color: #fafafa;
+  	border-bottom: 1px solid #eeeeee;
+}
+.el-message-box .el-message-box__content {
+  	height: 126px;
+  	border-bottom: 1px solid #eeeeee;
+}
+.el-message-box .el-message-box__btns {
+  	height: 65px;
+} */
+
+/* .el-button:focus:hover,
+.el-button:hover:hover {
+	color: #8a63e7;
+	border-color: #8a63e7;
+	background-color: #ecf5ff;
+} */
+/* 供货明细=>充值卡供货 */
+#reachge .el-input .el-input--suffix {
+	width: 94px;
+	height: 32px;
+}
+#reachge .el-input__inner{
+	width: 94px;
+	height: 32px;
+	padding-left: 8px;
+}
+#reachge .el-input.cardNum,
+#reachge .el-input.cardNum .el-input__inner {
+	width: 100px;
+}
+#reachge .el-date-editor.el-input.el-input--prefix.el-input--suffix.el-date-editor--datetime{
+	width: 182px;
+	height: 32px;
+}
+#reachge .el-date-editor.el-input.el-input--prefix.el-input--suffix.el-date-editor--datetime .el-input__inner{
+	width: 182px;
+	padding-left: 25px;
+	padding-right: 20px;
+}
+#reachge .el-input__prefix,
+#reachge .el-input__icon.el-icon-time{
+	line-height: 32px;
+}
+#reachge .el-input.piciNum,
+#reachge .el-input.piciNum .el-input__inner {
+  width: 174px;
+}
+#reachge .pagination .el-input.el-pagination__editor.is-in-pagination .el-input__inner {
+	width: 50px;
+	height: 28px;
+	padding: 0;
+}
+/* 添加银行卡 */
+#bankcard .el-input,
+#bankcard .el-input--suffix {
+	width: 280px;
+	height: 40px;
+}
+#bankcard .el-input__inner{
+	width: 280px;
+	height: 40px;
+}
+.grey .el-input__inner{
+	background-color: #f4f4f4;
+}
+/* 去掉input输入框类型为number时右边的上下箭头 */
+.el-input__inner::-webkit-outer-spin-button,            
+.el-input__inner::-webkit-inner-spin-button{                
+	-webkit-appearance: none !important;
+}
+/* 联系我们 */
+.el-textarea,
+.el-textarea__inner{
+	height: 130px;
+	resize:none;
+}
+#contact .el-input,
+#contact .el-input--suffix,
+#contact .el-input__inner{
+	width: 268px;
+	height: 34px;
+}
+
+/* 网站帮助 */
+.el-collapse-item__header{
+    height: 72px !important;
+}
+.el-collapse-item .el-collapse-item__arrow.el-icon-arrow-right{
+    line-height: 72px !important;
+}
+.el-collapse-item__content .transition_box{
+    padding: 0 35px;
+}

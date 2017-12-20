@@ -1,0 +1,123 @@
+@import '../../../../less/public/var.less';
+.batch-recharge{
+    width: 100%;
+    .bRecharge{
+        width: 100%;
+        height: @baseHeight*2.6;
+        padding-top: @basePadding*2;
+        .left{
+            float: left;
+            width: @baseWidth*3;
+            height: @baseHeight*2.4;
+            font-size: 0;
+            .lable{
+                display: inline-block;
+                width: @baseWidth*0.82;
+                height: @baseHeight*2.4;
+                font-size: @font-size16;
+                vertical-align: top;
+            }
+            .input-box{
+                display: inline-block;
+                width: @baseWidth*2.16;
+                height: @baseHeight*2.4;
+                border: @baseBorderWidth solid @baseBorderColor;
+                overflow-y: scroll;
+                &::-webkit-scrollbar{
+                    display: none;
+                }
+                ul{
+                    width: 100%;
+                    li{
+                        list-style: none;
+                        padding: 0 8px;
+                        height: @baseHeight*0.4;
+                        text-align: center;
+                        .el-input{
+                            width: @baseWidth*2;
+                            height: @baseHeight*0.32;
+                            margin-top: 4px;
+                        }
+                    }
+                    .bg{
+                        background-color: @color-fa;
+                    }
+                }
+            }
+        }
+        .right{
+            float: right;
+            margin-right: @baseMargin*10;
+        }
+    }
+    .choose{
+        height: @baseHeight+2px;
+        .lable{
+            display: inline-block;
+            width: @baseWidth*0.82;
+            font-size: @font-size16;
+            vertical-align: top;
+        }
+        ul{
+            display: inline-block;
+            width: @baseWidth*7.6;
+            font-size: 0;
+            li{
+                list-style: none;
+                display: inline-block;
+                width: @baseWidth*0.72;
+                height: @baseHeight*0.38;
+                margin-right: @baseMargin;
+                margin-bottom: @baseMargin;
+                line-height: @baseLineHeight*3.8;
+                text-align: center;
+                font-size: @font-size14;
+                border: @baseBorderWidth solid @baseBorderColor;
+                background-color: @bg-color;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            .active{
+                background-image: url('../../../../image/recharge/pRecharge/active-pur.png');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                border-color: @color-common;
+            }
+            .el-input{
+                width: @baseWidth*0.74;
+                height: @baseHeight*0.38;
+            }
+        }
+    }
+    .commit{
+        padding-left: @basePadding*8.2;
+        padding-top: @basePadding;
+        .commitOrder.el-button.el-button--default{
+            width: @baseWidth*1.2;
+            height: @baseHeight*0.36;
+            padding: 0;
+            background-color: @color-common;
+            color: @color-white;
+            &:hover,
+            &:focus{
+                border-color: @color-common;
+            }
+        }
+        .AddLi{
+            width: @baseWidth*1.2;
+            height: @baseHeight*0.36;
+            padding: 0;
+            border-color: @color-common;
+            color: @color-common;
+            &:hover,
+            &:focus{
+                color: @color-common;
+                border-color: @color-common;
+            }
+        }
+    }
+    .rechargeDetail{
+        padding-top: @basePadding;
+    }
+}
