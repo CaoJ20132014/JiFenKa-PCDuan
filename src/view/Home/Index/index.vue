@@ -23,24 +23,25 @@
 							<span :class="[ActiveIndex == index+1 ? 'active' : '']">{{item.title}}</span>
 						</li>
 					</ul>
+
 				</div>
 				<div class="content-right">
 					<img src="../../../assets/image/HomeIndex/tel.png" alt="">
 					<span>057186538181</span>
 				</div>
 			</div>
-			<div class="con-con">
-				<router-view/>
-			</div>
-			<div class="con-bot">
-				<div>
+        <router-view></router-view>
+		</div>
+
+
+     <div class="con-bot">
 					<img src="../../../assets/image/HomeIndex/img1.png" alt="">
 					<img src="../../../assets/image/HomeIndex/img2.png" alt="">
 					<img src="../../../assets/image/HomeIndex/img3.png" alt="">
 					<img src="../../../assets/image/HomeIndex/img4.png" alt="">
-				</div>
 			</div>
-		</div>
+
+
 		<div class="foot">
 			<div class="foot_top">
 				<span>关于我们</span>
@@ -86,7 +87,12 @@
 		methods: {
 			routeChange(index,item){
 				console.log(item.route);
-				this.ActiveIndex = index+1;
+        this.ActiveIndex = index+1;
+        if(this.ActiveIndex == 5){
+          this.$router.push({path:'/to/5'});
+        }else if(this.ActiveIndex == 3){
+          this.$router.push({path:'/to/7'});
+        }
 			}
 		}
 	}

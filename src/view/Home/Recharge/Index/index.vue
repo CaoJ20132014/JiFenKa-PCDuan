@@ -6,11 +6,14 @@
                     <img class="phone" src="../../../../assets/image/recharge/index/phone.png" alt="">
                     <span>手机充值</span>
                 </li>
-                <li>
+                <router-link to="/to/1">
+                     <li>
                     <img class="fill" src="../../../../assets/image/recharge/index/fill.png" alt="">
                     <span>流量充值</span>
                     <p>移动、联通、电信</p>
                 </li>
+                </router-link>
+
                 <li>
                     <img class="fuel" src="../../../../assets/image/recharge/index/fiel.png" alt="">
                     <span>加油卡充值</span>
@@ -26,7 +29,7 @@
     export default{
         data(){
             return{
-                
+
             }
         }
     }
