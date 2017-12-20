@@ -9,7 +9,12 @@
             width: @baseWidth*12;
             height: 100%;
             margin: 0 auto;
+<<<<<<< HEAD
             .folat_lt {
+=======
+            background-color: @color-black;
+            .folat_lt{
+>>>>>>> 3d7ce9ed8b06d11c4ce94c888f607dcc55660d1c
                 float: left;
                 height: @baseHeight/2.5;
                 color: @color-white;
@@ -28,6 +33,28 @@
                     }
                     img {
                         margin: @baseMargin+1px @baseMargin/2 0 0;
+                    }
+                }
+                .alreadyLogin{
+                    font-size: 0;
+                    div{
+                        font-size: @font-size14;
+                        display: inline-block;
+                        vertical-align: top;
+                        &:hover{
+                            cursor: pointer;
+                        }
+                        .top_common{
+                            margin-right: 5px;
+                            &:nth-child(1){
+                                img{
+                                    margin-top: @baseMargin*1.3;
+                                }
+                                .usablecard{
+                                    margin-top: @baseMargin;
+                                }
+                            }                        
+                        }
                     }
                 }
             }
@@ -164,6 +191,9 @@
                 }
                 &:nth-child(2n+1) {
                     margin-right: @baseMargin*3;
+                }
+                &:hover{
+                    cursor: pointer;
                 }
             }
         }
