@@ -47,7 +47,7 @@
     </div>
 </template>
 <script>
-    import Public from '../../../../../assets/js/until.js';
+    import Public from '@/until/until';
     import recordtable from '../manyRecharge/components/orderTable.vue';
     export default {
         components:{

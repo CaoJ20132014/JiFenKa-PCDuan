@@ -1,0 +1,183 @@
+.cash_box{
+    width: 988px;
+    height: 538px;
+    .box_top{
+		height: 37px;
+		border-bottom: 1px solid #e9e9e9;
+        padding-top: 12px;
+        div{
+            width: 94px;
+            height: 25px;
+            border-left: 3px solid #7b5bc7;
+            text-align: center;
+            line-height: 25px;
+            font-size: 16px;
+            margin-left: 20px;
+            color: #898989;
+        }
+    }
+    .box_bot{
+		width: 908px;
+		height: 444px;
+		padding: 44px 40px 0;
+        display: flex;
+        .left{
+            width: 613px;
+            height: 100%;
+            .top{
+                display: flex;
+            }
+            .public{
+                height: 22px;
+                .el-radio{
+                    vertical-align: top;
+                    margin-top: 3px;
+                    font-size: 16px;
+                }
+                &:nth-child(2){
+                    margin-top: 15px;
+                }
+            }
+            .lable{
+                height: 59px;
+                color: #494949;
+            }
+            .radio{
+                height: 59px;
+            }
+            .bank_box{
+                width: 350px;
+                height: 105px;
+                padding-left: 82px;
+                padding-top: 22px;
+                display: inline-block;
+                overflow: scroll;
+                &::-webkit-scrollbar{
+                    display: none;
+                }
+                .card{
+                    display: flex;
+                    width: 347px;
+                    height: 40px;
+                    color: #494949;
+                    margin-bottom: 10px;
+                    cursor: pointer;
+                    .name{
+                        width: 179px;
+                        height: 30px;
+                        line-height: 30px;
+                        margin-top: 5px;
+                        text-align: center;
+                        border-right: 1px solid #e9e9e9;
+                    }
+                    .cardNum{
+                        width: 208px;
+                        height: 30px;
+                        line-height: 30px;
+                        margin-top: 5px;
+                        text-align: center;
+                    }
+                }
+                .bg{
+                    background-image: url('../../../../assets/image/Provide/pur_bg.png');
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    border-color: #a062e0;
+                    div{
+                        color: #a062e0;
+                    }
+                }
+            }
+            .el-button.el-button--default{
+                vertical-align: top;
+                float: right;
+                margin-top: 22px;
+                height: 42px;
+                margin-right: 40px;
+            }
+            .forget{
+                line-height: 40px;
+                padding-left: 20px;
+                font-size: 14px;
+            }
+            .commit{
+                height: 56px;
+                .el-button.el-button--default{
+                    float: left;
+                    height: 40px;
+                    width: 100px;
+                    padding: 0;
+                    margin-left: 80px;
+                    color: white;
+                    border-color: #a062e0;
+                    background-color: #a062e0; 
+                }
+            }
+            #cash{
+                display: flex;
+                margin-top: 15px;
+                .lable{
+                    width: 80px;
+                    height: 40px;
+                    line-height: 40px;
+                }
+                .pur_font{
+                    color: #a062e0;
+                    cursor: pointer;
+                }
+            }
+            .totalmoney{
+                padding-left: 80px;
+                padding-top: 5px;
+                font-size: 14px;
+                .pur_font{
+                    color: #a062e0;
+                    cursor: pointer;
+                }
+            }
+        }
+        .right{
+            width: 295px;
+            height: 100%;
+            .outside{
+                width: 293px;
+                height: 218px;
+                border-radius: 3px;
+                background-color: #f4f4f4;
+                .center{
+                    width: 285px;
+                    height: 210px;
+                    border-radius: 3px;
+                    background-color: white;
+                    margin: 3px auto 0;
+                    p{
+                        font-size: 14px;
+                        padding-left: 10px;
+                        padding-top: 10px;
+                        line-height: 20px;
+                        span{
+                            color: #f7a833;
+                        }
+                    }
+                    .rules{
+                        height: 17px;
+                        font-size: 14px;
+                        color: #7b5bc7;
+                        line-height: 17px;
+                        padding-top: 15px;
+                        padding-left: 10px;
+                        span{
+                            vertical-align: top;
+                            line-height: 17px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .el-button:focus, .el-button:hover{
+		color: #a062e0;
+    	border-color: #a062e0;
+    	background-color: #ecf5ff;
+	}
+}

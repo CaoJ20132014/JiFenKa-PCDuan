@@ -58,7 +58,7 @@
 </template>
 <script>
     import Query from "./components/queryBalance.vue";
-    import Public from '../../../../../assets/js/until.js';
+    import Public from '@/until/until';
     export default {
         props:[],
         components: {

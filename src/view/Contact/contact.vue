@@ -145,5 +145,5 @@
 	}
 </script>
 <style lang="less" scoped>
-    @import '../../assets/less/contact/contact.less';
+    @import '../../style/less/contact/contact.less';
 </style>

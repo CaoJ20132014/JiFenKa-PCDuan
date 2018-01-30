@@ -116,5 +116,5 @@
 </script>
 
 <style lang="less" scoped>
-    @import "../../../../../assets/less/Provide/CardProvide/card.less";
+    @import "../../../../../style/less/Provide/CardProvide/card.less";
 </style>

@@ -92,5 +92,5 @@
     }
 </script>
 <style lang="less" scoped>
-    @import '../../../../assets/less/orderQuery/detail/index.less';
+    @import '../../../../style/less/orderQuery/detail/index.less';
 </style>

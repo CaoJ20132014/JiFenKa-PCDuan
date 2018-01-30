@@ -1,15 +1,16 @@
 * {
     margin: 0;
     padding: 0;
+	user-select: none;
+}
+a{
+	color: #7b5bc7;
+	text-decoration: none;
 }
 /* 去掉input输入框类型为number时右边的上下箭头 */
 .el-input__inner::-webkit-outer-spin-button,            
 .el-input__inner::-webkit-inner-spin-button{                
 	-webkit-appearance: none !important;
-}
-/* 轮播图的高度 */
-.el-carousel__container {
-    height: 404px;
 }
 /* 改变弹窗的样式 */
 .firstAlert,
@@ -453,7 +454,6 @@ li{
 	width: 268px;
 	height: 34px;
 }
-
 /* 网站帮助 */
 .el-collapse-item__header{
     height: 72px !important;
@@ -463,4 +463,208 @@ li{
 }
 .el-collapse-item__content .transition_box{
     padding: 0 35px;
+}
+/* 手机充值文件上传 */
+.el-upload-list.el-upload-list--text{
+    width: 300px;
+    margin: 0 auto;
+}
+.el-upload-list__item-name{
+    margin: 0;
+}
+/* 表头的背景颜色 */
+.el-table .has-gutter th{
+    background-color: #f4f4f4;
+    font-size: 16px;
+}
+/* 控制表格的高度 */
+.el-table td{
+    padding: 6px 0;
+}
+.el-table__row{
+	cursor: pointer;
+}
+/* 分页 */
+.el-pagination.is-background .el-pagination button:hover{
+	color: #8a63e7;
+}
+.el-pagination.is-background .el-pager li.active{
+	background-color: #8a63e7;
+}
+.el-pagination.is-background .el-pager li:hover{
+	color: #8a63e7;
+}
+.el-pagination.is-background .el-pager li.active:hover{
+	color: white;
+}
+.el-input__icon.iconfont.icon-yanjing-copy,
+.el-input__icon.iconfont.icon-yanjing1{
+	color: #8a63e7;
+}
+.el-select .el-input.is-focus .el-input__inner,
+.el-input__inner:focus{
+	border-color: #8a63e7;
+}
+#onecard #top .el-select .el-input.el-input--suffix,
+#onecard #top .el-select .el-input__inner{
+		width: 120px !important;
+}
+/* 下拉菜单 */
+.el-select-dropdown__item.selected {
+    color: #8a63e7;
+}
+/* 供货充值信息确认弹框 */
+/* 单张上网卡 */
+.ConfirmOneCardInfoMessage.el-message-box{
+	width: 480px;
+}
+.ConfirmOneCardInfoMessage .el-message-box__content{
+	height: 165px;
+}
+.ConfirmOneCardInfoMessage .el-message-box__message p{
+	line-height: 20px;
+}
+.ConfirmOneCardInfoMessage .el-message-box__header{
+	background-color: #fafafa;
+	border-bottom: 1px solid #eeeeee;
+}
+.ConfirmOneCardInfoMessage .el-message-box__btns{
+	border-top: 1px solid #eeeeee;
+	padding-top: 10px; 
+}
+/* 多张上网卡 */
+.ConfirmManyCardInfoMessage.el-message-box{
+	width: 480px;
+}
+.ConfirmManyCardInfoMessage .el-message-box__content{
+	height: 125px;
+}
+.ConfirmManyCardInfoMessage .el-message-box__message p{
+	line-height: 20px;
+}
+.ConfirmManyCardInfoMessage .el-message-box__header{
+	background-color: #fafafa;
+	border-bottom: 1px solid #eeeeee;
+}
+.ConfirmManyCardInfoMessage .el-message-box__btns{
+	border-top: 1px solid #eeeeee;
+	padding-top: 10px; 
+}
+/* 批量导入 */
+.ConfirmImportCardInfoMessage.el-message-box{
+	width: 480px;
+}
+.ConfirmImportCardInfoMessage .el-message-box__content{
+	height: 85px;
+}
+.ConfirmImportCardInfoMessage .el-message-box__message p{
+	line-height: 20px;
+}
+.ProvideDetailMessage .el-message-box__message p span{
+	display: inline-block;
+}
+.ProvideDetailMessage .el-message-box__message p span:nth-child(1){
+	width: 80px;
+	text-align: right;
+}
+.ConfirmImportCardInfoMessage .el-message-box__header{
+	background-color: #fafafa;
+	border-bottom: 1px solid #eeeeee;
+}
+.ConfirmImportCardInfoMessage .el-message-box__btns{
+	border-top: 1px solid #eeeeee;
+	padding-top: 10px; 
+}
+/* 供卡详情 */
+.ProvideDetailMessage.el-message-box{
+	width: 480px;
+}
+.ProvideDetailMessage .el-message-box__content{
+	height: 215px;
+}
+.ProvideDetailMessage .el-message-box__message p{
+	line-height: 20px;
+}
+.ProvideDetailMessage .el-message-box__message p span{
+	display: inline-block;
+}
+.ProvideDetailMessage .el-message-box__message p span:nth-child(1){
+	width: 100px;
+	text-align: right;
+}
+.ProvideDetailMessage .el-message-box__header{
+	background-color: #fafafa;
+	border-bottom: 1px solid #eeeeee;
+}
+.ProvideDetailMessage .el-message-box__btns{
+	border-top: 1px solid #eeeeee;
+	padding-top: 10px; 
+}
+/* 提现详情 */
+.WithdrawDetailMessage .el-message-box{
+	width: 480px;
+}
+.WithdrawDetailMessage .el-message-box__content{
+	height: 155px;
+}
+.WithdrawDetailMessage .el-message-box__message p{
+	line-height: 20px;
+}
+.WithdrawDetailMessage .el-message-box__message p span{
+	display: inline-block;
+}
+.WithdrawDetailMessage .el-message-box__message p span:nth-child(1){
+	width: 100px;
+	text-align: right;
+}
+.WithdrawDetailMessage .el-message-box__header{
+	background-color: #fafafa;
+	border-bottom: 1px solid #eeeeee;
+}
+.WithdrawDetailMessage .el-message-box__btns{
+	border-top: 1px solid #eeeeee;
+	padding-top: 10px; 
+}
+/* 单选框 */
+.el-radio__input.is-checked .el-radio__inner{
+	border-color: #8a63e7;
+    background: #8a63e7;
+}
+.el-radio__input.is-checked+.el-radio__label{
+	color: #8a63e7;
+}
+/* 日期选择框 */
+.el-button--text{
+	color: #8a63e7;
+}
+.el-button--text:focus, .el-button--text:hover{
+	color: #8a63e7;
+}
+.el-date-table td.today span{
+	color: #8a63e7;
+}
+.el-button.is-plain:focus, .el-button.is-plain:hover{
+	border-color: #8a63e7;
+    color: #8a63e7;
+}
+/* 常见问题 */
+.el-collapse{
+	border-bottom: 0;
+	border-top: 0;
+}
+.el-collapse-item__header{
+	height: 85px;
+	line-height: 85px;
+	font-size: 16px;
+}
+.el-collapse-item__header img{
+	vertical-align: top;
+	margin-top: 32px;
+	margin-right: 10px;
+}
+.el-collapse-item__header .el-collapse-item__arrow.el-icon-arrow-right{
+	line-height: 85px;
+}
+.el-collapse-item__content .transition_box{
+	padding-left: 35px;
 }

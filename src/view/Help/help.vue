@@ -106,5 +106,5 @@
 	}
 </script>
 <style lang="less" scoped>
-	@import '../../assets/less/help/help.less';
+	@import '../../style/less/help/help.less';
 </style>

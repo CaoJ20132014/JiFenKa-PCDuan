@@ -108,5 +108,5 @@
     }
 </script>
 <style lang="less" scoped>
-    @import '../../../../assets/less/orderQuery/census/index.less';
+    @import '../../../../style/less/orderQuery/census/index.less';
 </style>

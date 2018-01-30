@@ -33,7 +33,7 @@
 <script>
     import Notice from '../components/notice.vue';
     import rechargeTble from '../components/table.vue';
-    import Public from '../../../../../assets/js/until.js';
+    import Public from '@/until/until';
     export default {
         components: {
             Notice,

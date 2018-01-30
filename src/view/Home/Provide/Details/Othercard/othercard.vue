@@ -29,135 +29,87 @@
                 <el-button>查询</el-button>
             </div>
         </div>
-        <div class="table border">
-            <div class="table_title">
-                <div>卡号</div>
-                <div>供货时间</div>
-                <div>完成时间</div>
-                <div>供卡名称</div>
-                <div>商品面额(元)</div>
-                <div>发行地区</div>
-                <div>供卡折扣</div>
-                <div>供货状态</div>
-                <div>实际销卡面额</div>
-                <div>供货详情</div>
-            </div>
-            <ul class="item_ul">
-                <li v-show="show" v-for="(item,index) in  items" :key="item.key" :class="{'bg' : index%2 != 0}">
-                    <div>{{item.value1}}</div>
-                    <div>{{item.value2}}</div>
-                    <div>{{item.value3}}</div>
-                    <div>{{item.value4}}</div>
-                    <div>{{item.value5.toFixed(2)}}</div>
-                    <div>{{item.value6}}</div>
-                    <div>{{item.value7}}</div>
-                    <div>{{item.value8}}</div>
-                    <div>{{item.value9}}</div>
-                    <div>{{item.value10}}</div>
-                </li>
-                <li v-show="!show" class="noData">
-                    <div id="noData_div">
-                        <img src="../../../../../assets/image/Provide/nodata.png" alt="">
-                        <span>没有找到记录，请调整搜索条件</span>
-                    </div>
-                </li>
-            </ul>
+        <div class="table">
+            <el-table :data="tableData" border stripe style="width: 100%">
+                <el-table-column prop="card_code" align="center" label="卡号"></el-table-column>
+                <el-table-column prop="up_time" align="center" width="95" label="供货时间"></el-table-column>
+                <el-table-column prop="use_time" align="center" width="95" label="完成时间"></el-table-column>
+                <el-table-column prop="card_type" align="center" width="80" label="运营商"></el-table-column>
+                <el-table-column prop="worth" align="center" width="70" label="面额(元)"></el-table-column>
+                <el-table-column prop="area" align="center" width="80" label="地区"></el-table-column>
+                <el-table-column prop="discount" align="center" width="60" label="折扣"></el-table-column>
+                <el-table-column prop="state_ps" align="center" width="80" label="状态"></el-table-column>
+                <el-table-column prop="actual" align="center" width="70" label="实际销卡面额"></el-table-column>
+                <el-table-column align="center" width="76" label="供货详情">
+                    <template slot-scope="scope">
+                        <el-button type="danger" size="mini" @click="lookDetail(scope.row)">详情</el-button>
+                    </template> 
+                </el-table-column>
+            </el-table>
         </div>
         <div v-show="show" class="pagination">
-            <el-pagination background @current-change="handleCurrentChange" :current-page.sync="currentPage" layout="prev, pager, next, jumper, total" :page-size="5" :total="total"></el-pagination>
+            <Pagination @pageChange="pageNum" :paginationData='paginationData'></Pagination>
         </div>
     </div>
 </template>
 <script>
+    import Pagination from '@/components/Pagination/Pagination';
     export default {
+        components:{
+            Pagination
+        },
 		data() {
             return {
-                input1:'',                   // 单号
+                Disabled: false,
+                paginationData: {
+                    pageSize: 10,
+                    totalNum: 0,
+                    activePage: 1
+                },
+                nowPage: 0,
+                input1:'',                   // 卡号
+                input2:'',                   // 批次号
                 value1:'',                   // 供货时间，起始时间
-                value2:'',                   // 供货时间，终止时间
-                show: true,                  // 是否显示没有表格数据的状态
-                total: 100,                  // 表格的总条数
+                value2:'',                   // 供货时间，结束时间
                 optionValue1:'',             // 运营商
-                optionValue2:'',             // 供货状态
+                optionValue2:'',             // 面值
+                optionValue3:'全国',         // 地区
+                optionValue4:'',             // 状态
+                show: true,
                 options1: [
-                    {value: '1',label: '全国'}, 
-                    {value: '2',label: '北京'}, 
-                    {value: '3',label: '上海'}, 
-                    {value: '4',label: '浙江'}, 
-                    {value: '5',label: '广州'}
+                    {value: '3',label: '中国电信'}, 
+                    {value: '1',label: '中国移动'}, 
+                    {value: '2',label: '中国联通'}, 
+                    {value: '4',label: '中国石化'}
                 ],
-                options2: [
-                    {value: '1',label: '50'}, 
-                    {value: '2',label: '200'}, 
-                    {value: '3',label: '500'}, 
-                    {value: '4',label: '1000'}, 
-                    {value: '5',label: '5000'}
+                options2: [],           // 面值
+                options3: [
+                    {value: '1',label: '全国'}
                 ],
-                items:[{
-                    key:1,
-                    value1:'1000000000000',
-                    value2:'200',
-                    value3:'300',
-                    value4:'400',
-                    value5:500.20,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                    value10:'1000',
-                }, {
-                    key:2,
-                    value1:'1000000000000',
-                    value2:'200',
-                    value3:'300',
-                    value4:'400',
-                    value5:500.11,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                    value10:'1000',
-                }, {
-                    key:3,
-                    value1:'1000000000000',
-                    value2:'200',
-                    value3:'300',
-                    value4:'400',
-                    value5:500.16,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                    value10:'1000',
-                }, {
-                    key:4,
-                    value1:'1000000000000',
-                    value2:'200',
-                    value3:'300',
-                    value4:'400',
-                    value5:500.18,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                    value10:'1000',
-                }, {
-                    key:5,
-                    value1:'1000000000000',
-                    value2:'200',
-                    value3:'300',
-                    value4:'400',
-                    value5:500.19,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                    value10:'1000',
-                }],
-                currentPage: 1,
+                options4: [             // 状态   1-未使用 2-正在使用 3-销卡成功 4-销卡失败 5-冻结
+                    {value: '1',label: '销卡中'}, 
+                    {value: '2',label: '正在使用'}, 
+                    {value: '3',label: '销卡成功'}, 
+                    {value: '4',label: '销卡失败'}, 
+                    {value: '5',label: '冻结'}
+                ],
+                tableData: []
+            }
+        },
+        mounted () {
+            if (this.tableData.length === 0) {
+                this.show = false;
+            }
+        },
+        watch: {
+            nowPage(){            // 监听当前页的变化，如果有变化开始请求当前页的数据
+                console.log(this.nowPage);
             }
         },
         methods:{
+            pageNum(val){
+                this.nowPage = val;
+            },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
             },
@@ -171,124 +123,6 @@
         }
     }
 </script>
-<style scoped>
-    .reachge_box{
-        height: 422px;
-    }
-    .reachge_box .public_box{
-        display: flex;
-        font-size: 0;
-        justify-content: space-between;
-    }
-    .public_box .public{
-        display: flex;
-        padding-top: 20px;
-    }
-    .public .lable{
-        width: 86px;
-        line-height: 32px;
-        font-size: 14px;
-        color: #494949;
-    }
-    .public:nth-child(5) .lable{
-        width: 45px;
-    }
-    .public2 .div{
-        width: 22px;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 32px;
-        text-align: center;
-    }
-    .pici .lable{
-        width: 86px;
-    }
-    .el-button.el-button--default{
-        width: 80px;
-        height: 32px;
-        padding: 0;
-    }
-    .el-button.el-button--default:nth-child(1){
-        background-color: #8a6ad4;
-        color: white;
-        border-color: #8a6ad4;
-        margin-left: 44px;
-    }
-    .table{
-        width: 906px;
-        height: 240px;
-        margin-top: 20px;
-    }
-    .table .table_title{
-        width: 100%;
-        height: 40px;
-        display: flex;
-        background-color: #fafafa;
-    }
-    .table .table_title div{
-        width: 10%;
-        line-height: 40px;
-        text-align: center;
-        font-size: 14px;
-        border-right: 1px solid #e9e9e9;
-    }
-    .table .table_title div:nth-child(2),
-    .table .table_title div:nth-child(3),
-    .table .table_title div:nth-child(4),
-    .table .table_title div:nth-child(5){
-        width: 9%;
-    }
-    .table .table_title div:nth-child(1){
-        width: 14%;
-    }
-    .table .table_title div:last-child{
-        border-right: 0;
-    }
-    .item_ul{
-        width: 100%;
-    }
-    .item_ul li{
-        list-style: none;
-        display: flex;
-        width: 100%;
-    }
-    .item_ul li div{
-        width: 10%;
-        line-height: 40px;
-        text-align: center;
-        font-size: 14px;
-        border-right: 1px solid #e9e9e9;
-    }
-    .item_ul li div:nth-child(2),
-    .item_ul li div:nth-child(3),
-    .item_ul li div:nth-child(4),
-    .item_ul li div:nth-child(5){
-        width: 9%;
-    }
-    .item_ul li div:nth-child(1){
-        width: 14%;
-    }
-    .item_ul li div:last-child{
-        border-right: 0;
-    }
-    .bg{
-        background-color: #fafafa;
-    }
-    .pagination{
-        padding-top: 11px;
-        text-align: right;
-    }
-    #noData_div{
-        width: 100%;
-        padding-top: 40px; 
-    }
-    #noData_div span{
-        vertical-align: top;
-        line-height: 81px;
-        padding-left: 10px;
-    }
-    .reachge_box .otherCard{
-    	display: flex;
-    	justify-content: flex-start;
-    }
+<style lang="less" scoped>
+    @import '../../../../../style/less/Provide/Detail/otherCard.less';
 </style>

@@ -22,7 +22,7 @@
     }
 </script>
 <style lang="less" scoped>
-    @import '../../../../assets/less/public/var.less';
+    @import '../../../../style/less/public/var.less';
     .query{
         width: @baseWidth*11.18;
         height: @baseHeight*8.88;

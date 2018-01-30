@@ -20,253 +20,178 @@
                 </el-select>
             </div>
             <div class="public">
-                <el-button>查询</el-button>
-                <el-button @click="daochu">导出</el-button>
+                <el-button @click="startQudey" class="query" @keydown.enter.tab.stop.self="startQuery">查询</el-button>
+                <a :href="download" download="mould">
+                    <el-button class="export">导出</el-button>
+                </a>
             </div>
         </div>
-        <div class="table border">
-            <div class="table_title">
-                <div>批次号/SUP订单号</div>
-                <div>卡号</div>
-                <div>交易时间</div>
-                <div>交易金额金额(元)</div>
-                <div>类型</div>
-                <div>供货余额(元)</div>
-                <div>备注</div>
-            </div>
-            <ul class="item_ul">
-                <li v-show="show" v-for="(item,index) in  items" :key="item.key" :class="{'bg' : index%2 != 0}">
-                    <div>{{item.value1}}</div>
-                    <div>{{item.value2}}</div>
-                    <div>{{item.value3}}</div>
-                    <div>{{item.value4.toFixed(2)}}</div>
-                    <div>{{item.value5}}</div>
-                    <div>{{item.value6.toFixed(2)}}</div>
-                    <div>{{item.value7}}</div>
-                </li>
-                <li v-show="!show" class="noData">
-                    <div id="noData_div">
-                        <img src="../../../../../assets/image/Provide/nodata.png" alt="">
-                        <span>没有找到记录，请调整搜索条件</span>
-                    </div>
-                </li>
-            </ul>
+        <div class="table">
+            <el-table :data="items" border stripe style="width: 100%">
+                <el-table-column prop="serial_number" align="center" width="220" label="批次号"></el-table-column>
+                <el-table-column prop="pay_account" align="center" label="卡号"></el-table-column>
+                <el-table-column prop="time" align="center" width="160" label="交易时间"></el-table-column>
+                <el-table-column prop="withdraw" align="center" width="55" label="金额"></el-table-column>
+                <el-table-column prop="business_type" align="center" width="80" label="类型"></el-table-column>
+                <el-table-column prop="reckon" align="center" width="55" label="余额"></el-table-column>
+                <el-table-column prop="ps" align="center" width="80" label="备注"></el-table-column>
+                <el-table-column align="center" width="65" label="进度">
+                    <template slot-scope="scope">
+                        <el-tag type="danger" size="small" @click.native="lookDetail(scope.row)">进度</el-tag>
+                    </template>
+                </el-table-column>
+            </el-table>
         </div>
         <div v-show="show" class="pagination">
-            <el-pagination background
-                @current-change="handleCurrentChange"
-                :current-page.sync="currentPage"
-                layout="prev, pager, next, jumper, total"
-                :page-size="5"
-                :total="total">
-            </el-pagination>
+            <Pagination @pageChange="pageNum" :paginationData='paginationData'></Pagination>
         </div>
     </div>
 </template>
 <script>
+    import Pagination from '@/components/Pagination/Pagination';
+    import Public from '@/until/until';
+    import { capitalDetail, WithdrawDetail, exportExcel } from '@/until/getData';
+    let moment = require('moment');
     export default {
+        components:{
+            Pagination
+        },
 		data() {
             return {
-                input1:'',
-                show: true,
+                paginationData: {
+                    pageSize: 5,
+                    totalNum: 0,
+                    activePage: 1
+                },
+                download: 'https://a.91jfk.com/ProvideHome/Provide/bank_card',
+                input1: '',
+                show: false,
                 total: 100,                  // 表格的总条数
-                optionValue1:'',
-                value1:'',
-                value2:'',
+                optionValue1: '',
+                value1: '',
+                value2: '',
                 options1: [
-                    {value: '1',label: '全国'}, 
-                    {value: '2',label: '北京'}, 
-                    {value: '3',label: '上海'}, 
-                    {value: '4',label: '浙江'}, 
-                    {value: '5',label: '广州'}
+                    {value: '1',label: '收入'}, 
+                    {value: '2',label: '支出'}, 
+                    {value: '3',label: '转结'}
                 ],
-                items:[{
-                    key:1,
-                    value1:'1000000000000',
-                    value2:200,
-                    value3:'300',
-                    value4:400,
-                    value5:500.20,
-                    value6:600,
-                    value7:'700',
-                }, {
-                    key:2,
-                    value1:'1000000000000',
-                    value2:200,
-                    value3:'300',
-                    value4:400,
-                    value5:500.11,
-                    value6:600,
-                    value7:'700',
-                }, {
-                    key:3,
-                    value1:'1000000000000',
-                    value2:200,
-                    value3:'300',
-                    value4:400,
-                    value5:500.16,
-                    value6:600,
-                    value7:'700',
-                }, {
-                    key:4,
-                    value1:'1000000000000',
-                    value2: 200,
-                    value3:'300',
-                    value4:400,
-                    value5:500.18,
-                    value6:600,
-                    value7:'700',
-                }, {
-                    key:5,
-                    value1:'1000000000000',
-                    value2:200,
-                    value3:'300',
-                    value4:400,
-                    value5:500.19,
-                    value6:600,
-                    value7:'700',
-                }],
+                items:[],
                 currentPage: 1,
             }
         },
-        methods:{
-            handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
+        watch: {
+            value1(){
+                this.download = 'https://a.91jfk.com/ProvideHome/Provide/bank_card?starttime='+moment(this.value1).format('YYYY-MM-DD HH:MM:SS')+'&overtime='+moment(this.value2).format('YYYY-MM-DD HH:MM:SS');
             },
-            daochu(){
-                this.$message({
-                    message: '导出成功',
-                    type: 'success',
-                    center: true
+            value2(){
+                this.download = 'https://a.91jfk.com/ProvideHome/Provide/bank_card?starttime='+moment(this.value1).format('YYYY-MM-DD HH:MM:SS')+'&overtime='+moment(this.value2).format('YYYY-MM-DD HH:MM:SS');
+            }
+        },
+        methods:{
+            startQudey(){
+                this.paginationData.activePage = 1;
+                let page = this.paginationData.activePage;
+                this.getData(page);
+            },
+            lookDetail(row){
+                const h = this.$createElement;
+                let data = {
+                    serial_number: row.serial_number
+                }
+                WithdrawDetail(data).then(res => {
+                    // console.log(res);
+                    if (res.code == 1) {
+                        this.$msgbox({
+                            title: '提现详情',
+                            message: h('div', null, [
+                                h('p', {style: 'line-height: 20px'}, [
+                                    h('span',null,'卡号：'),
+                                    h('span',{style: 'color: red'},res.msg.account)
+                                ]),
+                                h('p', {style: 'line-height: 20px'}, [
+                                    h('span',null,'订单号：'),
+                                    h('span',{style: 'color: red'},res.msg.serial_number)
+                                ]),
+                                h('p', {style: 'line-height: 20px'}, [
+                                    h('span',null,'持卡人：'),
+                                    h('span',{style: 'color: red'},res.msg.name)
+                                ]),
+                                h('p', {style: 'line-height: 20px'}, [
+                                    h('span',null,'银行卡：'),
+                                    h('span',{style: 'color: red'},res.msg.card_type)
+                                ]),
+                                h('p', {style: 'line-height: 20px'}, [
+                                    h('span',null,'提现金额：'),
+                                    h('span',{style: 'color: red'},(eval(res.msg.cash_price)/100).toFixed(2)+'元')
+                                ]),
+                                h('p', {style: 'line-height: 20px'}, [
+                                    h('span',null,'提现时间：'),
+                                    h('span',{style: 'color: red'},res.msg.create_time)
+                                ]),
+                                h('p', {style: 'line-height: 20px'}, [
+                                    h('span',null,'提现类型：'),
+                                    h('span',{style: 'color: red'},'供卡余额提现')
+                                ]),
+                                h('p', {style: 'line-height: 20px'}, [
+                                    h('span',null,'提现状态：'),
+                                    h('span',{style: 'color: red'},res.msg.progress)
+                                ])
+                            ]),
+                            showCancelButton: false,
+                            confirmButtonText: '确定',
+                            customClass: 'WithdrawDetailMessage'
+                        }).then(action => {
+                            
+                        }).catch(action => {
+                            
+                        });
+                    } else {
+                        Public.topAlert('warning', res.msg);
+                    }
+                }).catch(err => {
+                    // console.log(err);
+                });
+            },
+            pageNum(val){
+                this.paginationData.activePage = val;
+                let page = val;
+                this.getData(page);
+            },
+            getData(page){
+                let data = {};
+                if (this.optionValue1 != '') {
+                    data['state'] = this.optionValue1;
+                }
+                if (this.input1 != '') {
+                    data['business_type'] = this.input1;
+                }
+                if (this.value1 != '') {
+                    data['starttime'] = moment(this.value1).format('YYYY-MM-DD HH:MM:SS');
+                }
+                if (this.value2 != '') {
+                    data['overtime'] = moment(this.value2).format('YYYY-MM-DD HH:MM:SS');
+                }
+                capitalDetail(page, data).then(res => {
+                    // console.log(res);
+                    if (res.code == '1') {
+                        this.show = true;
+                        res.msg.forEach(item => {
+                            item['reckon'] = (eval(item.balance)/100).toFixed(2);
+                            item['withdraw'] = (eval(item.price)/100).toFixed(2);
+                        });
+                        this.items = res.msg;
+                        this.paginationData.totalNum = eval(res.total);
+                    } else {
+                        Public.topAlert('warning', res.msg);
+                        this.items = [];
+                    }
+                }).catch(err => {
+                    // console.log(err);
                 });
             }
         }
     }
 </script>
-<style scoped>
-    .table_box{
-        height: 422px;
-    }
-    .table_box .public_box{
-        display: flex;
-        font-size: 0;
-    }
-    .public_box .public{
-        display: flex;
-        padding-top: 20px;
-    }
-    .public .lable{
-        width: 70px;
-        line-height: 32px;
-        font-size: 14px;
-        color: #494949;
-    }
-    .sup{
-    	margin-left: 20px;
-    }
-    .sup .lable{
-    	width: 132px;
-    }
-    .public2 .div{
-        width: 22px;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 32px;
-        text-align: center;
-    }
-    .pici .lable{
-        width: 86px;
-    }
-    .el-button.el-button--default{
-        width: 80px;
-        height: 32px;
-        padding: 0;
-    }
-    .el-button.el-button--default:nth-child(1){
-        background-color: #8a6ad4;
-        color: white;
-        border-color: #8a6ad4;
-        margin-left: 10px;
-    }
-    .el-button.el-button--default:nth-child(2){
-        border-color: #8a6ad4;
-        color: #8a6ad4;
-    }
-    .table{
-        width: 906px;
-        height: 240px;
-        margin-top: 20px;
-    }
-    .table .table_title{
-        width: 100%;
-        height: 40px;
-        display: flex;
-        background-color: #fafafa;
-    }
-    .table .table_title div{
-        width: 14%;
-        line-height: 40px;
-        text-align: center;
-        font-size: 14px;
-        border-right: 1px solid #e9e9e9;
-    }
-    .table .table_title div:nth-child(2){
-    	width: 18%;
-    }
-    .table .table_title div:nth-child(3),
-    .table .table_title div:nth-child(6),
-    .table .table_title div:nth-child(5){
-        width: 12%;
-    }
-    .table .table_title div:nth-child(1){
-        width: 18%;
-    }
-    .table .table_title div:last-child{
-        border-right: 0;
-    }
-    .item_ul{
-        width: 100%;
-    }
-    .item_ul li{
-        list-style: none;
-        display: flex;
-        width: 100%;
-    }
-    .item_ul li div{
-        width: 14%;
-        line-height: 40px;
-        text-align: center;
-        font-size: 14px;
-        border-right: 1px solid #e9e9e9;
-    }
-    .item_ul li div:nth-child(2){
-    	width: 18%;
-    }
-    .item_ul li div:nth-child(3),
-    .item_ul li div:nth-child(6),
-    .item_ul li div:nth-child(5){
-        width: 12%;
-    }
-    .item_ul li div:nth-child(1){
-        width: 18%;
-    }
-    .item_ul li div:last-child{
-        border-right: 0;
-    }
-    .bg{
-        background-color: #fafafa;
-    }
-    .pagination{
-        padding-top: 11px;
-        text-align: right;
-    }
-    #noData_div{
-        width: 100%;
-        padding-top: 40px; 
-    }
-    #noData_div span{
-        vertical-align: top;
-        line-height: 81px;
-        padding-left: 10px;
-    }
+<style lang='less' scoped>
+    @import '../../../../../style/less/Provide/Census/capital.less';
 </style>

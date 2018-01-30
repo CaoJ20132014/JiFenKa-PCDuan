@@ -123,5 +123,5 @@
     }
 </script>
 <style lang="less" scoped>
-    @import '../../../../../assets/less/Provide/CardProvide/manyfuel.less';
+    @import '../../../../../style/less/Provide/CardProvide/manyfuel.less';
 </style>

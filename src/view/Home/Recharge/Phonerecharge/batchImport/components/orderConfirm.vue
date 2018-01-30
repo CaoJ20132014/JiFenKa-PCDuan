@@ -8,8 +8,8 @@
                 </el-input>
             </div>
             <div class="buttons">
-                <el-button class="ImportConfirm">确认</el-button>
-                <el-button class="ImportCancle">取消</el-button>
+                <el-button class="ImportConfirm" @click="isSure">确认</el-button>
+                <el-button class="ImportCancle" @click="quxiao">取消</el-button>
             </div>
             <div class="rechargeInfo">
                 <p>充值笔数：<span>{{list.length}}</span>笔，总充值金额：<span>{{totalCash.toFixed(2)}}</span>元 </p>
@@ -46,6 +46,10 @@
         },
         data () {
             return {
+                step: {                         // 想父组件传递的数据
+                    isShow: 3,
+                    isActive: 3
+                },
                 input: '',
                 InputType: 'password',
                 showEye: true,                  // 小眼睛，点击显示密码
@@ -79,12 +83,21 @@
             }
         },
         methods:{
+            isSure(){
+                console.log('确定')
+                this.$emit("ConfirmChild",this.step);
+            },
             showPwd(){
                 if (this.InputType == "password") {
                     this.InputType = "text";
                 } else {
                     this.InputType = "password"
                 }
+            },
+            quxiao(){
+                this.$router.push({
+                    name: 'batchImport'
+                });
             }
         }
     }

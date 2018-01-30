@@ -71,90 +71,97 @@
 	</div>
 </template>
 <script>
-	import a from "../../../../assets/image/Provide/1.jpg";
-	import b from "../../../../assets/image/Provide/2.jpg";
-	import c from "../../../../assets/image/Provide/3.jpg";
-	import d from "../../../../assets/image/Provide/4.jpg";
-	import e from "../../../../assets/image/Provide/5.jpg";
-	import Scroll from '../components/scroll.vue';
+	import Scroll from '@/components/scroll.vue';
+	import Public from '@/until/until';
+	import { Banner, Notice, CardList } from '@/until/getData';
+	let moment = require('moment');
 	export default {
 		components:{
 			Scroll
 		},
 		data() {
 			return {
-				idLogin: true,
+				idLogin: false,
 				money: "请登录",
 				account: "请登录",
 				activeIndex: 0,				// 滚动的位置
-				tableData: [{
-          			time: '2016-05-02',		// 时间 
-          			data1: '100',			// 供货数量
-          			data2: '200',			// 供货金额
-          			data3: '300',			// 结算数量
-          			data4: '400',			// 结算金额
-          			data5: '500',			// 处理中数量
-          			data6: '600',			// 处理中金额
-          			data7: '700',			// 停售数量
-          			data8: '800'			// 停售金额
-        		}, {
-          			time: '2016-05-02',
-          			data1: '100',
-          			data2: '200',
-          			data3: '300',
-          			data4: '400',
-          			data5: '500',
-          			data6: '600',
-          			data7: '700',
-          			data8: '800'
-        		}, {
-          			time: '2016-05-02',
-          			data1: '100',
-          			data2: '200',
-          			data3: '300',
-          			data4: '400',
-          			data5: '500',
-          			data6: '600',
-          			data7: '700',
-          			data8: '800'
-        		}, {
-          			time: '2016-05-02',
-          			data1: '100',
-          			data2: '200',
-          			data3: '300',
-          			data4: '400',
-          			data5: '500',
-          			data6: '600',
-          			data7: '700',
-          			data8: '800'
-        		}, {
-          			time: '2016-05-02',
-          			data1: '100',
-          			data2: '200',
-          			data3: '300',
-          			data4: '400',
-          			data5: '500',
-          			data6: '600',
-          			data7: '700',
-          			data8: '800'
-				}],
-				bannerList:[{
-					id:1,
-					imgsrc: a
-				},{
-					id:2,
-					imgsrc: b
-				},{
-					id:3,
-					imgsrc: c
-				},{
-					id:4,
-					imgsrc: d
-				},{
-					id:5,
-					imgsrc: e
-				}]
+				tableData: [],
+				bannerList:[]
 			}
+		},
+		mounted() {
+			let t = setInterval(_ => {
+				if(this.newsList.length > 3) {
+					if(this.activeIndex < this.newsList.length - 3) {
+						this.activeIndex += 1;
+					} else {
+						this.activeIndex = 0;
+					}
+				} else {
+					clearInterval(t)
+				}
+			}, 3000);
+			if (typeof(Public.JS_Cookie('get', 'userInfo'))!='undefined'||typeof(this.$store.getters.UserInfo)!='undefined') {
+				this.isShow = true;
+				let account = Public.JS_Cookie('get', 'userInfo');
+				this.account = account.tel;
+				CardList().then(res => {
+					if (res.code == '1') {
+						this.money = eval(res.user.balance);
+					}
+				}).catch(err => {
+					// console.log(err);
+				});
+				Banner({state: '10'}).then((res) => {
+					if (res.code == '1') {
+						// res.msg.reverse();
+						res.msg.forEach((item,index) => {
+							let Dday = 'D' + (index);
+							let obj = {
+								time: moment(Public.setTimes(Dday)).format('YYYY-MM-DD'),
+								data1: item.total.num,
+								data2: item.total.worth,
+								data3: item.ok.num,
+								data4: item.ok.worth,
+								data5: item.ing.num,
+								data6: item.ing.worth,
+								data7: item.no.num,
+								data8: item.no.worth
+							}
+							this.tableData.push(obj);
+						});
+					}
+				}).catch((err) => {
+					// console.log(err);
+				});
+			} else {
+				this.isShow = false;
+				this.money = '请登录';
+				this.account = '请登录';
+				Banner({state: '10'}).then((res) => {
+					if (res.code == '1') {
+						res.msg.forEach(item => {
+							let obj = {};
+							obj.id = item.id;
+							if (process.env.NODE_ENV == 'development') {
+								obj.imgsrc = '/api' + item.pic;
+							} else {
+								obj.imgsrc = item.pic;
+							}
+							this.bannerList.push(obj);
+						});
+					}
+				}).catch((err) => {
+					// console.log(err);
+				});
+			};
+			Notice('1').then(res => {
+				if (res.code == '1') {
+					this.newsList = res.list;
+				}
+			}).catch(err => {
+				// console.log(err);
+			})
 		},
 		methods: {
 			tixian:function(){
@@ -171,5 +178,5 @@
 	}
 </script>
 <style lang="less" scoped>
-	@import "../../../../assets/less/Provide/home/isLogin.less";
+	@import "../../../../style/less/Provide/home/isLogin.less";
 </style>

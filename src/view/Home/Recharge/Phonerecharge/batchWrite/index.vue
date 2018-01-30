@@ -35,7 +35,7 @@
 <script>
     import Notice from '../batchWrite/components/notice.vue';
     import rechargeTble from '../batchWrite/components/rechargeTable.vue';
-    import Public from '../../../../../assets/js/until.js';
+    import Public from '@/until/until';
     export default {
         components: {
             Notice,

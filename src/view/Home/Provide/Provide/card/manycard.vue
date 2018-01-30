@@ -131,7 +131,7 @@
                 this.money = this.selected2;
                 if (this.liNum <= 1000) {
                     if(x + 1 == this.liNum){
-                    this.liNum++;
+                        this.liNum++;
                         this.arr.push([
                             '',''
                         ])
@@ -149,5 +149,5 @@
 </script>
 
 <style lang="less" scoped>
-    @import '../../../../../assets/less/Provide/CardProvide/manyCard.less';
+    @import '../../../../../style/less/Provide/CardProvide/manyCard.less';
 </style>

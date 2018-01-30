@@ -51,54 +51,54 @@
 	}
 </script>
 
-<style scoped>
+<style lang="less" scoped>
     .choose_box{
         width: 908px;
         height: 627px;
-    }
-    .card_box{
-        width: 200px;
-        padding-top: 29px;
-    }
-    .img_box{
-        width: 198px;
-        height: 88px;
-        border-radius: 3px;
-    }
-    .img_box img.card{
-        width: 40px;
-        height: 30px;
-        vertical-align: top;
-        margin-left: 25px;
-        margin-top: 28px;
-    }
-    .img_box img.fule{
-        width: 40px;
-        height: 40px;
-        vertical-align: top;
-        margin-left: 25px;
-        margin-top: 24px;
-    }
-    .img_box img.phone{
-        width: 25px;
-        height: 48px;
-        vertical-align: top;
-        margin-left: 33px;
-        margin-top: 20px;
-    }
-    .img_box span{
-        line-height: 88px;
-        color: #8862e4;
-        padding-left: 15px;
-        font-size: 16px;
-    }
-    .card_box p{
-        color: #494949;
-        font-size: 18px;
-        margin-bottom: 18px;
-    }
-    .card_box>div{
-        margin-bottom: 30px;
-        cursor: pointer;
+        .card_box{
+            width: 200px;
+            padding-top: 29px;
+            .img_box{
+                width: 198px;
+                height: 88px;
+                border-radius: 3px;
+                img.card{
+                    width: 40px;
+                    height: 30px;
+                    vertical-align: top;
+                    margin-left: 25px;
+                    margin-top: 28px;
+                }
+                img.fule{
+                    width: 40px;
+                    height: 40px;
+                    vertical-align: top;
+                    margin-left: 25px;
+                    margin-top: 24px;
+                }
+                img.phone{
+                    width: 25px;
+                    height: 48px;
+                    vertical-align: top;
+                    margin-left: 33px;
+                    margin-top: 20px;
+                }
+                span{
+                    line-height: 88px;
+                    color: #8862e4;
+                    padding-left: 15px;
+                    font-size: 16px;
+                }
+            }
+        }
+        p{
+            color: #494949;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+        div{
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
     }
 </style>

@@ -126,5 +126,5 @@
     }
 </script>
 <style lang="less" scoped>
-    @import '../../../../assets/less/productCenter/index.less';
+    @import '../../../../style/less/productCenter/index.less';
 </style>

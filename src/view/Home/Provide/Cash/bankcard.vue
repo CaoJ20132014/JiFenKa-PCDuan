@@ -62,52 +62,52 @@
 		};
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 	.bankcard_box {
 	  	width: 988px;
-	  	height: 538px;
-	}
-	.bankcard_box .box_top {
-	  	height: 37px;
-	  	border-bottom: 1px solid #e9e9e9;
-	  	padding-top: 12px;
-	}
-	.bankcard_box .box_top img {
-	  	margin-left: 20px;
-	  	margin-top: 2px;
-	}
-	.bankcard_box .box_top span {
-	  	text-align: center;
-	  	line-height: 25px;
-	  	font-size: 16px;
-	  	color: #898989;
-	  	vertical-align: top;
-	}
-	.bankcard_box .box_bot {
-	  	width: 908px;
-	  	height: 490px;
-	  	padding: 0 40px;
-	}
-	.box_bot .common {
-	  	display: flex;
-	  	margin-top: 22px;
-	}
-	.box_bot .common:first-child {
-	  	margin-top: 45px;
-	}
-	.common .lable {
-	  	width: 90px;
-	  	height: 40px;
-	  	line-height: 40px;
-	  	color: #494949;
-	}
-	.common .el-button.el-button--default {
-	  	width: 280px;
-	  	height: 40px;
-	  	margin-left: 90px;
-	  	background-color: #8a63e7;
-	  	border-color: #8a63e7;
-	  	color: white;
-	  	margin-top: 10px;
+		height: 538px;
+		.box_top {
+			height: 37px;
+			border-bottom: 1px solid #e9e9e9;
+			padding-top: 12px;
+			img {
+				margin-left: 20px;
+				margin-top: 2px;
+			}	
+			span {
+				text-align: center;
+				line-height: 25px;
+				font-size: 16px;
+				color: #898989;
+				vertical-align: top;
+			}
+		}
+		.box_bot {
+			width: 908px;
+			height: 490px;
+			padding: 0 40px;
+			.common {
+				display: flex;
+				margin-top: 22px;
+				.lable {
+					width: 90px;
+					height: 40px;
+					line-height: 40px;
+					color: #494949;
+				}
+				.el-button.el-button--default {
+					width: 280px;
+					height: 40px;
+					margin-left: 90px;
+					background-color: #8a63e7;
+					border-color: #8a63e7;
+					color: white;
+					margin-top: 10px;
+				}
+				&:first-child {
+				margin-top: 45px;
+			}
+			}
+		}
 	}
 </style>

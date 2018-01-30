@@ -97,12 +97,12 @@
 </template>
 
 <script>
-	import Public from '../../../assets/js/until.js';
+	import Public from '../../../until/until.js';
 	export default {
 		name: 'index',
 		data () {
 			return {
-				isLogin: true,
+				isLogin: false,
 				show: false,
 				isProvide: true,
 				balance: 888,			// 余额
@@ -168,5 +168,5 @@
 </script>
 
 <style lang="less" scoped>
-	@import "../../../assets/less/HomeIndex/index.less";
+	@import "../../../style/less/HomeIndex/index.less";
 </style>

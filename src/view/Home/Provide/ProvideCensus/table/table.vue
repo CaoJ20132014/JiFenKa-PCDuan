@@ -18,141 +18,129 @@
             <div class="public">
                 <div class="lable">商品面额：</div>
                 <el-select v-model="optionValue2" :class="{'grey':optionValue2 == ''}" placeholder="请选择">
-                    <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                    <el-option v-for="(item,index) in options2" :key="index" :label="item.worth" :value="item.worth"></el-option>
                 </el-select>
             </div>
             <div class="public">
-                <el-button>查询</el-button>
+                <el-button @click="StartQuery" @keydown.enter.tab.stop.self="StartQuery">查询</el-button>
             </div>
         </div>
-        <div class="table border">
-            <div class="table_title">
-                <div>供货名称</div>
-                <div>面额</div>
-                <div>供货数量(张)</div>
-                <div>供货金额(元)</div>
-                <div>成功数量</div>
-                <div>成功金额</div>
-                <div>处理中数量</div>
-                <div>失败数量</div>
-                <div>失败金额</div>
-            </div>
-            <ul class="item_ul">
-                <li v-show="show" v-for="(item,index) in  items" :key="item.key" :class="{'bg' : index%2 != 0}">
-                    <div>{{item.value1}}</div>
-                    <div>{{item.value2.toFixed(2)}}</div>
-                    <div>{{item.value3}}</div>
-                    <div>{{item.value4}}</div>
-                    <div>{{item.value5}}</div>
-                    <div>{{item.value6}}</div>
-                    <div>{{item.value7}}</div>
-                    <div>{{item.value8}}</div>
-                    <div>{{item.value9}}</div>
-                </li>
-                <li v-show="!show" class="noData">
-                    <div id="noData_div">
-                        <img src="../../../../../assets/image/Provide/nodata.png" alt="">
-                        <span>没有找到记录，请调整搜索条件</span>
-                    </div>
-                </li>
-            </ul>
+        <div class="table">
+            <el-table :data="items" border stripe style="width: 100%">
+                <el-table-column prop="card_type" align="center" label="供货名称"></el-table-column>
+                <el-table-column prop="worth" align="center" width="80" label="面额"></el-table-column>
+                <el-table-column prop="amount1" align="center" label="供货数量"></el-table-column>
+                <el-table-column prop="number1" align="center" label="供货金额"></el-table-column>
+                <el-table-column prop="amount2" align="center" label="成功数量"></el-table-column>
+                <el-table-column prop="number2" align="center" label="成功金额"></el-table-column>
+                <el-table-column prop="amount3" align="center" label="处理中数量"></el-table-column>
+                <el-table-column prop="amount4" align="center" label="失败数量"></el-table-column>
+                <el-table-column prop="number3" align="center" label="失败金额"></el-table-column>
+            </el-table>
         </div>
-        <div v-show="show" class="pagination">
-            <el-pagination background
-                @current-change="handleCurrentChange"
-                :current-page.sync="currentPage"
-                layout="prev, pager, next, jumper, total"
-                :page-size="5"
-                :total="total">
-            </el-pagination>
+        <div v-if="show" class="pagination">
+            <Pagination @pageChange="pageNum" :paginationData='paginationData'></Pagination>
         </div>
     </div>
 </template>
 <script>
+    import Pagination from '@/components/Pagination/Pagination';
+    import Public from '@/until/until';
+    import { getValue, census } from '@/until/getData';
+    let moment = require('moment');
     export default {
+        components:{
+            Pagination
+        },
 		data() {
             return {
+                paginationData: {
+                    pageSize: 5,
+                    totalNum: 0,
+                    activePage: 1
+                },
                 input1:'',
                 value1:'',
                 value2:'',
-                show: true,
-                total: 100,                  // 表格的总条数
+                show: false,
                 optionValue1:'',
                 optionValue2:'',
                 options1: [
-                    {value: '1',label: '全国'}, 
-                    {value: '2',label: '北京'}, 
-                    {value: '3',label: '上海'}, 
-                    {value: '4',label: '浙江'}, 
-                    {value: '5',label: '广州'}
+                    {value: '3',label: '中国电信'}, 
+                    {value: '1',label: '中国移动'}, 
+                    {value: '2',label: '中国联通'}, 
+                    {value: '4',label: '中国石化'}
                 ],
-                options2: [
-                    {value: '1',label: '50'}, 
-                    {value: '2',label: '200'}, 
-                    {value: '3',label: '500'}, 
-                    {value: '4',label: '1000'}, 
-                    {value: '5',label: '5000'}
-                ],
-                items:[{
-                    key:1,
-                    value1:'1000000000000',
-                    value2:200,
-                    value3:'300',
-                    value4:'400',
-                    value5:500.20,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                }, {
-                    key:2,
-                    value1:'1000000000000',
-                    value2:200,
-                    value3:'300',
-                    value4:'400',
-                    value5:500.11,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                }, {
-                    key:3,
-                    value1:'1000000000000',
-                    value2:200,
-                    value3:'300',
-                    value4:'400',
-                    value5:500.16,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                }, {
-                    key:4,
-                    value1:'1000000000000',
-                    value2: 200,
-                    value3:'300',
-                    value4:'400',
-                    value5:500.18,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                }, {
-                    key:5,
-                    value1:'1000000000000',
-                    value2:200,
-                    value3:'300',
-                    value4:'400',
-                    value5:500.19,
-                    value6:'600',
-                    value7:'700',
-                    value8:'800',
-                    value9:'900',
-                }],
+                options2: [],
+                items:[],
                 currentPage: 1,
+                nowPage: 1
+            }
+        },
+        mounted () {
+            // let page = this.paginationData.activePage;
+            // this.getData(page);
+        },
+        watch: {
+            nowPage(val){            // 监听当前页的变化，如果有变化开始请求当前页的数据
+                this.paginationData.activePage = val;
+                let page = this.paginationData.activePage;
+                let data = {};
+                if (this.optionValue1 != '') {
+                    data['card_type'] = this.optionValue1;
+                }
+                if (this.optionValue2 != '') {
+                    data['worth'] = this.optionValue2;
+                }
+                if (this.value1 != '') {
+                    data['card_type'] = moment(this.value1).format('YYYY-MM-DD HH:MM:SS');
+                }
+                if (this.value2 != '') {
+                    data['card_type'] = moment(this.value2).format('YYYY-MM-DD HH:MM:SS');
+                }
+                this.getData(page, data);
+            },
+            optionValue1(){
+                let data = {};
+                if (this.optionValue1 === '1') {
+                    data.operator = '1';
+                    this.getWorth(data);
+                } else if (this.optionValue1 === '2') {
+                    data.operator = '2';
+                    this.getWorth(data);
+                } else if (this.optionValue1 === '3') {
+                    data.operator = '3';
+                    this.getWorth(data);
+                } else if (this.optionValue1 === '4') {
+                    data.operator = '4';
+                    this.getWorth(data);
+                } else if (this.optionValue1 === '5') {
+                    data.operator = '5';
+                    this.getWorth(data);
+                }
             }
         },
         methods:{
+            StartQuery(){
+                let page = this.paginationData.activePage;
+                let data = {};
+                if (this.optionValue1 != '') {
+                    data['card_type'] = this.optionValue1;
+                }
+                if (this.optionValue2 != '') {
+                    data['worth'] = this.optionValue2;
+                }
+                if (this.value1 != '') {
+                    data['card_type'] = moment(this.value1).format('YYYY-MM-DD HH:MM:SS');
+                }
+                if (this.value2 != '') {
+                    data['card_type'] = moment(this.value2).format('YYYY-MM-DD HH:MM:SS');
+                }
+                this.getData(page, data);
+            },
+            pageNum(val){
+                this.nowPage = val;
+            },
             handleCurrentChange(val) {
                 console.log(`当前页: ${val}`);
             },
@@ -162,123 +150,51 @@
                     type: 'success',
                     center: true
                 });
+            },
+            getWorth(data){
+                getValue(data).then(res => {
+                    // console.log(res);
+                    if (res.code == '1') {
+                        this.options2 = res.msg;
+                    } else if(res.code == 899 || res.code == 900){
+                        // console.log(res.msg);
+                    } else {
+                        Public.topAlert('error', res.msg);
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
+            },
+            getData(page, data){
+                this.items = [];
+                census(page,data).then(res => {
+                    // console.log(res);
+                    if (res.code == '1') {
+                        this.show = true;
+                        this.paginationData.totalNum = eval(res.total);
+                        res.list.forEach(items1 => {
+                            let obj = {};
+                            obj.card_type = items1.card_type;
+                            obj.worth = eval(items1.worth).toFixed(2);
+                            obj.number1 = eval(items1.array.total_price).toFixed(2);
+                            obj.amount1 = items1.array.total_card;
+                            obj.number2 = eval(items1.array.ok_card).toFixed(2);
+                            obj.amount2 = items1.array.ok_price;
+                            obj.number3 = eval(items1.array.no_price).toFixed(2);
+                            obj.amount3 = items1.array.ing_card;
+                            obj.amount4 = items1.array.no_card;
+                            this.items.push(obj);
+                        });
+                    } else {
+                        Public.topAlert('error', res.msg);
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
             }
         }
     }
 </script>
-<style scoped>
-    .table_box{
-        height: 422px;
-    }
-    .table_box .public_box{
-        display: flex;
-        font-size: 0;
-    }
-    .public_box .public{
-        display: flex;
-        padding-top: 20px;
-    }
-    .public .lable{
-        width: 70px;
-        line-height: 32px;
-        font-size: 14px;
-        color: #494949;
-    }
-    .public2{
-    	margin-left: 20px;
-    }
-    .public2 .div{
-        width: 22px;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 32px;
-        text-align: center;
-    }
-    .pici .lable{
-        width: 70px;
-    }
-    .el-button.el-button--default{
-        width: 80px;
-        height: 32px;
-        padding: 0;
-    }
-    .el-button.el-button--default:nth-child(1){
-        background-color: #8a6ad4;
-        color: white;
-        border-color: #8a6ad4;
-        margin-left: 20px;
-    }
-    .table{
-        width: 906px;
-        height: 240px;
-        margin-top: 20px;
-    }
-    .table .table_title{
-        width: 100%;
-        height: 40px;
-        display: flex;
-        background-color: #fafafa;
-    }
-    .table .table_title div{
-        width: 11%;
-        line-height: 40px;
-        text-align: center;
-        font-size: 14px;
-        border-right: 1px solid #e9e9e9;
-    }
-    .table .table_title div:nth-child(2),
-    .table .table_title div:nth-child(3),
-    .table .table_title div:nth-child(4),
-    .table .table_title div:nth-child(5){
-        width: 10%;
-    }
-    .table .table_title div:nth-child(1){
-        width: 16%;
-    }
-    .table .table_title div:last-child{
-        border-right: 0;
-    }
-    .item_ul{
-        width: 100%;
-    }
-    .item_ul li{
-        list-style: none;
-        display: flex;
-        width: 100%;
-    }
-    .item_ul li div{
-        width: 11%;
-        line-height: 40px;
-        text-align: center;
-        font-size: 14px;
-        border-right: 1px solid #e9e9e9;
-    }
-    .item_ul li div:nth-child(2),
-    .item_ul li div:nth-child(3),
-    .item_ul li div:nth-child(4),
-    .item_ul li div:nth-child(5){
-        width: 10%;
-    }
-    .item_ul li div:nth-child(1){
-        width: 16%;
-    }
-    .item_ul li div:last-child{
-        border-right: 0;
-    }
-    .bg{
-        background-color: #fafafa;
-    }
-    .pagination{
-        padding-top: 11px;
-        text-align: right;
-    }
-    #noData_div{
-        width: 100%;
-        padding-top: 40px; 
-    }
-    #noData_div span{
-        vertical-align: top;
-        line-height: 81px;
-        padding-left: 10px;
-    }
+<style lang="less" scoped>
+    @import '../../../../../style/less/Provide/Census/table.less';
 </style>

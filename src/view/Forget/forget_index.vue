@@ -87,5 +87,5 @@
 	}
 </script>
 <style lang="less" scoped>
-	@import '../../assets/less/forget/index.less';
+	@import '../../style/less/forget/index.less';
 </style>

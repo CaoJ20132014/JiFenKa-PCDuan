@@ -3,12 +3,14 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import store from './store';
 import ElementUI from 'element-ui';
 import Vuex from 'vuex';
+import Public from './until/until';
 import VueHighcharts from 'highcharts';
 import 'element-ui/lib/theme-chalk/index.css';
-import './assets/css/public.css';
-import './assets/icons/iconfont.css';
+import './style/css/public.css';
+import './icons/iconfont.css';
 
 Vue.use(ElementUI);
 Vue.use(Vuex);
@@ -16,19 +18,43 @@ Vue.use(VueHighcharts);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-new Vue({
-    el: '#app',
-    router,
-    template: '<App/>',
-    components: { App },
-    methods: {
-        moreChart() {
-            var options = this.getMoreOptions(this.type);
-            if (this.chart) {
-                this.chart.destroy();
-            };
-            // 初始化 Highcharts 图表
-            this.chart = new Highcharts.Chart('highcharts-more', options);
+if (Public.BrowserType()) {
+    new Vue({
+        el: '#app',
+        router,
+        store,
+        template: '<App/>',
+        components: {
+            App
         }
+    });
+    let Url = window.location.href;
+    let flag = Url.indexOf('errorBow') >= 0;
+    if (flag) {
+        router.replace({
+            path: '/home/'
+        });
     }
-});
+} else {
+    new Vue({
+        el: '#app',
+        router,
+        store,
+        template: '<App/>',
+        components: {
+            App
+        }
+    });
+    MessageBox.confirm('您使用的IE浏览器版本太低，请更换浏览器访问!', '消息提示', {
+        confirmButtonText: '确定',
+        showCancelButton: false,
+        type: 'error'
+    }).then(() => {
+
+    }).catch(() => {
+
+    });
+    router.replace({
+        path: '/errorBow'
+    });
+}

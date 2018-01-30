@@ -29,8 +29,7 @@
                 </div>
                 <div class="bot">
                     <div class="charts">
-                        <XChart1 v-show="isChart" :id="chartId1" :option="option1"></XChart1>
-                        <XChart1 v-show="!isChart" :id="chartId2" :option="option2"></XChart1>
+                        <HeightChart :options="option" :styles="styles" ref="simpleChart"></HeightChart>
                         <p>
                             <span>{{money.month}}</span>
                             <span>经营概况</span>
@@ -81,23 +80,24 @@
 	import c from "../../../../assets/image/recharge/baner/3.jpg";
 	import d from "../../../../assets/image/recharge/baner/4.jpg";
     import e from "../../../../assets/image/recharge/baner/5.jpg";
-    import XChart1 from './components/chart1.vue';
-    import XChart2 from './components/chart2.vue';
-    import Scroll from '../../Provide/components/scroll.vue';
+    import Scroll from '@/components/scroll.vue';
+    import HeightChart from './components/chartComponent.vue';
     export default{
         components: {
-            XChart1,
-            XChart2,
-            Scroll
+            Scroll,
+            HeightChart
         },
         data(){
             return{
                 isShow: false,
-                isChart: true,
                 Account: "15617858292",     // 系统账号
                 balance: 1000,              // 供卡余额
                 alarmBalance: 0,            // 报警余额
                 activeIndex: 0,				// 滚动的位置
+                styles: {                   // 表格的宽高
+                    width: 840,
+                    height: 240
+                },
 				bannerList:[{
 					id:1,
 					imgsrc: a
@@ -115,69 +115,38 @@
 					imgsrc: e
                 }],
                 money:{
-                    month: "7月",      // 月份
+                    month: "7月",       // 月份
                     mianzhi: 10,        // 面值
                     koukuan: 10,        // 扣款
                     lirun: 10           // 利润
                 },
-                chartId1: 'test1',
-                chartId2: 'test2',
-                option1: {
-                    chart: {
-                        type: 'column'
-                    },
-                    title: {
-                        text: null
-                    },credits:{
-                        enabled: false           // 禁用版权信息
-                    },
-                    xAxis: {                     // x轴显示的内容
-                        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-    　　　　　　　　　　　plotbands:[{             // 可以显示一个方块，如果需要的话可以更改透明度和颜色
-    　　　　　　　　　　　　　from:4.5,
-    　　　　　　　　　　　　　to:6.5,
-    　　　　　　　　　　　　　color:'rgba(68,170,213,0)'                 // 透明度和颜色
-    　　　　　　　　　　　}],
-                        tickWidth: 1
-                    },
-                    yAxis: {                    // y轴显示的内容
-                        title: {
-                            text: '气温 (°C)'
-                        },
-                        gridLineDashStyle: 'Dash',
-                        gridLineColor: '#e9e9e9' 
-                    },
-                    plotOptions: {
-                        line: {
-                            dataLabels: {
-                                enabled: true // 开启数据标签
-                            },
-                            enableMouseTracking: true // 关闭鼠标跟踪，对应的提示框、点击事件会失效
-                        }
-                    },
+                chart:{
+                    months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
                     series: [{//两条数据
-                        name: '东京',
+                        name: '供货平台-话费',
                         data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
                         showInLegend: false, // 设置为 false 即为不显示在图例中
                         color : "#8f75ce"
                     }, {
-                        name: '伦敦',
+                        name: '供货平台-油卡',
                         data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
                         showInLegend: false, // 设置为 false 即为不显示在图例中
                         color : "#fcba32"
                     }]
                 },
-                option2: {
+                option: {},
+                option1: {
                     chart: {
                         type: 'line'
                     },
                     title: {
                         text: null
-                    },credits:{
+                    },
+                    credits:{
                         enabled: false           // 禁用版权信息
                     },
                     xAxis: {                     // x轴显示的内容
-                        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+                        categories: [],
     　　　　　　　　　　　plotbands:[{             // 可以显示一个方块，如果需要的话可以更改透明度和颜色
     　　　　　　　　　　　　　from:4.5,
     　　　　　　　　　　　　　to:6.5,
@@ -187,7 +156,7 @@
                     },
                     yAxis: {                    // y轴显示的内容
                         title: {
-                            text: '气温 (°C)'
+                            text: '收入 (万元)'
                         },
                         gridLineDashStyle: 'Dash',
                         gridLineColor: '#e9e9e9' 
@@ -200,26 +169,59 @@
                             enableMouseTracking: true // 关闭鼠标跟踪，对应的提示框、点击事件会失效
                         }
                     },
-                    series: [{//两条数据
-                        name: '东京',
-                        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
-                        showInLegend: false, // 设置为 false 即为不显示在图例中
-                        color : "#8f75ce"
-                    }, {
-                        name: '伦敦',
-                        data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
-                        showInLegend: false, // 设置为 false 即为不显示在图例中
-                        color : "#fcba32"
-                    }]
+                    series: []
+                },
+                option2: {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: null
+                    },
+                    credits:{
+                        enabled: false           // 禁用版权信息
+                    },
+                    xAxis: {                     // x轴显示的内容
+                        categories: [],
+    　　　　　　　　　　　plotbands:[{             // 可以显示一个方块，如果需要的话可以更改透明度和颜色
+    　　　　　　　　　　　　　from:4.5,
+    　　　　　　　　　　　　　to:6.5,
+    　　　　　　　　　　　　　color:'rgba(68,170,213,0)'                 // 透明度和颜色
+    　　　　　　　　　　　}],
+                        tickWidth: 1
+                    },
+                    yAxis: {                    // y轴显示的内容
+                        title: {
+                            text: '收入 (万元)'
+                        },
+                        gridLineDashStyle: 'Dash',
+                        gridLineColor: '#e9e9e9' 
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true // 开启数据标签
+                            },
+                            enableMouseTracking: true // 关闭鼠标跟踪，对应的提示框、点击事件会失效
+                        }
+                    },
+                    series: []
                 }
             }
         },
+        mounted(){
+            this.option1.xAxis.categories = this.chart.months;
+            this.option1.series = this.chart.series;
+            this.option2.xAxis.categories = this.chart.months;
+            this.option2.series = this.chart.series;
+            this.option = this.option2;
+        },
         methods: {
             changzhuzhuangtu(){
-                this.isChart = true;
+                this.option = this.option2;
             },
             changzhexiantu(){
-                this.isChart = false;
+                this.option = this.option1;
             },
             setAlarm(){
                 this.$prompt('*余额低于提醒值时，系统自动报警提示加款，设置“0”为关闭提示', '设置余额提醒值', {

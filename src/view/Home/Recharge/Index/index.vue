@@ -23,7 +23,7 @@
     </div>
 </template>
 <script>
-    import change from "../../../../assets/js/until.js";
+    import change from "@/until/until";
     export default{
         data(){
             return{

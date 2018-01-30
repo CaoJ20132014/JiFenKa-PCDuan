@@ -32,19 +32,22 @@
 			</ul>
 		</div>
 		<div class="content_right" :style="styles">
-			<router-view/>
+			<router-view @homeChange="routerChange" @CashApplyChangeBalance='WithdrawalsApplyChangeBalance'></router-view>
 		</div>
 	</div>
 </template>
 
 <script>
-	import Public from '../../../../assets/js/until.js';
+	import Public from '@/until/until';
+	import { loginOut, CardList } from '@/until/getData';
 	export default {
 		data() {
 			return {
 				balance: "0.000",		// 账户余额
 				show: false,			// 改变顶部右边的显示状态
 				flag: "1",				// 给变左侧导航的选中状态
+				Height1: 725,
+				Height2: 540,
 				styles: {
                     height: 540 + 'px'
                 }
@@ -61,8 +64,29 @@
 			this.change_nav();			// 改变左侧导航的选中状态
 			this.changeHeight();		// 改变内容区域右侧的高度
 			this.styles.height = Public.changeHeight(this.$route.path) + 'px';
+			if (typeof(Public.JS_Cookie('get', 'userInfo'))!='undefined'||typeof(this.$store.getters.UserInfo)!='undefined') {
+				this.show = true;
+				CardList().then(res => {
+					if (res.code == '1') {
+						this.balance = eval(res.user.balance);
+					}
+				}).catch(err => {
+					// console.log(err);
+				});
+			} else {
+				this.show = false;
+			}
 		},
 		methods: {
+			routerChange(val){
+				if (val) {
+					this.Height1 = val.Height1;
+					this.Height2 = val.Height2;
+				}
+			},
+			WithdrawalsApplyChangeBalance(val){
+				this.balance = val.toFixed(2);
+			},
 			active:function(e){
 				this.flag = e;
 			},
@@ -114,9 +138,9 @@
 					this.flag = "1";
 				} else if(this.isContains(router,"Provide")){
 					this.flag = "2";
-				} else if(this.isContains(router,"details")){
+				} else if(this.isContains(router,"Details")){
 					this.flag = "3";
-				} else if(this.isContains(router,"census")){
+				} else if(this.isContains(router,"Census")){
 					this.flag = "4";
 				} else if(this.isContains(router,"cash")||this.isContains(router,"AddCard")){
 					this.flag = "5";
@@ -126,6 +150,13 @@
 			},
 			changeHeight:function (){
 				let router =  this.$route.path;
+				if (this.isContains(router,"provide")) {
+					this.Height1 = 870;
+					this.Height2 = 680;
+				} else{
+					this.Height1 = 725;
+					this.Height2 = 540;
+				}
 			},
 			isContains:function(str, substr){			// 判断str字符串是否包含substr字符串
      			return str.indexOf(substr) >= 0;
@@ -134,5 +165,5 @@
 	}
 </script>
 <style lang="less" scoped>
-	@import "../../../../assets/less/Provide/home/index.less";
+	@import "../../../../style/less/Provide/home/index.less";
 </style>

@@ -88,5 +88,5 @@
     }
 </script>
 <style lang="less" scoped>
-    @import '../../../../../assets/less/Provide/CardProvide/onefuel.less';
+    @import '../../../../../style/less/Provide/CardProvide/onefuel.less';
 </style>

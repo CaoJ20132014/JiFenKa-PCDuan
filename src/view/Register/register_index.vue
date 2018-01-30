@@ -77,5 +77,5 @@
 	}
 </script>
 <style lang="less" scoped>
-	@import '../../assets/less/register/index.less';
+	@import '../../style/less/register/index.less';
 </style>
