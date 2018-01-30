@@ -46,8 +46,6 @@
 				balance: "0.000",		// 账户余额
 				show: false,			// 改变顶部右边的显示状态
 				flag: "1",				// 给变左侧导航的选中状态
-				Height1: 725,
-				Height2: 540,
 				styles: {
                     height: 540 + 'px'
                 }
@@ -80,8 +78,7 @@
 		methods: {
 			routerChange(val){
 				if (val) {
-					this.Height1 = val.Height1;
-					this.Height2 = val.Height2;
+					this.styles.height = val.Height2 + 'px';
 				}
 			},
 			WithdrawalsApplyChangeBalance(val){

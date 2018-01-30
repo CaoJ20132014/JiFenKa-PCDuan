@@ -9,7 +9,8 @@
 			<div v-show="hidden" class="one_many">
 				<ul :key="cardType">
 					<li v-bind:class="{'pur_active': flag == '1'}" @click="change(1)">单张供货</li>
-					<li v-bind:class="{'pur_active': flag == '2'}" @click="change(2)">多张供货</li>
+					<!-- <li v-bind:class="{'pur_active': flag == '2'}" @click="change(2)">多张供货</li> -->
+					<li v-bind:class="{'pur_active': flag == '3'}" @click="change(3)">批量导入</li>
 				</ul>
 			</div>
 			<router-view/>
@@ -49,6 +50,10 @@
 					this.$router.push({
 						name: 'manycard'
 					});
+				} else if (this.cardType == '1' && e == 3) {	// 上网卡=>批量导入
+					this.$router.push({
+						name: 'importcard'
+					});
 				} else if (this.cardType == '2' && e == 1) {	// 加油卡=>单张
 					this.$router.push({
 						name: 'onefuel'
@@ -57,24 +62,30 @@
 					this.$router.push({
 						name: 'manyfuel'
 					});
+				} else if (this.cardType == '2' && e == 3) {	// 加油卡=>批量导入
+					this.$router.push({
+						name: 'importfuel'
+					});
 				}
 			},
 			changecardNum:function(){				// 改变单张供卡和多张供卡的下边框
 				let router = this.$route.path;
 				if (router == "/Home/Cardprovided/Provide/card/"||router == "/Home/Cardprovided/Provide/fulecard/"){
 					this.flag = '1';
-				} else if (router == "/Home/Cardprovided/Provide/card/manycard"||router == "/Home/Cardprovided/Provide/fulecard/manyfuel"||router == "/Home/Cardprovided/Provide/fulecard/fuelconfim"){
+				} else if (router == "/Home/Cardprovided/Provide/card/manycard"||router == "/Home/Cardprovided/Provide/fulecard/manyfuel"){
 					this.flag = '2';
+				} else if(router == "/Home/Cardprovided/Provide/fulecard/importfuel"||router == "/Home/Cardprovided/Provide/card/importcard"){
+					this.flag = '3';
 				}
 			},
 			changeStyle:function() {
 				let router = this.$route.path;
-				if (router == "/Home/Cardprovided/Provide/card/"||router == "/Home/Cardprovided/Provide/card/manycard") {
+				if (router=="/Home/Cardprovided/Provide/card/"||router=="/Home/Cardprovided/Provide/card/manycard"||router=="/Home/Cardprovided/Provide/card/importcard") {
 					this.title = "上网卡供货";
 					this.isShow = true;
 					this.hidden = true;
 					this.cardType = '1';
-				} else if (router == "/Home/Cardprovided/Provide/fulecard/"||router == "/Home/Cardprovided/Provide/fulecard/manyfuel"||router == "/Home/Cardprovided/Provide/fulecard/fuelconfim") {
+				} else if (router == "/Home/Cardprovided/Provide/fulecard/"||router == "/Home/Cardprovided/Provide/fulecard/manyfuel"||router == "/Home/Cardprovided/Provide/fulecard/importfuel") {
 					this.title = "加油卡供货";
 					this.isShow = true;
 					this.hidden = true;

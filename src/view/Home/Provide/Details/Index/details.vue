@@ -1,16 +1,16 @@
 <template>
-	<div class="detail_box border">
+	<div class="detail_box border" :style="{'height': outsideHeight+'px'}">
 		<div class="box_top">
 			<div>供货明细</div>
 		</div>
-		<div class="box_bot">
+		<div class="box_bot" :style="{'height': insideHeight+'px'}">
 			<div class="one_many">
 				<ul>
 					<li v-bind:class="{'pur_active': flag == '1'}" @click="change(1)">充值卡供货</li>
 					<li v-bind:class="{'pur_active': flag == '2'}" @click="change(2)">其他资源供货</li>
 				</ul>
 			</div>
-			<router-view/>
+			<router-view @indexChange="changeHeight"></router-view>
 		</div>
 	</div>
 </template>
@@ -19,7 +19,9 @@
 	export default {
 		data() {
 			return {
-				flag: '1'
+				flag: '1',
+				outsideHeight: 538,
+				insideHeight: 488
 			}
 		},
 		mounted(){
@@ -31,6 +33,16 @@
 			}
 		},
 		methods:{
+			changeHeight(val){
+				if (val) {
+					this.outsideHeight = val.Height1;
+					this.insideHeight = val.Height2;
+					let height = {
+						Height2: 950
+					}
+					this.$emit("homeChange", height);
+				}
+			},
 			change:function(e){
 				this.flag = e;
 				if (e == '1') {

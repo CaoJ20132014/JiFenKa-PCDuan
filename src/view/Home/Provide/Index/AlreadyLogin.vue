@@ -5,25 +5,25 @@
 				<div class="Already" v-show="idLogin">
 					<p class="p1">
 						<img src="../../../../assets/image/Provide/ren_grey.png" alt="" />
-						<span>系统账号：<span>{{account}}</span></span>
+						<span>系统账号：<span @click="needLogin">{{account}}</span></span>
 					</p>
 					<p class="p2">
 						<img src="../../../../assets/image/Provide/card1.png" alt="" />
-						<span>供卡余额：<span>{{money}}</span></span>
-						<span class="pur_font" @click="tixian()">我要提现</span>
-						<span class="pur_font">提现记录</span>
+						<span>供卡余额：<span @click="needLogin">{{money}}</span></span>
+						<span class="pur_font" @click="tixian">我要提现</span>
+						<span class="pur_font" @click="toRecord">提现记录</span>
 					</p>
 				</div>
 				<div class="no" v-show="!idLogin">
 					<p class="p1">
 						<img src="../../../../assets/image/Provide/ren_grey.png" alt="" />
-						<span>系统账号：<span>{{account}}</span></span>
+						<span>系统账号：<span @click="needLogin">{{account}}</span></span>
 					</p>
 					<p class="p2">
 						<img src="../../../../assets/image/Provide/card1.png" alt="" />
-						<span>供卡余额：<span>{{money}}</span></span>
-						<span class="pur_font" @click="tixian()">我要提现</span>
-						<span class="pur_font">提现记录</span>
+						<span>供卡余额：<span @click="needLogin">{{money}}</span></span>
+						<span class="pur_font" @click="tixian">我要提现</span>
+						<span class="pur_font" @click="toRecord">提现记录</span>
 					</p>
 				</div>
 			</div>
@@ -173,6 +173,18 @@
 				if(rowIndex === 3){
 					return 'success-row';
 				}
+			},
+			needLogin(){
+				if (this.account === '请登录' && this.money === '请登录') {
+					this.$router.push({
+						name: 'accountLogin'
+					});
+				}
+			},
+			toRecord(){
+				this.$router.push({
+					name: 'capital'
+				});
 			}
 		}
 	}

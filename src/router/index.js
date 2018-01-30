@@ -29,11 +29,13 @@ const choose = resolve => require.ensure([], () => resolve(require('@/view/Home/
 // 我要供货=>运营商供卡
 const card = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Provide/card_public/card.vue')), 'card');// 网站首页=>我要供货=>运营商供卡
 const onecard = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Provide/card/onecard.vue')), 'card');// 网站首页=>我要供货=>运营商供卡=>单张供卡
+const importcard = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Provide/card/importcard.vue')), 'card');// 我要供货=>运营商供卡=>批量导入
 const manycard = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Provide/card/manycard.vue')), 'card');// 网站首页=>我要供货=>运营商供卡=>多张供卡		
 // 我要供货=>加油卡供卡
 const fulecard = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Provide/card_public/fulecard.vue')), 'fulecard');// 网站首页=>我要供货=>加油卡供卡
 const onefuel = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Provide/fulecard/onefuel.vue')), 'fulecard');// 网站首页=>我要供货=>加油卡供卡=>单张供货
 const manyfuel = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Provide/fulecard/manyfuel.vue')), 'fulecard');// 网站首页=>我要供货=>加油卡供卡=>多张供货		
+const importfuel = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Provide/fulecard/importfuel.vue')), 'fulecard');// 我要供货=>加油卡供卡=>批量导入
 // 供货详情
 const details = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Details/Index/details.vue')), 'details');// 网站首页=>供货详情
 const reachge = resolve => require.ensure([], () => resolve(require('@/view/Home/Provide/Details/Reachge/reachge.vue')), 'details');// 网站首页=>供货详情
@@ -192,6 +194,13 @@ const routes = [{
 					path: "manycard", 							// 我要供货=>运营商供卡子路由=>多张供卡
 					name: "manycard",
 					component: manycard
+				}, {
+					path: "importcard", 						// 我要供货=>上网卡供货=>批量导入
+					name: "importcard",
+					component: importcard,
+					meta: {
+						requireAuth: true,  	// 添加该字段，表示进入这个路由是需要登录的
+					}
 				}]
 			}, {
 				path: "fulecard", 								// 我要供货=>加油卡供卡
@@ -204,6 +213,13 @@ const routes = [{
 					path: "manyfuel", 							// 我要供货=>加油卡供卡子路由=>多张供卡
 					name: "manyfuel",
 					component: manyfuel
+				}, {
+					path: "importfuel", 						// 我要供货=>加油卡供货=>批量导入
+					name: "importfuel",
+					component: importfuel,
+					meta: {
+						requireAuth: true,  	// 添加该字段，表示进入这个路由是需要登录的
+					}
 				}]
 			}]
 		}, {

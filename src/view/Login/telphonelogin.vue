@@ -27,30 +27,31 @@
 </template>
 
 <script>
+	import {Code, telLogin} from '@/until/getData';
+	import Public from '@/until/until';
 	export default {
 		name: 'HelloWorld',
 		data() {
 			return {
 				checked: false,
+				isLoad: false,
 				inputaccount: "", 			// 手机号
 				inputpwd1: "",				// 右侧验证码
 				inputpwd2: "",				// 短信验证码
 				btn_text:'获取验证码',
 				disabled: false,
 				time: 0,
-				checkCode:''				// 随机验证码
+				imgSrc: 'http://a.91jfk.com/ProvideHome/Login/vcode'				// 图片验证码
 			}
 		},
 		methods:{
-			login(){
-				this.$router.push({
-					name: 'defaultindex'
-				});
-			},
 			forgetpwd:function(){
 				this.$router.push({
 					name: 'next'
 				});
+			},
+			changeImg(){		// 改变图片验证码
+				this.imgSrc = this.imgSrc +  '?c=' + Math.random();
 			},
 			register:function(){
 				this.$router.push({
@@ -66,15 +67,57 @@
 					});
 				}
 			},
+			toLogin(){
+				if (this.inputaccount && this.inputpwd1 && this.inputpwd2) {
+					let data = {
+						tel: this.inputaccount,
+						verify: this.inputpwd2
+					}
+					this.isLoad = true;
+					telLogin(data).then((res) => {
+						if (res.code == '1') {
+							this.alert(res.msg+'，正在跳转...', 'success');
+							setTimeout(() => {
+								this.$router.push({
+									name: 'home_nologin'
+								})
+							}, 2000);
+						} else {
+							this.alert(res.msg, 'warning');
+						}
+					}).catch((err) => {
+						console.log(err);
+					})
+				} else {
+					this.alert('信息不完整，请重新填写', 'warning');
+				}
+			},
 			getcode(){
-				this.$message({
-					showClose: true,
-					message: '验证码已发送，请注意查收',
-					type: 'success',
-					center: true
-				});
-				this.time = 60;
-				this.timer();
+				if (Public.isTel(this.inputaccount)) {
+					if (this.inputpwd1 != '') {
+						let data = {
+							state: 3,
+							verify: this.inputpwd1,
+							tel: this.inputaccount
+						}
+						Code(data).then((res) => {
+							if (res.code == '1') {
+								this.alert('验证码已发送，请注意查收', 'success');
+								this.time = 60;
+								this.timer();
+							} else {
+								this.alert(res.msg, 'warning');
+							}
+						}).catch((err)=>{
+							console.log(err);
+						})
+					} else {
+						this.alert('请输入右侧的图片验证码', 'warning');
+					}
+				} else {
+					this.alert('请输入正确的手机号码', 'warning');
+				}
+				
 			},
 			timer: function () {
 				if (this.time > 0) {
@@ -94,51 +137,21 @@
 			},
 			checkLPhone(){
 				if(this.inputaccount == ''){
-					this.$message({
-						message: '请输入手机号码',
-						type: 'error',
-						center: true
-					});
+					this.alert('请输入正确的手机号码', 'warning');
 				} else if(this.inputaccount.search(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/)==0){
 					return true;
 				} else {
-					this.$message({
-						message: '请输入正确的手机号码',
-						type: 'error',
-						center: true
-					});
+					this.alert('请输入正确的手机号码', 'warning');
 				}
 			},
-			createCode(){
-				let code = "";    
-				var codeLength = 4;								//验证码的长度   
-				var random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R',   
-				'S','T','U','V','W','X','Y','Z');				//随机数   
-				for(var i = 0; i < codeLength; i++) {			//循环操作   
-					var index = Math.floor(Math.random() * 36);	//取得随机数的索引（0~35）   
-					code += random[index];						//根据索引取得随机数加到code上   
-				}   
-				this.checkCode = code;							//把code值赋给验证码   
-			},
-			checkLpicma(){
-				this.inputpwd1.toUpperCase();	//取得输入的验证码并转化为大写         
-				if(this.inputpwd1 == '') {
-					this.$message({
-						message: '请输入验证码',
-						type: 'error',
-						center: true
-					});
-				} else if (this.inputpwd1.toUpperCase() != this.checkCode ) { //若输入的验证码与产生的验证码不一致时
-					this.$message({
-						message: '验证码错误，请重新输入',
-						type: 'error',
-						center: true
-					});
-					this.createCode();				//刷新验证码   
-					this.inputpwd1 = '';
-				} else { 							//输入正确时
-					return true;
-				}
+			alert(msg, alertType){
+				this.$message({
+					showClose: true,
+					message: msg,
+					type: alertType,
+					center: true,
+					duration: 2000
+				});
 			}
 		}
 	}
