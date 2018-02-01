@@ -2,6 +2,9 @@
     width: 1200px;
     height: 540px;
     margin: 0 auto;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
     .nav_left{
 		width: 200px;
@@ -65,6 +68,7 @@
                 }
             }
             .active{
+                background: -webkit-gradient(linear, left top, right top, from(#7557d1), to(#8b63e8));
                 background: linear-gradient(to right, #7557d1, #8b63e8);
             }
             .second_li{

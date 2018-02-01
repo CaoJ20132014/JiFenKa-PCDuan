@@ -1,7 +1,10 @@
 * {
     margin: 0;
     padding: 0;
-	user-select: none;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 }
 a{
 	color: #7b5bc7;
@@ -288,9 +291,9 @@ li{
 	height: 40px;
 }
 /* 系统公告 */
-#notice .el-input, 
-#notice .el-input__inner{
-	width: 190px !important;
+#notice .list_top .el-input, 
+#notice .list_top .el-input__inner{
+	width: 190px;
 	height: 32px;
 }
 
@@ -346,10 +349,6 @@ li{
 	width: 280px !important;
 	height: 38px !important;
 	margin-bottom: 2px;
-}
-/* 表格居中 */
-.el-table_1_column_1 div.cell,.el-table_1_column_2 div.cell{
-	text-align: center;
 }
 .el-button.el-button--default.el-button--small.el-button--primary{
 	background-color: #8a63e7;
@@ -507,7 +506,7 @@ li{
 }
 #onecard #top .el-select .el-input.el-input--suffix,
 #onecard #top .el-select .el-input__inner{
-		width: 120px !important;
+	width: 120px !important;
 }
 /* 下拉菜单 */
 .el-select-dropdown__item.selected {

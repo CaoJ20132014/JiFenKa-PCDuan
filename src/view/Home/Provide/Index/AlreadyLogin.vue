@@ -71,7 +71,7 @@
 	</div>
 </template>
 <script>
-	import Scroll from '@/components/scroll.vue';
+	import Scroll from '@/components/Scroll/scroll.vue';
 	import Public from '@/until/until';
 	import { Banner, Notice, CardList } from '@/until/getData';
 	let moment = require('moment');

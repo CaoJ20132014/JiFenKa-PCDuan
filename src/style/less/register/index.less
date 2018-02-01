@@ -94,6 +94,7 @@
                     .top_pur{
                         width: 100%;
                         height: 76px;
+                        background: -webkit-gradient(linear, left top, right top, from(#7557d1), to(#8b63e8));
                         background: linear-gradient(to right, #7557d1, #8b63e8);
                         text-align: center;
                         line-height: 76px;
@@ -111,8 +112,14 @@
             margin: 0 auto 0;
             padding-top: 10px;
             padding-bottom: 10px;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: space-between;
+            -webkit-box-pack: justify;
+               -moz-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
             img {
                 width: 293px;
             }

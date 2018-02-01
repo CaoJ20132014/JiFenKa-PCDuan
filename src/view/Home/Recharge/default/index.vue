@@ -80,7 +80,7 @@
 	import c from "../../../../assets/image/recharge/baner/3.jpg";
 	import d from "../../../../assets/image/recharge/baner/4.jpg";
     import e from "../../../../assets/image/recharge/baner/5.jpg";
-    import Scroll from '@/components/scroll.vue';
+    import Scroll from '@/components/Scroll/scroll.vue';
     import HeightChart from './components/chartComponent.vue';
     export default{
         components: {

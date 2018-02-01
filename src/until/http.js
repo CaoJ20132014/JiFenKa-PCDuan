@@ -1,19 +1,22 @@
-import axios from 'axios';
+import Axios from 'axios';
 import qs from 'qs';
 import { MessageBox } from 'element-ui';
 import Route from '@/router/index';
 
-axios.defaults.timeout = 10000;
+Axios.defaults.timeout = 10000;
 if (process.env.NODE_ENV == 'development') {
-	axios.defaults.baseURL = '/api';
+	Axios.defaults.baseURL = '/api';
 } else {
-	axios.defaults.baseURL = 'https://a.91jfk.com';
+	Axios.defaults.baseURL = 'https://a.91jfk.com';
 }
-//http request 拦截器
-axios.interceptors.request.use(
+// http request 拦截器
+Axios.interceptors.request.use(
     config => {
         config.headers = {
             'Content-Type': 'application/x-www-form-urlencoded'
+        }
+        if (config.method === 'post') {
+            config.data = qs.stringify(config.data)
         }
         return config;
     },
@@ -21,8 +24,8 @@ axios.interceptors.request.use(
         return Promise.reject(err);
     }
 );
-//http response 拦截器
-axios.interceptors.response.use(
+// http response 拦截器
+Axios.interceptors.response.use(
     response => {
         if (response) {
             // console.log(response);
@@ -69,7 +72,7 @@ axios.interceptors.response.use(
 export function fetch(url,params,method){
     if (method == 'GET' || method == 'get') {
         return new Promise((resolve, reject) => {
-            axios.get(url, {
+            Axios.get(url, {
                 params: params
             }).then(response => {
                 if (typeof response != 'undefined') {
@@ -81,7 +84,7 @@ export function fetch(url,params,method){
         });
     } else if (method == 'POST' || method == 'post'){
         return new Promise((resolve, reject) => {
-            axios.post(url, qs.stringify(params)).then(response => {
+            Axios.post(url, params).then(response => {
                 if (typeof response != 'undefined') {
                     resolve(response.data);
                 }

@@ -102,7 +102,7 @@
 		name: 'index',
 		data () {
 			return {
-				isLogin: false,
+				isLogin: true,
 				show: false,
 				isProvide: true,
 				balance: 888,			// 余额
